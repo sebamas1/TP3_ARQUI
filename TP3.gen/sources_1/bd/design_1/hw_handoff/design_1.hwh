@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Jan  7 15:01:46 2024" VIVADOVERSION="2022.2">
+
+  <SYSTEMINFO ARCH="spartan7" BOARD="xilinx.com:sp701:part0:1.1" DEVICE="7s100" NAME="design_1" PACKAGE="fgga676" SPEEDGRADE="-2"/>
+
+  <EXTERNALPORTS/>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES/>
+
+</EDKSYSTEM>
