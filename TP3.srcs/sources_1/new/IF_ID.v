@@ -34,6 +34,15 @@ module IF_ID# (
         output  [TAM_DATA - 1 : 0]      o_pc_value
 );
 
-assign o_pc_value = i_new_pc;
-assign o_instruccion = i_instruccion;
+reg [TAM_DATA - 1 : 0] instruccion;
+reg [TAM_DATA - 1 : 0] pc;
+
+always @(negedge i_clk)
+begin
+instruccion <= i_instruccion;
+pc <= i_new_pc;
+end
+
+assign o_pc_value = pc;
+assign o_instruccion = instruccion;
 endmodule
