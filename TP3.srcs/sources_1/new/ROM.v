@@ -41,7 +41,7 @@ module ROM #(
     end
   endgenerate
 
-  always @(posedge i_clka)
+  always @(negedge i_clka)
     if (i_ena)
       if (i_wea)
         BRAM[i_addra] <= i_dina;
@@ -61,7 +61,7 @@ module ROM #(
 
       reg [RAM_WIDTH-1:0] douta_reg = {RAM_WIDTH{1'b0}};
 
-      always @(negedge i_clka)
+      always @(posedge i_clka)
         if (i_rsta)
           douta_reg <= {RAM_WIDTH{1'b0}};
         else if (i_regcea)

@@ -68,15 +68,15 @@ module latch_idex#(
 
 always @(negedge i_clk)
 begin
-op_tmp <= i_op;
-inmediato_tmp <= i_inmediato;
-shamt_tmp <= i_shamt;
-funct_tmp <= i_funct;
-direccion_tmp <= i_direccion;
-rd_dir_tmp <= i_rd_dir;
-pc_tmp <= i_pc;
-rs_tmp <= i_rs;
-rt_tmp <= i_rt;
+    op_tmp <= i_op;
+    inmediato_tmp <= i_inmediato;
+    shamt_tmp <= i_shamt;
+    funct_tmp <= i_funct;
+    direccion_tmp <= i_direccion;
+    rd_dir_tmp <= i_rd_dir;
+    pc_tmp <= i_pc;
+    rs_tmp <= i_rs;
+    rt_tmp <= i_rt;
 end
 
    assign o_op =                op_tmp;

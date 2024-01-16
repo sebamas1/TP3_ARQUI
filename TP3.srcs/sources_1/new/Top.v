@@ -25,6 +25,8 @@ module Top(
     input i_reset
     );
     
+    wire b = 0;
+    
     Instruction_fetch etapa_if(
     i_clock,
     i_reset
@@ -41,7 +43,11 @@ module Top(
     i_clock,
     i_reset,
     latch_ifid.o_instruccion,
-    latch_ifid.o_pc_value
+    latch_ifid.o_pc_value,
+    
+    b,
+    wb.o_res,
+    wb.o_rd_dir
     );
     
     latch_idex latch_idex(
@@ -72,4 +78,41 @@ module Top(
     latch_idex.o_rd_dir
      
     );
+    latch_exmem exmem(
+    i_clock,
+    i_reset,
+    ex.o_pc,
+    ex.o_res,
+    ex.o_rd_dir
+    );
+    
+    Etapa_MEM mem(
+    i_clock,
+    i_reset,
+    
+    exmem.o_pc,
+    exmem.o_res,
+    exmem.o_rd_dir
+    
+    );
+    latch_memwb memwb(
+    i_clock,
+    i_reset,
+    
+    mem.o_pc,
+    mem.o_res,
+    mem.o_rd_dir
+    
+    );
+    
+   etapa_wb wb(
+    i_clock,
+    i_reset,
+    
+    memwb.o_pc,
+    memwb.o_res,
+    memwb.o_rd_dir
+    
+    );
+
 endmodule

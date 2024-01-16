@@ -34,6 +34,11 @@ module Instruction_decode#(
         input                                  i_reset,
         input   [TAM_DATA - 1 : 0]             i_instruccion,
         input   [TAM_DATA - 1 : 0]             i_pc,
+        
+        input                                  i_reg_write_mem_wb,
+        input  [TAM_DATA - 1 : 0]              i_dato_de_escritura_en_reg,
+        input  [REGISTER_SIZE - 1 : 0 ]        i_direc_de_escritura_en_reg,
+        
         output  [TAM_DATA - 1 : 0]             o_pc,
         output  [OP_SIZE - 1 : 0]              o_op,
         output  [TAM_DATA - 1 : 0]             o_inmediato,
@@ -44,11 +49,12 @@ module Instruction_decode#(
         output  [TAM_DATA - 1 : 0 ]            o_rt,
         output  [REGISTER_SIZE - 1 : 0 ]       o_rd_dir//entiendo que no tiene sentidon transmitir el contenido de rd ya que unicamente lo voy usar de destino, 
                                                         //por lo que transmito la direccion por si mas tarde necesito escribir en este
+        
     );
     
-    wire i_reg_write_mem_wb = 0;
-    wire [TAM_DATA - 1 : 0] i_dato_de_escritura_en_reg = 32'b0;
-    wire [REGISTER_SIZE - 1 : 0] i_direc_de_escritura_en_reg = 5'b0;//estos se dejan provisionalmente para que el modulo funcione, pero cuando se haga
+    //wire i_reg_write_mem_wb = 0;
+    //wire [TAM_DATA - 1 : 0] i_dato_de_escritura_en_reg = 32'b0;
+   // wire [REGISTER_SIZE - 1 : 0] i_direc_de_escritura_en_reg = 5'b0;//estos se dejan provisionalmente para que el modulo funcione, pero cuando se haga
                                                                 //wb, hay que usar entra salida desde wb que sobreescriba estos valores
     
     
@@ -57,8 +63,8 @@ module Instruction_decode#(
     reg [SHAMT_SIZE - 1 : 0] shamt_tmp;
     reg [OP_SIZE - 1 : 0] funct_tmp;
     reg [DIRECCION_SIZE - 1 : 0] direccion_tmp;
-    wire [TAM_DATA - 1 : 0] rs_tmp;
-    wire [TAM_DATA - 1 : 0] rt_tmp;
+    wire [TAM_DATA - 1 : 0] rs_tmp_wire;
+    wire [TAM_DATA - 1 : 0] rt_tmp_wire;
     reg [REGISTER_SIZE - 1 : 0] rd_dir_tmp;
     reg [TAM_DATA - 1 : 0] pc_tmp;
      
@@ -74,8 +80,8 @@ module Instruction_decode#(
         i_instruccion[25:21],
         i_instruccion[20:16],
 
-        rs_tmp,
-        rt_tmp
+        rs_tmp_wire,
+        rt_tmp_wire
     );
     
 always @(posedge i_clk)
@@ -87,6 +93,8 @@ begin
     direccion_tmp <= i_instruccion[25 : 0];
     rd_dir_tmp <= i_instruccion[15 : 11];
     pc_tmp <= i_pc;
+    
+    
 end
     
    assign o_op =                op_tmp;
@@ -96,7 +104,7 @@ end
    assign o_direccion =         direccion_tmp;
    assign o_rd_dir =            rd_dir_tmp;
    assign o_pc =                pc_tmp;
-   assign o_rs =                rs_tmp;
-   assign o_rt =                rt_tmp;
+   assign o_rs =                rs_tmp_wire;
+   assign o_rt =                rt_tmp_wire;
    
 endmodule

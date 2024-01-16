@@ -16,6 +16,11 @@ Compiling module xil_defaultlib.Instruction_decode
 Compiling module xil_defaultlib.latch_idex
 Compiling module xil_defaultlib.ALU
 Compiling module xil_defaultlib.etapa_ex
+Compiling module xil_defaultlib.latch_exmem
+Compiling module xil_defaultlib.RAM_default
+Compiling module xil_defaultlib.Etapa_MEM
+Compiling module xil_defaultlib.latch_memwb
+Compiling module xil_defaultlib.etapa_wb
 Compiling module xil_defaultlib.Top
 Compiling module xil_defaultlib.Top_tb
 Compiling module xil_defaultlib.glbl

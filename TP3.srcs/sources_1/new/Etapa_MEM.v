@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 08.01.2024 19:40:35
+// Create Date: 09.01.2024 16:39:14
 // Design Name: 
-// Module Name: latch_exmem
+// Module Name: Etapa_MEM
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module latch_exmem#(
+module Etapa_MEM #(
      parameter   TAM_DATA = 32,
      parameter   DIRECCION_SIZE = 26,
      parameter   REGISTER_SIZE = 5
@@ -36,19 +36,27 @@ module latch_exmem#(
         output  [TAM_DATA - 1 : 0]             o_res,
         output  [TAM_DATA - 1 : 0]             o_pc,
         output  [REGISTER_SIZE - 1 : 0]        o_rd_dir
-        
-        
     );
     
-   // reg  [DIRECCION_SIZE - 1 : 0]       direccion_tmp;
+    RAM mem_datos(
+    .i_addra(), //La salida del PC entra a la mem
+    .i_dina(32'b0),
+    .i_clka(i_clk),
+    .i_wea(1'b0),
+    .i_ena(1'b1),
+    .i_rsta(1'b0),                           // Output reset (does not affect memory contents)
+    .i_regcea(1'b1),
+    .o_douta(),
+    .o_halt()
+);
+
     reg  [REGISTER_SIZE - 1 : 0]        rd_dir_tmp;
     reg  [DIRECCION_SIZE - 1 : 0]       pc_tmp;
     reg  [DIRECCION_SIZE - 1 : 0]       res_tmp;
     
     
-always @(negedge i_clk)
+always @(posedge i_clk)
 begin
-    //direccion_tmp <= i_direccion;
     rd_dir_tmp <= i_rd_dir;
     pc_tmp <= i_pc;
     res_tmp <= i_res;

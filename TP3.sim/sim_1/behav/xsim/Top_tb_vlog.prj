@@ -2,13 +2,18 @@
 verilog xil_defaultlib  \
 "../../../../TP3.srcs/sources_1/new/ALU.v" \
 "../../../../TP3.srcs/sources_1/new/Etapa_IF.v" \
+"../../../../TP3.srcs/sources_1/new/Etapa_MEM.v" \
 "../../../../TP3.srcs/sources_1/new/IF_ID.v" \
 "../../../../TP3.srcs/sources_1/new/Instruction_decode.v" \
+"../../../../TP3.srcs/sources_1/new/RAM.v" \
 "../../../../TP3.srcs/sources_1/new/ROM.v" \
 "../../../../TP3.srcs/sources_1/new/Registros.v" \
 "../../../../TP3.srcs/sources_1/new/Top.v" \
 "../../../../TP3.srcs/sources_1/new/etapa_ex.v" \
+"../../../../TP3.srcs/sources_1/new/etapa_wb.v" \
+"../../../../TP3.srcs/sources_1/new/latch_exmem.v" \
 "../../../../TP3.srcs/sources_1/new/latch_idex.v" \
+"../../../../TP3.srcs/sources_1/new/latch_memwb.v" \
 "../../../../TP3.srcs/sim_1/new/Top_tb.v" \
 
 # compile glbl module

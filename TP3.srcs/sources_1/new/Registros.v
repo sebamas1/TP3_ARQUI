@@ -44,7 +44,7 @@ reg [NUM_BITS-1 : 0] reg_a;
 reg [NUM_BITS-1 : 0] reg_b;
 integer i;
 
-always @ (posedge i_clk)
+always @ (negedge i_clk)
 begin
     if (i_reset) 
         for (i = 0 ; i < NUM_REGS ; i = i + 1)
@@ -54,7 +54,7 @@ begin
             registros[i_write_direc] <= i_data;
 end
 
-always @ (negedge i_clk)
+always @ (posedge i_clk)
 begin
     reg_a <= registros[i_read_direc_A];
     reg_b <= registros[i_read_direc_B];

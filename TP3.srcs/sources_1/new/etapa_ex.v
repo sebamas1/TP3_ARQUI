@@ -41,13 +41,19 @@ module etapa_ex#(
         input  [DIRECCION_SIZE - 1 : 0]       i_direccion,
         input  [TAM_DATA - 1 : 0 ]            i_rs,
         input  [TAM_DATA - 1 : 0 ]            i_rt,
-        input  [REGISTER_SIZE - 1 : 0 ]       i_rd_dir
+        input  [REGISTER_SIZE - 1 : 0 ]       i_rd_dir,
+        
+        output  [TAM_DATA - 1 : 0 ]            o_pc,
+        output  [TAM_DATA - 1 : 0 ]            o_res,
+        output  [REGISTER_SIZE - 1 : 0 ]       o_rd_dir
 
     );
     
     reg [TAM_DATA - 1 : 0] rs_tmp;
     reg [TAM_DATA - 1 : 0] rt_tmp;
     reg [OP_SIZE - 1 : 0] funct_tmp;
+    reg [REGISTER_SIZE - 1 : 0] rd_dir_tmp;
+    reg [TAM_DATA - 1 : 0] pc_tmp;
     
     ALU alu(
         rs_tmp,
@@ -61,5 +67,11 @@ module etapa_ex#(
         rs_tmp <= i_rs;
         rt_tmp <= i_rt;
         funct_tmp <= i_funct;
+        pc_tmp = i_pc;
+        rd_dir_tmp = i_rd_dir;
     end
+    
+    assign o_rd_dir =                rd_dir_tmp;
+    assign o_res =                   alu.o_res;
+    assign o_pc =                    pc_tmp;
 endmodule
