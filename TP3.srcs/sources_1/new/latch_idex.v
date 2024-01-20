@@ -41,6 +41,7 @@ module latch_idex#(
         input  [DIRECCION_SIZE - 1 : 0]       i_direccion,
         input  [TAM_DATA - 1 : 0 ]            i_rs,
         input  [TAM_DATA - 1 : 0 ]            i_rt,
+        input  [REGISTER_SIZE - 1 : 0 ]       i_rt_dir,
         input  [REGISTER_SIZE - 1 : 0 ]       i_rd_dir,
         
         
@@ -52,6 +53,7 @@ module latch_idex#(
         output  [DIRECCION_SIZE - 1 : 0]       o_direccion,
         output  [TAM_DATA - 1 : 0 ]            o_rs,
         output  [TAM_DATA - 1 : 0 ]            o_rt,
+        output  [REGISTER_SIZE - 1 : 0 ]       o_rt_dir,
         output  [REGISTER_SIZE - 1 : 0 ]       o_rd_dir
         
 );
@@ -62,6 +64,7 @@ module latch_idex#(
     reg [DIRECCION_SIZE - 1 : 0] direccion_tmp;
     reg [TAM_DATA - 1 : 0] rs_tmp;
     reg [TAM_DATA - 1 : 0] rt_tmp;
+    reg [REGISTER_SIZE - 1 : 0] rt_dir_tmp;
     reg [REGISTER_SIZE - 1 : 0] rd_dir_tmp;
     reg [TAM_DATA - 1 : 0] pc_tmp;
 
@@ -73,6 +76,7 @@ begin
     shamt_tmp <= i_shamt;
     funct_tmp <= i_funct;
     direccion_tmp <= i_direccion;
+    rt_dir_tmp <= i_rt_dir;
     rd_dir_tmp <= i_rd_dir;
     pc_tmp <= i_pc;
     rs_tmp <= i_rs;
@@ -84,6 +88,7 @@ end
    assign o_shamt =             shamt_tmp;
    assign o_funct =             funct_tmp;
    assign o_direccion =         direccion_tmp;
+   assign o_rt_dir =            rt_dir_tmp;
    assign o_rd_dir =            rd_dir_tmp;
    assign o_pc =                pc_tmp;
    assign o_rs =                rs_tmp;

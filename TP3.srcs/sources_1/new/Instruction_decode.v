@@ -47,6 +47,7 @@ module Instruction_decode#(
         output  [DIRECCION_SIZE - 1 : 0]       o_direccion,
         output  [TAM_DATA - 1 : 0 ]            o_rs,
         output  [TAM_DATA - 1 : 0 ]            o_rt,
+        output  [REGISTER_SIZE - 1 : 0 ]       o_rt_dir,
         output  [REGISTER_SIZE - 1 : 0 ]       o_rd_dir//entiendo que no tiene sentidon transmitir el contenido de rd ya que unicamente lo voy usar de destino, 
                                                         //por lo que transmito la direccion por si mas tarde necesito escribir en este
         
@@ -65,6 +66,7 @@ module Instruction_decode#(
     reg [DIRECCION_SIZE - 1 : 0] direccion_tmp;
     wire [TAM_DATA - 1 : 0] rs_tmp_wire;
     wire [TAM_DATA - 1 : 0] rt_tmp_wire;
+    reg [REGISTER_SIZE - 1 : 0] rt_dir_tmp;
     reg [REGISTER_SIZE - 1 : 0] rd_dir_tmp;
     reg [TAM_DATA - 1 : 0] pc_tmp;
      
@@ -91,6 +93,7 @@ begin
     shamt_tmp <= i_instruccion[10 : 6];
     funct_tmp <= i_instruccion[5 : 0];
     direccion_tmp <= i_instruccion[25 : 0];
+    rt_dir_tmp <= i_instruccion[20 : 16];
     rd_dir_tmp <= i_instruccion[15 : 11];
     pc_tmp <= i_pc;
     
@@ -102,6 +105,7 @@ end
    assign o_shamt =             shamt_tmp;
    assign o_funct =             funct_tmp;
    assign o_direccion =         direccion_tmp;
+   assign o_rt_dir =            rt_dir_tmp;
    assign o_rd_dir =            rd_dir_tmp;
    assign o_pc =                pc_tmp;
    assign o_rs =                rs_tmp_wire;

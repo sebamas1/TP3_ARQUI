@@ -61,6 +61,7 @@ module Top(
     etapa_id.o_direccion,
     etapa_id.o_rs,
     etapa_id.o_rt,
+    etapa_id.o_rt_dir,
     etapa_id.o_rd_dir
     );
     
@@ -75,6 +76,7 @@ module Top(
     latch_idex.o_direccion,
     latch_idex.o_rs,
     latch_idex.o_rt,
+    latch_idex.o_rt_dir,
     latch_idex.o_rd_dir
      
     );
@@ -83,7 +85,10 @@ module Top(
     i_reset,
     ex.o_pc,
     ex.o_res,
-    ex.o_rd_dir
+    ex.o_rt_dir,
+    ex.o_rd_dir,
+    ex.o_alu_ctrl,
+    ex.o_rt
     );
     
     Etapa_MEM mem(
@@ -92,7 +97,10 @@ module Top(
     
     exmem.o_pc,
     exmem.o_res,
-    exmem.o_rd_dir
+    exmem.o_rt,
+    exmem.o_rt_dir,
+    exmem.o_rd_dir,
+    exmem.o_alu_ctrl
     
     );
     latch_memwb memwb(
@@ -101,7 +109,7 @@ module Top(
     
     mem.o_pc,
     mem.o_res,
-    mem.o_rd_dir
+    mem.o_wb_reg_write
     
     );
     
@@ -111,7 +119,7 @@ module Top(
     
     memwb.o_pc,
     memwb.o_res,
-    memwb.o_rd_dir
+    memwb.o_wb_reg_write
     
     );
 

@@ -39,7 +39,7 @@ module etapa_wb# (
     );
     
     reg  [REGISTER_SIZE - 1 : 0]        rd_dir_tmp;
-    reg  [DIRECCION_SIZE - 1 : 0]       res_tmp;
+    reg  [TAM_DATA - 1 : 0]             res_tmp;
     
     
 always @(posedge i_clk)

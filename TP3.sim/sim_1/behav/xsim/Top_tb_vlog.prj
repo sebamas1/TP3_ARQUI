@@ -5,6 +5,7 @@ verilog xil_defaultlib  \
 "../../../../TP3.srcs/sources_1/new/Etapa_MEM.v" \
 "../../../../TP3.srcs/sources_1/new/IF_ID.v" \
 "../../../../TP3.srcs/sources_1/new/Instruction_decode.v" \
+"../../../../TP3.srcs/sources_1/new/Mux_binario.v" \
 "../../../../TP3.srcs/sources_1/new/RAM.v" \
 "../../../../TP3.srcs/sources_1/new/ROM.v" \
 "../../../../TP3.srcs/sources_1/new/Registros.v" \
