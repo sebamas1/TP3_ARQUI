@@ -56,7 +56,9 @@ module ALU#(
         localparam OP_LB =  12'b100000000000;
         localparam OP_LH =  12'b100001000000;
         localparam OP_LW =  12'b100011000000;
-        
+        localparam OP_SB =  12'b101000000000;
+        localparam OP_SH =  12'b101001000000;
+        localparam OP_SW =  12'b101011000000;
         
         reg [BUS_SIZE - 1 : 0] operador_1; 
         reg [BUS_SIZE - 1 : 0] operador_2; 
@@ -178,16 +180,34 @@ module ALU#(
                 
                 OP_LH:
                 begin
-                    resultado <= operador_1 + operador_i;//bueno aca tenes que hacer que se meta el inmediato a la ALU y que se sume con rs, supongo que tenes que devolver
+                    resultado <= operador_1 + operador_i;
                     ins_type = 5'b10101;// este va a ser un read enable
                 end   
                   
                 OP_LW:
                 begin
-                    resultado <= operador_1 + operador_i;//bueno aca tenes que hacer que se meta el inmediato a la ALU y que se sume con rs, supongo que tenes que devolver
-                    ins_type = 5'b10100;// este va a ser un read enable
-                end      
-                    //algun tipo de señal de control, ni idea
+                    resultado <= operador_1 + operador_i;
+                    ins_type = 5'b10100;
+                end 
+                
+                OP_SB:
+                begin
+                    resultado <= operador_1 + operador_i;
+                    ins_type = 5'b11010; //este va a ser un write enable
+                end  
+                   
+                OP_SH:
+                begin
+                    resultado <= operador_1 + operador_i;
+                    ins_type = 5'b11001;
+                end   
+                  
+                OP_SW:
+                begin
+                    resultado <= operador_1 + operador_i;
+                    ins_type = 5'b11000;
+                end 
+ 
                 default: resultado <= operador_1 & operador_2 ; 
             endcase
         end

@@ -13,6 +13,7 @@ module RAM #(
   input i_ena,                            // RAM Enable, for additional power savings, disable port when not in use
   input i_rsta,                           // Output reset (does not affect memory contents)
   input i_regcea,                         // Output register enable
+  input [1:0] i_output_format,
   output [RAM_WIDTH-1:0] o_douta,          // RAM output data
   output o_halt
 );
@@ -38,7 +39,14 @@ module RAM #(
   always @(posedge i_clka)
     if (i_ena)
       if (i_wea)
-        BRAM[i_addra] <= i_dina;
+      begin
+          case (i_output_format)
+              2'b10: BRAM[i_addra] = {24'b000000000000000000000000, i_dina[7 : 0]};
+              2'b01: BRAM[i_addra] = {16'b0000000000000000, i_dina[15 : 0]};
+              2'b00: BRAM[i_addra] = i_dina;
+              default: BRAM[i_addra] = 4'b0000; // Valor por defecto en caso de selección no válida
+          endcase
+      end
       else
         ram_data <= BRAM[i_addra];
 
@@ -47,8 +55,8 @@ module RAM #(
     if (RAM_PERFORMANCE == "LOW_LATENCY") begin: no_output_register
 
       // The following is a 1 clock cycle read latency at the cost of a longer clock-to-out timing
-       assign o_douta = ram_data;
-
+       assign o_douta = (i_output_format[1 : 0] == 2'b00) ? ram_data : ((i_output_format[0] == 1'b0) ? {24'b000000000000000000000000, ram_data[7 : 0]} : {16'b0000000000000000, ram_data[15 : 0]});
+//bueno listo, use un operador ternario frankestein para reemplazar el switch de abajo, que nunca se ejecuta. Este codigo es mas rapido
     end else begin: output_register //NO SE USA
 
       // The following is a 2 clock cycle read latency with improve clock-to-out timing
@@ -59,10 +67,15 @@ module RAM #(
         if (i_rsta)
           douta_reg <= {RAM_WIDTH{1'b0}};
         else if (i_regcea)
-          douta_reg <= ram_data;
-
-      assign o_douta = douta_reg;
-
+        begin
+              case (i_output_format)
+                  2'b10: douta_reg = {24'b000000000000000000000000, ram_data[7 : 0]};
+                  2'b01: douta_reg = {16'b0000000000000000, ram_data[15 : 0]};
+                  2'b00: douta_reg = ram_data;
+                  default: douta_reg = 4'b0000; // Valor por defecto en caso de selección no válida
+              endcase
+        end
+        assign o_douta = douta_reg;
     end
   endgenerate
 

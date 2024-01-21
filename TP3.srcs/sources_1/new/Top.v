@@ -25,8 +25,6 @@ module Top(
     input i_reset
     );
     
-    wire b = 0;
-    
     Instruction_fetch etapa_if(
     i_clock,
     i_reset
@@ -45,9 +43,9 @@ module Top(
     latch_ifid.o_instruccion,
     latch_ifid.o_pc_value,
     
-    b,
+    wb.o_reg_write_enable,
     wb.o_res,
-    wb.o_rd_dir
+    wb.o_wb_reg_write
     );
     
     latch_idex latch_idex(
@@ -109,7 +107,8 @@ module Top(
     
     mem.o_pc,
     mem.o_res,
-    mem.o_wb_reg_write
+    mem.o_wb_reg_write,
+    mem.o_reg_write_enable
     
     );
     
@@ -119,7 +118,8 @@ module Top(
     
     memwb.o_pc,
     memwb.o_res,
-    memwb.o_wb_reg_write
+    memwb.o_wb_reg_write,
+    memwb.o_reg_write_enable
     
     );
 

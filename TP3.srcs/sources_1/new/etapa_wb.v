@@ -31,24 +31,29 @@ module etapa_wb# (
 
         input  [TAM_DATA - 1 : 0]             i_pc,
         input  [TAM_DATA - 1 : 0]             i_res,
-        input  [REGISTER_SIZE - 1 : 0]        i_rd_dir,
+        input  [REGISTER_SIZE - 1 : 0]        i_wb_reg_write,
+        input                                 i_reg_write_enable,
 
         output  [TAM_DATA - 1 : 0]            o_res,
-        output  [REGISTER_SIZE - 1 : 0]       o_rd_dir
+        output  [REGISTER_SIZE - 1 : 0]       o_wb_reg_write,
+        output                                o_reg_write_enable
 
     );
     
-    reg  [REGISTER_SIZE - 1 : 0]        rd_dir_tmp;
+    reg                                 reg_write_enable_tmp;
+    reg  [REGISTER_SIZE - 1 : 0]        wb_reg_write_tmp;
     reg  [TAM_DATA - 1 : 0]             res_tmp;
     
     
 always @(posedge i_clk)
 begin
-    rd_dir_tmp <= i_rd_dir;
+    reg_write_enable_tmp <= i_reg_write_enable;
+    wb_reg_write_tmp <= i_wb_reg_write;
     res_tmp <= i_res;
 end
         assign o_res =                   res_tmp;
-        assign o_rd_dir =                rd_dir_tmp;
+        assign o_wb_reg_write =          wb_reg_write_tmp;
+        assign o_reg_write_enable =      reg_write_enable_tmp;
     
     
 endmodule

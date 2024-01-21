@@ -39,7 +39,8 @@ module Etapa_MEM #(
         
         output  [TAM_DATA - 1 : 0]             o_res,
         output  [TAM_DATA - 1 : 0]             o_pc,
-        output  [REGISTER_SIZE - 1 : 0]        o_wb_reg_write
+        output  [REGISTER_SIZE - 1 : 0]        o_wb_reg_write,
+        output                                 o_reg_write_enable
     );
     
     RAM mem_datos(
@@ -50,23 +51,22 @@ module Etapa_MEM #(
     .i_ena(i_alu_ctrl[4]),                      //memory enable
     .i_rsta(1'b0),                           // Output reset (does not affect memory contents)
     .i_regcea(i_alu_ctrl[2]),               // output register enable
+    .i_output_format(i_alu_ctrl[1 : 0]),
     .o_douta(),                             //output
     .o_halt()
 );
 
-mux_load mux_load (
-mem_datos.o_douta,
-i_alu_ctrl[1 : 0]
-);
 
     reg  [REGISTER_SIZE - 1 : 0]        wb_reg_write_tmp;
     reg  [DIRECCION_SIZE - 1 : 0]       pc_tmp;
     reg  [DIRECCION_SIZE - 1 : 0]       res_tmp;
+    reg                                 reg_write_enable_tmp;
     
     
 always @(posedge i_clk)
 begin
     pc_tmp <= i_pc;
+    reg_write_enable_tmp = !i_alu_ctrl[3]; //voy a querer escribir en los registros siempre que no sea una instruccion store
    
     if(i_alu_ctrl[4] == 1 && i_alu_ctrl[3] == 0) //entonces es un load, y tengo que tomar al res como la salida de la memoria 
         wb_reg_write_tmp <= i_rt_dir; //osea que como es un load, lo que me importa es rt para el wb
@@ -76,6 +76,7 @@ begin
 end
 
         assign o_pc =                    pc_tmp;
-        assign o_res =                   (i_alu_ctrl[4] == 1 && i_alu_ctrl[3] == 0) ? mux_load.mux_output : i_res;
+        assign o_res =                   (i_alu_ctrl[4] == 1 && i_alu_ctrl[3] == 0) ? mem_datos.o_douta : i_res;
         assign o_wb_reg_write =          wb_reg_write_tmp;
+        assign o_reg_write_enable =      reg_write_enable_tmp;
 endmodule
