@@ -68,11 +68,14 @@ begin
     pc_tmp <= i_pc;
     reg_write_enable_tmp = !i_alu_ctrl[3]; //voy a querer escribir en los registros siempre que no sea una instruccion store
    
-    if(i_alu_ctrl[4] == 1 && i_alu_ctrl[3] == 0) //entonces es un load, y tengo que tomar al res como la salida de la memoria 
+    if(i_alu_ctrl[3] == 1 || i_alu_ctrl[2] == 1) //entonces es TIPO I, y tengo que tomar rt como destino o fuente, en este caso sirve para load
         wb_reg_write_tmp <= i_rt_dir; //osea que como es un load, lo que me importa es rt para el wb
     else
-     //en otro caso, es una instruccion tipo R o un store, por lo que simplemente tomo el res como viene
+     //en otro caso, es una instruccion tipo R
         wb_reg_write_tmp <= i_rd_dir; //en este caso, solo me importa rd, por si es una tipo R, si es un store en el wb no va a hacer nada con esto
+        
+        //teoricamente, esta decision de definir cual es el registro destino se podria y SE TENDRIA que definir en la etapa EX, pero ya lo hice aca
+        //asi que ya fue
 end
 
         assign o_pc =                    pc_tmp;

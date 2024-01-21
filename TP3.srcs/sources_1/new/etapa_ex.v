@@ -62,11 +62,13 @@ module etapa_ex#(
     reg [REGISTER_SIZE - 1 : 0] rd_dir_tmp;
     reg [TAM_DATA - 1 : 0] pc_tmp;
     reg [TAM_DATA - 1 : 0] inmediato_tmp;
+    reg [SHAMT_SIZE - 1 : 0] shamt_tmp;
     
     ALU alu(
         rs_tmp,
         rt_tmp,
         inmediato_tmp,
+        shamt_tmp,
         {op_tmp, funct_tmp}
     );
     
@@ -81,6 +83,7 @@ module etapa_ex#(
         rt_dir_tmp <= i_rt_dir;
         rd_dir_tmp <= i_rd_dir;
         inmediato_tmp <= i_inmediato;
+        shamt_tmp <= i_shamt;
     end
     
     assign o_rt =                    rt_tmp;

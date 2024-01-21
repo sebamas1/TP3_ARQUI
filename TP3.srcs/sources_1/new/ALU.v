@@ -22,15 +22,17 @@
 
 module ALU#(
             parameter BUS_SIZE = 32,
-            parameter CTRL_SIZE = 5
+            parameter CTRL_SIZE = 5,
+            parameter SHAMT_SIZE = 5
         )
         (
-            input [BUS_SIZE - 1 : 0] i_operando_1,
-            input [BUS_SIZE - 1 : 0] i_operando_2,
-            input [BUS_SIZE - 1 : 0] i_operando_i,
-            input [11 : 0] i_operacion,
-            output [BUS_SIZE - 1 : 0] o_res,
-            output [CTRL_SIZE - 1 : 0] o_ins_type
+            input [BUS_SIZE - 1 : 0]      i_operando_1,
+            input [BUS_SIZE - 1 : 0]      i_operando_2,
+            input [BUS_SIZE - 1 : 0]      i_operando_i,
+            input [SHAMT_SIZE - 1 : 0]    i_shamt,
+            input [11 : 0]                i_operacion,
+            output [BUS_SIZE - 1 : 0]     o_res,
+            output [CTRL_SIZE - 1 : 0]    o_ins_type
             
         );
         
@@ -53,16 +55,23 @@ module ALU#(
         
         //Operaciones tipo I
         
-        localparam OP_LB =  12'b100000000000;
-        localparam OP_LH =  12'b100001000000;
-        localparam OP_LW =  12'b100011000000;
-        localparam OP_SB =  12'b101000000000;
-        localparam OP_SH =  12'b101001000000;
-        localparam OP_SW =  12'b101011000000;
+        localparam OP_LB =    12'b100000000000;
+        localparam OP_LH =    12'b100001000000;
+        localparam OP_LW =    12'b100011000000;
+        localparam OP_SB =    12'b101000000000;
+        localparam OP_SH =    12'b101001000000;
+        localparam OP_SW =    12'b101011000000;
+        localparam OP_ADDI =  12'b001000000000;
+        localparam OP_ANDI =  12'b001100000000;
+        localparam OP_ORI =   12'b001101000000;
+        localparam OP_XORI =  12'b001110000000;
+        localparam OP_LUI =   12'b001111000000;
+        localparam OP_SLTI =  12'b001010000000;
         
         reg [BUS_SIZE - 1 : 0] operador_1; 
         reg [BUS_SIZE - 1 : 0] operador_2; 
         reg [BUS_SIZE - 1 : 0] operador_i; 
+        reg [SHAMT_SIZE - 1 : 0] shamt;
         reg [11 : 0] operacion; 
         reg[BUS_SIZE-1 : 0] resultado;
         reg [CTRL_SIZE - 1 : 0] ins_type;
@@ -77,6 +86,7 @@ module ALU#(
             operador_1 = i_operando_1;
             operador_2 = i_operando_2;//que onda, por que esto no es un assign?
             operador_i = i_operando_i;
+            shamt = i_shamt;
             
             if(i_operacion[11 : 6] == 6'b000000)
             begin
@@ -126,13 +136,13 @@ module ALU#(
                 
                 OP_SRA:
                 begin
-                    resultado <= operador_1 >>> 1;
+                    resultado <= operador_2 >>> shamt; //shiftea sa lugares el operador 2 y lo guarda en rd
                     ins_type = 5'b00000;
                 end
                 
                 OP_SRL:
                 begin
-                    resultado <= operador_1 >> 1;
+                    resultado <= operador_2 >> shamt;
                     ins_type = 5'b00000;
                 end
                 
@@ -144,7 +154,7 @@ module ALU#(
                 
                 OP_SLL:
                 begin
-                    resultado <= operador_1 << 1;
+                    resultado <= operador_2 << shamt;
                     ins_type = 5'b00000;
                 end
                 
@@ -207,7 +217,42 @@ module ALU#(
                     resultado <= operador_1 + operador_i;
                     ins_type = 5'b11000;
                 end 
+                
+                OP_ADDI:
+                begin
+                    resultado <= operador_1 + operador_i;
+                    ins_type = 5'b00100;//este codigo indica que es una operacion tipo I para que se guarde el res en rt
+                end 
+                
+                OP_ANDI:
+                begin
+                    resultado <= operador_1 & operador_i;
+                    ins_type = 5'b00100;
+                end 
+                
+                OP_ORI:
+                begin
+                    resultado <= operador_1 | operador_i;
+                    ins_type = 5'b00100;
+                end 
  
+                OP_XORI:
+                begin
+                    resultado <= operador_1 ^ operador_i;
+                    ins_type = 5'b00100;
+                end 
+                
+                OP_LUI:
+                begin
+                    resultado <= operador_i << 16;
+                    ins_type = 5'b00100;
+                end 
+                
+                OP_SLTI:
+                begin
+                    resultado <= operador_1 < operador_i; //setea un registro si op1 < op2
+                    ins_type = 5'b00100;
+                end
                 default: resultado <= operador_1 & operador_2 ; 
             endcase
         end
