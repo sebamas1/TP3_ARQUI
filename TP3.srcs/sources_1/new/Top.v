@@ -27,14 +27,17 @@ module Top(
     
     Instruction_fetch etapa_if(
     i_clock,
-    i_reset
+    i_reset,
+    ex.o_branch,
+    ex.o_res
     );
     
     IF_ID latch_ifid(
     i_clock,
     i_reset,
     etapa_if.o_pc_value,
-    etapa_if.o_instruccion
+    etapa_if.o_instruccion,
+    ex.o_branch
     );
     
     Instruction_decode etapa_id(
@@ -60,7 +63,8 @@ module Top(
     etapa_id.o_rs,
     etapa_id.o_rt,
     etapa_id.o_rt_dir,
-    etapa_id.o_rd_dir
+    etapa_id.o_rd_dir,
+    ex.o_branch
     );
     
     etapa_ex ex(

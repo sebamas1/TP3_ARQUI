@@ -21,6 +21,7 @@
 
 
 module Instruction_decode#(
+        parameter   PC_SIZE = 11,
         parameter   TAM_DATA = 32,
         parameter   BYTE = 8,
         parameter   REGISTER_SIZE = 5,
@@ -33,13 +34,13 @@ module Instruction_decode#(
         input                                  i_clk,
         input                                  i_reset,
         input   [TAM_DATA - 1 : 0]             i_instruccion,
-        input   [TAM_DATA - 1 : 0]             i_pc,
+        input   [PC_SIZE - 1 : 0]             i_pc,
         
         input                                  i_reg_write_mem_wb,
         input  [TAM_DATA - 1 : 0]              i_dato_de_escritura_en_reg,
         input  [REGISTER_SIZE - 1 : 0 ]        i_direc_de_escritura_en_reg,
         
-        output  [TAM_DATA - 1 : 0]             o_pc,
+        output  [PC_SIZE - 1 : 0]              o_pc,
         output  [OP_SIZE - 1 : 0]              o_op,
         output  [TAM_DATA - 1 : 0]             o_inmediato,
         output  [SHAMT_SIZE - 1 : 0]           o_shamt,
@@ -68,7 +69,7 @@ module Instruction_decode#(
     wire [TAM_DATA - 1 : 0] rt_tmp_wire;
     reg [REGISTER_SIZE - 1 : 0] rt_dir_tmp;
     reg [REGISTER_SIZE - 1 : 0] rd_dir_tmp;
-    reg [TAM_DATA - 1 : 0] pc_tmp;
+    reg [PC_SIZE - 1 : 0] pc_tmp;
      
      
      

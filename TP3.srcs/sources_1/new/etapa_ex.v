@@ -21,6 +21,7 @@
 
 
 module etapa_ex#(
+        parameter   PC_SIZE = 11,
         parameter   TAM_DATA = 32,
         parameter   BYTE = 8,
         parameter   REGISTER_SIZE = 5,
@@ -34,7 +35,7 @@ module etapa_ex#(
         input                                 i_clk,
         input                                 i_reset,
 
-        input  [TAM_DATA - 1 : 0]             i_pc,
+        input  [PC_SIZE - 1 : 0]              i_pc,
         input  [OP_SIZE - 1 : 0]              i_op,
         input  [TAM_DATA - 1 : 0]             i_inmediato,
         input  [SHAMT_SIZE - 1 : 0]           i_shamt,
@@ -45,12 +46,13 @@ module etapa_ex#(
         input  [REGISTER_SIZE - 1 : 0 ]       i_rt_dir,
         input  [REGISTER_SIZE - 1 : 0 ]       i_rd_dir,
         
-        output  [TAM_DATA - 1 : 0 ]            o_pc,
+        output  [PC_SIZE - 1 : 0 ]             o_pc,
         output  [TAM_DATA - 1 : 0 ]            o_res,
         output  [TAM_DATA - 1 : 0 ]            o_rt,
         output  [REGISTER_SIZE - 1 : 0 ]       o_rt_dir,
         output  [REGISTER_SIZE - 1 : 0 ]       o_rd_dir,
-        output  [ALU_CTRL - 1  : 0 ]           o_alu_ctrl
+        output  [ALU_CTRL - 1  : 0 ]           o_alu_ctrl,
+        output                                 o_branch
 
     );
     
@@ -60,7 +62,7 @@ module etapa_ex#(
     reg [OP_SIZE - 1 : 0] op_tmp;
     reg [REGISTER_SIZE - 1 : 0] rt_dir_tmp;
     reg [REGISTER_SIZE - 1 : 0] rd_dir_tmp;
-    reg [TAM_DATA - 1 : 0] pc_tmp;
+    reg [PC_SIZE - 1 : 0] pc_tmp;
     reg [TAM_DATA - 1 : 0] inmediato_tmp;
     reg [SHAMT_SIZE - 1 : 0] shamt_tmp;
     
@@ -75,21 +77,23 @@ module etapa_ex#(
     
     always @(posedge i_clk)
     begin
-        rs_tmp <= i_rs;
-        rt_tmp <= i_rt;
-        funct_tmp <= i_funct;
-        op_tmp <= i_op;
-        pc_tmp <= i_pc;
-        rt_dir_tmp <= i_rt_dir;
-        rd_dir_tmp <= i_rd_dir;
-        inmediato_tmp <= i_inmediato;
-        shamt_tmp <= i_shamt;
+            rs_tmp <= i_rs;
+            rt_tmp <= i_rt;
+            funct_tmp <= i_funct;
+            op_tmp <= i_op;
+            pc_tmp <= i_pc;
+            rt_dir_tmp <= i_rt_dir;
+            rd_dir_tmp <= i_rd_dir;
+            inmediato_tmp <= i_inmediato;
+            shamt_tmp <= i_shamt;
     end
     
     assign o_rt =                    rt_tmp;
     assign o_rt_dir =                rt_dir_tmp;
     assign o_rd_dir =                rd_dir_tmp;
-    assign o_res =                   alu.o_res;
+    assign o_res =                   alu.o_branch == 1 ? (pc_tmp + alu.o_res) : alu.o_res;
     assign o_alu_ctrl =              alu.o_ins_type;
     assign o_pc =                    pc_tmp;
+    assign o_branch =                alu.o_branch;
+   
 endmodule

@@ -21,6 +21,7 @@
 
 
 module latch_exmem#(
+     parameter   PC_SIZE = 11,
      parameter   TAM_DATA = 32,
      parameter   DIRECCION_SIZE = 26,
      parameter   ALU_CTRL = 5,
@@ -30,7 +31,7 @@ module latch_exmem#(
         input                                 i_clk,
         input                                 i_reset,
             
-        input  [TAM_DATA - 1 : 0]             i_pc,
+        input  [PC_SIZE - 1 : 0]              i_pc,
         input  [TAM_DATA - 1 : 0]             i_res,
         input  [REGISTER_SIZE - 1 : 0]        i_rt_dir,
         input  [REGISTER_SIZE - 1 : 0]        i_rd_dir,
@@ -39,7 +40,7 @@ module latch_exmem#(
         
         output  [TAM_DATA - 1 : 0]             o_rt,
         output  [TAM_DATA - 1 : 0]             o_res,
-        output  [TAM_DATA - 1 : 0]             o_pc,
+        output  [PC_SIZE - 1 : 0]              o_pc,
         output  [REGISTER_SIZE - 1 : 0]        o_rt_dir,
         output  [REGISTER_SIZE - 1 : 0]        o_rd_dir,
         output  [ALU_CTRL - 1 : 0]             o_alu_ctrl
@@ -51,7 +52,7 @@ module latch_exmem#(
     reg  [TAM_DATA - 1 : 0]             rt_tmp;
     reg  [REGISTER_SIZE - 1 : 0]        rt_dir_tmp;
     reg  [REGISTER_SIZE - 1 : 0]        rd_dir_tmp;
-    reg  [TAM_DATA - 1 : 0]             pc_tmp;
+    reg  [PC_SIZE - 1 : 0]             pc_tmp;
     reg  [TAM_DATA - 1 : 0]             res_tmp;
     reg  [ALU_CTRL - 1 : 0]             alu_tmp;
     

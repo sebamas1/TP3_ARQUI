@@ -21,6 +21,7 @@
 
 
 module latch_memwb# (
+     parameter   PC_SIZE = 11,
      parameter   TAM_DATA = 32,
      parameter   DIRECCION_SIZE = 26,
      parameter   REGISTER_SIZE = 5
@@ -29,12 +30,12 @@ module latch_memwb# (
         input                                 i_clk,
         input                                 i_reset,
 
-        input  [TAM_DATA - 1 : 0]             i_pc,
+        input  [PC_SIZE - 1 : 0]              i_pc,
         input  [TAM_DATA - 1 : 0]             i_res,
         input  [REGISTER_SIZE - 1 : 0]        i_wb_reg_write,
         input                                 i_reg_write_enable,
 
-        output  [TAM_DATA - 1 : 0]            o_pc,
+        output  [PC_SIZE - 1 : 0]             o_pc,
         output  [TAM_DATA - 1 : 0]            o_res,
         output  [REGISTER_SIZE - 1 : 0]       o_wb_reg_write,
         output                                o_reg_write_enable
@@ -44,7 +45,7 @@ module latch_memwb# (
     reg                                 reg_write_enable_tmp;
     reg  [REGISTER_SIZE - 1 : 0]        wb_reg_write_tmp;
     reg  [TAM_DATA - 1 : 0]             res_tmp;
-    reg  [TAM_DATA - 1 : 0]             pc_tmp;
+    reg  [PC_SIZE - 1 : 0]             pc_tmp;
     
     
 always @(negedge i_clk)

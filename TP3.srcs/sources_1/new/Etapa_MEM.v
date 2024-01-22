@@ -21,6 +21,7 @@
 
 
 module Etapa_MEM #(
+     parameter   PC_SIZE = 11,
      parameter   TAM_DATA = 32,
      parameter   DIRECCION_SIZE = 26,
      parameter   ALU_CTRL = 5,
@@ -30,7 +31,7 @@ module Etapa_MEM #(
         input                                  i_clk,
         input                                  i_reset,
             
-        input  [TAM_DATA - 1 : 0]              i_pc,
+        input  [PC_SIZE - 1 : 0]               i_pc,
         input  [TAM_DATA - 1 : 0]              i_res,
         input  [TAM_DATA - 1 : 0]              i_rt,
         input  [REGISTER_SIZE - 1 : 0]         i_rt_dir,
@@ -38,7 +39,7 @@ module Etapa_MEM #(
         input  [ALU_CTRL - 1  : 0]             i_alu_ctrl,
         
         output  [TAM_DATA - 1 : 0]             o_res,
-        output  [TAM_DATA - 1 : 0]             o_pc,
+        output  [PC_SIZE - 1 : 0]              o_pc,
         output  [REGISTER_SIZE - 1 : 0]        o_wb_reg_write,
         output                                 o_reg_write_enable
     );
@@ -58,8 +59,7 @@ module Etapa_MEM #(
 
 
     reg  [REGISTER_SIZE - 1 : 0]        wb_reg_write_tmp;
-    reg  [DIRECCION_SIZE - 1 : 0]       pc_tmp;
-    reg  [DIRECCION_SIZE - 1 : 0]       res_tmp;
+    reg  [PC_SIZE - 1 : 0]              pc_tmp;
     reg                                 reg_write_enable_tmp;
     
     
@@ -79,7 +79,7 @@ begin
 end
 
         assign o_pc =                    pc_tmp;
-        assign o_res =                   (i_alu_ctrl[4] == 1 && i_alu_ctrl[3] == 0) ? mem_datos.o_douta : i_res;
+        assign o_res =                   (i_alu_ctrl[4] == 1 && i_alu_ctrl[3] == 0) ? mem_datos.o_douta : i_res; //si es un load toma la memoria, si no, sigue con el resultado de la ALU
         assign o_wb_reg_write =          wb_reg_write_tmp;
         assign o_reg_write_enable =      reg_write_enable_tmp;
 endmodule

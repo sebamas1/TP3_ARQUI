@@ -21,6 +21,7 @@
 
 
 module latch_idex#(
+        parameter   PC_SIZE = 11,
         parameter   TAM_DATA = 32,
         parameter   BYTE = 8,
         parameter   REGISTER_SIZE = 5,
@@ -33,7 +34,7 @@ module latch_idex#(
         input                                 i_clk,
         input                                 i_reset,
             
-        input  [TAM_DATA - 1 : 0]             i_pc,
+        input  [PC_SIZE - 1 : 0]              i_pc,
         input  [OP_SIZE - 1 : 0]              i_op,
         input  [TAM_DATA - 1 : 0]             i_inmediato,
         input  [SHAMT_SIZE - 1 : 0]           i_shamt,
@@ -43,9 +44,10 @@ module latch_idex#(
         input  [TAM_DATA - 1 : 0 ]            i_rt,
         input  [REGISTER_SIZE - 1 : 0 ]       i_rt_dir,
         input  [REGISTER_SIZE - 1 : 0 ]       i_rd_dir,
+        input                                 i_flush,
         
         
-        output  [TAM_DATA - 1 : 0]             o_pc,
+        output  [PC_SIZE - 1 : 0]              o_pc,
         output  [OP_SIZE - 1 : 0]              o_op,
         output  [TAM_DATA - 1 : 0]             o_inmediato,
         output  [SHAMT_SIZE - 1 : 0]           o_shamt,
@@ -66,22 +68,36 @@ module latch_idex#(
     reg [TAM_DATA - 1 : 0] rt_tmp;
     reg [REGISTER_SIZE - 1 : 0] rt_dir_tmp;
     reg [REGISTER_SIZE - 1 : 0] rd_dir_tmp;
-    reg [TAM_DATA - 1 : 0] pc_tmp;
+    reg [PC_SIZE - 1 : 0] pc_tmp;
 
 
 always @(negedge i_clk)
 begin
-    op_tmp <= i_op;
-    inmediato_tmp <= i_inmediato;
-    shamt_tmp <= i_shamt;
-    funct_tmp <= i_funct;
-    direccion_tmp <= i_direccion;
-    rt_dir_tmp <= i_rt_dir;
-    rd_dir_tmp <= i_rd_dir;
-    pc_tmp <= i_pc;
-    rs_tmp <= i_rs;
-    rt_tmp <= i_rt;
+    if(!i_flush) begin
+        op_tmp <= i_op;
+        inmediato_tmp <= i_inmediato;
+        shamt_tmp <= i_shamt;
+        funct_tmp <= i_funct;
+        direccion_tmp <= i_direccion;
+        rt_dir_tmp <= i_rt_dir;
+        rd_dir_tmp <= i_rd_dir;
+        pc_tmp <= i_pc;
+        rs_tmp <= i_rs;
+        rt_tmp <= i_rt;
+    end else begin
+        op_tmp <= 0;
+        inmediato_tmp <= 0;
+        shamt_tmp <= 0;
+        funct_tmp <= 0;
+        direccion_tmp <= 0;
+        rt_dir_tmp <= 0;
+        rd_dir_tmp <= 0;
+        pc_tmp <= 0;
+        rs_tmp <= 0;
+        rt_tmp <= 0;
+    end
 end
+
 
    assign o_op =                op_tmp;
    assign o_inmediato =         inmediato_tmp;

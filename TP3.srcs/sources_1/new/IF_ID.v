@@ -22,25 +22,34 @@
 
 
 module IF_ID# (
+        parameter   PC_SIZE = 11,
         parameter   TAM_DATA = 32,
         parameter   BYTE = 8
     )
     (
         input                           i_clk,
         input                           i_reset,
-        input   [TAM_DATA - 1 : 0]      i_new_pc,
+        input   [PC_SIZE - 1 : 0]       i_new_pc,
         input   [TAM_DATA - 1 : 0]      i_instruccion,
+        input                           i_flush,
+        
+        
         output  [TAM_DATA - 1 : 0]      o_instruccion,
-        output  [TAM_DATA - 1 : 0]      o_pc_value
+        output  [PC_SIZE - 1 : 0]       o_pc_value
 );
 
 reg [TAM_DATA - 1 : 0] instruccion;
-reg [TAM_DATA - 1 : 0] pc;
+reg [PC_SIZE - 1 : 0] pc;
 
 always @(negedge i_clk)
 begin
-instruccion <= i_instruccion;
-pc <= i_new_pc;
+    if(!i_flush) begin
+        instruccion <= i_instruccion;
+        pc <= i_new_pc;
+    end else begin
+        instruccion <= 0;
+        pc <= 0;
+    end
 end
 
 assign o_pc_value = pc;

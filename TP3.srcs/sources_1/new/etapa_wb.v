@@ -21,6 +21,7 @@
 
 
 module etapa_wb# (
+     parameter   PC_SIZE = 11,
      parameter   TAM_DATA = 32,
      parameter   DIRECCION_SIZE = 26,
      parameter   REGISTER_SIZE = 5
@@ -29,7 +30,7 @@ module etapa_wb# (
         input                                 i_clk,
         input                                 i_reset,
 
-        input  [TAM_DATA - 1 : 0]             i_pc,
+        input  [PC_SIZE - 1 : 0]              i_pc,
         input  [TAM_DATA - 1 : 0]             i_res,
         input  [REGISTER_SIZE - 1 : 0]        i_wb_reg_write,
         input                                 i_reg_write_enable,
