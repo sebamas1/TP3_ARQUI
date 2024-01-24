@@ -49,10 +49,10 @@ module etapa_ex#(
         output  [PC_SIZE - 1 : 0 ]             o_pc,
         output  [TAM_DATA - 1 : 0 ]            o_res,
         output  [TAM_DATA - 1 : 0 ]            o_rt,
-        output  [REGISTER_SIZE - 1 : 0 ]       o_rt_dir,
-        output  [REGISTER_SIZE - 1 : 0 ]       o_rd_dir,
+        output  [REGISTER_SIZE - 1 : 0 ]       o_wb_reg_write,
         output  [ALU_CTRL - 1  : 0 ]           o_alu_ctrl,
-        output                                 o_branch
+        output                                 o_branch,
+        output  [PC_SIZE - 1 : 0]              o_branch_dir
 
     );
     
@@ -65,12 +65,15 @@ module etapa_ex#(
     reg [PC_SIZE - 1 : 0] pc_tmp;
     reg [TAM_DATA - 1 : 0] inmediato_tmp;
     reg [SHAMT_SIZE - 1 : 0] shamt_tmp;
+    reg [DIRECCION_SIZE - 1 : 0] direccion_tmp;
+    
     
     ALU alu(
         rs_tmp,
         rt_tmp,
         inmediato_tmp,
         shamt_tmp,
+        direccion_tmp,
         {op_tmp, funct_tmp}
     );
     
@@ -86,14 +89,26 @@ module etapa_ex#(
             rd_dir_tmp <= i_rd_dir;
             inmediato_tmp <= i_inmediato;
             shamt_tmp <= i_shamt;
+            direccion_tmp <= i_direccion;
+            
     end
     
     assign o_rt =                    rt_tmp;
-    assign o_rt_dir =                rt_dir_tmp;
-    assign o_rd_dir =                rd_dir_tmp;
-    assign o_res =                   alu.o_branch == 1 ? (pc_tmp + alu.o_res) : alu.o_res;
+    assign o_wb_reg_write = (alu.o_ins_type[7 : 5] == 3'b110)   ? 31     :
+                            (alu.o_ins_type[2] == 1'b1)         ? i_rt_dir : //los load salen asi
+                            (alu.o_ins_type[4 : 0] == 5'b00000) ? i_rd_dir : //las operaciones tipo R salen asi
+                            0; 
+    //assign o_wb_reg_write =          (alu.o_ins_type[3] == 1 || alu.o_ins_type[2] == 1) ? i_rt_dir : i_rd_dir;//true=TIPO I, false= TIPO R o store
+    
+    assign o_res =                   (alu.o_ins_type[7 : 5] == 3'b110) ? (i_pc + 1) :
+                                     (alu.o_ins_type[7 : 5] == 3'b111) ? (i_pc + 1) : //ni idea si esto funcionaria bien en caso limite
+                                      alu.o_res; //siempre que no haya que guardar la direccion de retorno
+                                      
+    assign o_branch_dir =             (alu.o_ins_type[7 : 5] == 3'b100) ? (pc_tmp + alu.o_res) : //pc = pc + offset
+                                       alu.o_res;        //pc = lo que me devuelva la ALU
+                                      
     assign o_alu_ctrl =              alu.o_ins_type;
     assign o_pc =                    pc_tmp;
-    assign o_branch =                alu.o_branch;
+    assign o_branch =                alu.o_ins_type[7];
    
 endmodule

@@ -29,7 +29,7 @@ module Top(
     i_clock,
     i_reset,
     ex.o_branch,
-    ex.o_res
+    ex.o_branch_dir
     );
     
     IF_ID latch_ifid(
@@ -87,10 +87,9 @@ module Top(
     i_reset,
     ex.o_pc,
     ex.o_res,
-    ex.o_rt_dir,
-    ex.o_rd_dir,
     ex.o_alu_ctrl,
-    ex.o_rt
+    ex.o_rt,
+    ex.o_wb_reg_write
     );
     
     Etapa_MEM mem(
@@ -100,8 +99,7 @@ module Top(
     exmem.o_pc,
     exmem.o_res,
     exmem.o_rt,
-    exmem.o_rt_dir,
-    exmem.o_rd_dir,
+    exmem.o_wb_reg_write,
     exmem.o_alu_ctrl
     
     );

@@ -10,7 +10,7 @@ module Instruction_fetch#(
         input                           i_clk,
         input                           i_reset,
         input                           i_branch,
-        input   [TAM_DATA - 1 : 0]      i_branch_addr,
+        input   [PC_SIZE - 1 : 0]       i_branch_addr,
         
         output  [TAM_DATA - 1 : 0]      o_instruccion,
         output  [PC_SIZE - 1 : 0]       o_pc_value

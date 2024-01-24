@@ -34,8 +34,7 @@ module Etapa_MEM #(
         input  [PC_SIZE - 1 : 0]               i_pc,
         input  [TAM_DATA - 1 : 0]              i_res,
         input  [TAM_DATA - 1 : 0]              i_rt,
-        input  [REGISTER_SIZE - 1 : 0]         i_rt_dir,
-        input  [REGISTER_SIZE - 1 : 0]         i_rd_dir,
+        input  [REGISTER_SIZE - 1 : 0]         i_wb_reg_write,
         input  [ALU_CTRL - 1  : 0]             i_alu_ctrl,
         
         output  [TAM_DATA - 1 : 0]             o_res,
@@ -67,15 +66,8 @@ always @(posedge i_clk)
 begin
     pc_tmp <= i_pc;
     reg_write_enable_tmp = !i_alu_ctrl[3]; //voy a querer escribir en los registros siempre que no sea una instruccion store
-   
-    if(i_alu_ctrl[3] == 1 || i_alu_ctrl[2] == 1) //entonces es TIPO I, y tengo que tomar rt como destino o fuente, en este caso sirve para load
-        wb_reg_write_tmp <= i_rt_dir; //osea que como es un load, lo que me importa es rt para el wb
-    else
-     //en otro caso, es una instruccion tipo R
-        wb_reg_write_tmp <= i_rd_dir; //en este caso, solo me importa rd, por si es una tipo R, si es un store en el wb no va a hacer nada con esto
-        
-        //teoricamente, esta decision de definir cual es el registro destino se podria y SE TENDRIA que definir en la etapa EX, pero ya lo hice aca
-        //asi que ya fue
+    wb_reg_write_tmp <= i_wb_reg_write; 
+
 end
 
         assign o_pc =                    pc_tmp;

@@ -55,7 +55,10 @@ module RAM #(
     if (RAM_PERFORMANCE == "LOW_LATENCY") begin: no_output_register
 
       // The following is a 1 clock cycle read latency at the cost of a longer clock-to-out timing
-       assign o_douta = (i_output_format[1 : 0] == 2'b00) ? ram_data : ((i_output_format[0] == 1'b0) ? {24'b000000000000000000000000, ram_data[7 : 0]} : {16'b0000000000000000, ram_data[15 : 0]});
+       assign o_douta = (i_output_format[1 : 0] == 2'b00) ? ram_data : 
+                        (i_output_format[1 : 0] == 2'b01) ? {16'b0, ram_data[15 : 0]} :
+                        (i_output_format[1 : 0] == 2'b10) ? {24'b0, ram_data[7 : 0]} : 
+                        32'b0;
 //bueno listo, use un operador ternario frankestein para reemplazar el switch de abajo, que nunca se ejecuta. Este codigo es mas rapido
     end else begin: output_register //NO SE USA
 
