@@ -139,7 +139,9 @@ module Top(
         exmem.o_wb_reg_write,
         memwb.o_wb_reg_write,
         exmem.o_res,
-        memwb.o_res
+        memwb.o_res,
+        exmem.o_alu_ctrl[3],
+        memwb.o_reg_write_enable
         
     );
 

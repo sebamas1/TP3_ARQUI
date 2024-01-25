@@ -92,7 +92,12 @@ module etapa_ex#(
                        i_rs;
             rt_tmp <= (i_mem_res_rt_enable == 1) ? i_mem_res :
                       (i_wb_res_rt_enable == 1)  ? i_wb_res  :
-                       i_rt;
+                       i_rt; //estos dos son para la forwarding unit:
+                       /*
+                       Si quiero usar el contenido de un registro cuyo contenido se esta por modificar en alguna de las dos etapas posteriores,
+                       en vez de tomar el valor viejo del registro, tomo el valor que ya esta listo en las etapas de adelante, pero que todavia
+                       no se guardo en el registro que corresponde.
+                       */
                        
             funct_tmp <= i_funct;
             op_tmp <= i_op;
