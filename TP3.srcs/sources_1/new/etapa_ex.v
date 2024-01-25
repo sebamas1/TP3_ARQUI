@@ -46,6 +46,13 @@ module etapa_ex#(
         input  [REGISTER_SIZE - 1 : 0 ]       i_rt_dir,
         input  [REGISTER_SIZE - 1 : 0 ]       i_rd_dir,
         
+        input                                 i_mem_res_rs_enable,
+        input                                 i_wb_res_rs_enable,
+        input                                 i_mem_res_rt_enable,
+        input                                 i_wb_res_rt_enable,
+        input [TAM_DATA - 1 : 0]              i_mem_res,
+        input [TAM_DATA - 1 : 0]              i_wb_res,
+        
         output  [PC_SIZE - 1 : 0 ]             o_pc,
         output  [TAM_DATA - 1 : 0 ]            o_res,
         output  [TAM_DATA - 1 : 0 ]            o_rt,
@@ -80,8 +87,13 @@ module etapa_ex#(
     
     always @(posedge i_clk)
     begin
-            rs_tmp <= i_rs;
-            rt_tmp <= i_rt;
+            rs_tmp <= (i_mem_res_rs_enable == 1) ? i_mem_res :
+                      (i_wb_res_rs_enable == 1)  ? i_wb_res  :
+                       i_rs;
+            rt_tmp <= (i_mem_res_rt_enable == 1) ? i_mem_res :
+                      (i_wb_res_rt_enable == 1)  ? i_wb_res  :
+                       i_rt;
+                       
             funct_tmp <= i_funct;
             op_tmp <= i_op;
             pc_tmp <= i_pc;
