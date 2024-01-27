@@ -29,7 +29,8 @@ module Top(
         i_clock,
         i_reset,
         ex.o_branch,
-        ex.o_branch_dir
+        ex.o_branch_dir,
+        latch_idex.o_stall
     );
     
     IF_ID latch_ifid(
@@ -37,7 +38,8 @@ module Top(
         i_reset,
         etapa_if.o_pc_value,
         etapa_if.o_instruccion,
-        ex.o_branch
+        ex.o_branch, //esta es la señal de flush
+        latch_idex.o_stall
     );
     
     Instruction_decode etapa_id(

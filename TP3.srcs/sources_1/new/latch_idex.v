@@ -58,7 +58,8 @@ module latch_idex#(
         output  [TAM_DATA - 1 : 0 ]            o_rt,
         output  [REGISTER_SIZE - 1 : 0 ]       o_rs_dir,
         output  [REGISTER_SIZE - 1 : 0 ]       o_rt_dir,
-        output  [REGISTER_SIZE - 1 : 0 ]       o_rd_dir
+        output  [REGISTER_SIZE - 1 : 0 ]       o_rd_dir,
+        output                                 o_stall
         
 );
     reg [OP_SIZE - 1 : 0] op_tmp;
@@ -72,23 +73,34 @@ module latch_idex#(
     reg [REGISTER_SIZE - 1 : 0] rt_dir_tmp;
     reg [REGISTER_SIZE - 1 : 0] rd_dir_tmp;
     reg [PC_SIZE - 1 : 0] pc_tmp;
+    reg                   stall_tmp = 0;
 
 
 always @(negedge i_clk)
 begin
-    if(!i_flush) begin
-        op_tmp <= i_op;
-        inmediato_tmp <= i_inmediato;
-        shamt_tmp <= i_shamt;
-        funct_tmp <= i_funct;
-        direccion_tmp <= i_direccion;
-        rs_dir_tmp <= i_rs_dir;
-        rt_dir_tmp <= i_rt_dir;
-        rd_dir_tmp <= i_rd_dir;
-        pc_tmp <= i_pc;
-        rs_tmp <= i_rs;
-        rt_tmp <= i_rt;
-    end else begin
+    if(i_flush) begin
+        nop_introduce_task;
+    end else if(stall_tmp) begin
+        nop_introduce_task;
+        end else begin
+        continue_pipeline_task;
+    end 
+end
+
+always @(posedge i_clk)
+begin
+     if((o_op == 6'b100000 || o_op == 6'b100001 || o_op == 6'b100011) &&
+        (o_rt_dir == i_rs_dir || o_rt_dir == i_rt_dir)) 
+        
+        begin
+            stall_tmp <= 1;
+        end
+
+end
+
+
+task nop_introduce_task;
+    begin
         op_tmp <= 0;
         inmediato_tmp <= 0;
         shamt_tmp <= 0;
@@ -100,8 +112,26 @@ begin
         pc_tmp <= 0;
         rs_tmp <= 0;
         rt_tmp <= 0;
+        stall_tmp <= 0;
     end
-end
+endtask
+
+task continue_pipeline_task;
+    begin
+        op_tmp <= i_op;
+        inmediato_tmp <= i_inmediato;
+        shamt_tmp <= i_shamt;
+        funct_tmp <= i_funct;
+        direccion_tmp <= i_direccion;
+        rs_dir_tmp <= i_rs_dir;
+        rt_dir_tmp <= i_rt_dir;
+        rd_dir_tmp <= i_rd_dir;
+        pc_tmp <= i_pc;
+        rs_tmp <= i_rs;
+        rt_tmp <= i_rt;
+        stall_tmp <= 0;
+    end
+endtask
 
 
    assign o_op =                op_tmp;
@@ -115,5 +145,6 @@ end
    assign o_pc =                pc_tmp;
    assign o_rs =                rs_tmp;
    assign o_rt =                rt_tmp;
+   assign o_stall =             stall_tmp;
    
 endmodule

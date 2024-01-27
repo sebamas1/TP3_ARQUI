@@ -11,6 +11,7 @@ module Instruction_fetch#(
         input                           i_reset,
         input                           i_branch,
         input   [PC_SIZE - 1 : 0]       i_branch_addr,
+        input                           i_stall,
         
         output  [TAM_DATA - 1 : 0]      o_instruccion,
         output  [PC_SIZE - 1 : 0]       o_pc_value
@@ -36,10 +37,14 @@ always @(posedge i_clk)
 begin
     if(program_counter < 2048)
     begin
-       program_counter <= i_branch == 1 ?  i_branch_addr :  program_counter + 1;
+       program_counter <= i_branch == 1 ?  i_branch_addr :  
+                          i_stall == 1  ?  program_counter :
+                          program_counter + 1;
     end
     else begin
-       program_counter <= i_branch == 1 ?  i_branch_addr :  0;
+       program_counter <= i_branch == 1 ?  i_branch_addr :  
+                          i_stall == 1  ?  program_counter :
+                          0;
     end
 
 end

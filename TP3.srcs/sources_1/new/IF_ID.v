@@ -32,6 +32,7 @@ module IF_ID# (
         input   [PC_SIZE - 1 : 0]       i_new_pc,
         input   [TAM_DATA - 1 : 0]      i_instruccion,
         input                           i_flush,
+        input                           i_stall,
         
         
         output  [TAM_DATA - 1 : 0]      o_instruccion,
@@ -44,8 +45,10 @@ reg [PC_SIZE - 1 : 0] pc;
 always @(negedge i_clk)
 begin
     if(!i_flush) begin
-        instruccion <= i_instruccion;
-        pc <= i_new_pc;
+        if(!i_stall) begin
+            instruccion <= i_instruccion;
+            pc <= i_new_pc;
+        end
     end else begin
         instruccion <= 0;
         pc <= 0;
