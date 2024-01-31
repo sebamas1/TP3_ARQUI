@@ -30,7 +30,7 @@ module Top(
         i_reset,
         ex.o_branch,
         ex.o_branch_dir,
-        latch_idex.o_stall
+        dtu.o_stall 
     );
     
     IF_ID latch_ifid(
@@ -39,7 +39,7 @@ module Top(
         etapa_if.o_pc_value,
         etapa_if.o_instruccion,
         ex.o_branch, //esta es la señal de flush
-        latch_idex.o_stall
+        dtu.o_stall
     );
     
     Instruction_decode etapa_id(
@@ -145,6 +145,13 @@ module Top(
         exmem.o_alu_ctrl[3],
         memwb.o_reg_write_enable
         
+    );
+    
+    Data_hazard_detection_unit dtu(
+        latch_idex.o_op,
+        latch_idex.o_rt_dir,
+        etapa_id.i_instruccion[25 : 21],
+        etapa_id.i_instruccion[20 : 16]
     );
 
 endmodule

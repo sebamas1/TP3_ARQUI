@@ -41,7 +41,7 @@ module ROM #(
     end
   endgenerate
 
-  always @(negedge i_clka)
+  always @(posedge i_clka)
     if (i_ena)
       if (i_wea)
         BRAM[i_addra] <= i_dina;

@@ -124,7 +124,8 @@ module etapa_ex#(
     assign o_branch_dir =             (alu.o_ins_type[7 : 5] == 3'b100) ? (pc_tmp + alu.o_res) : //pc = pc + offset
                                        alu.o_res;        //pc = lo que me devuelva la ALU
                                       
-    assign o_alu_ctrl =              alu.o_ins_type;
+    assign o_alu_ctrl =               alu.o_ins_type[5 : 0];
+    //esto de arriba lo podrias poner como parte del default de la ALU
     assign o_pc =                    pc_tmp;
     assign o_branch =                alu.o_ins_type[7];
    

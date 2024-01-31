@@ -75,6 +75,7 @@ module RAM #(
                   2'b10: douta_reg = {24'b000000000000000000000000, ram_data[7 : 0]};
                   2'b01: douta_reg = {16'b0000000000000000, ram_data[15 : 0]};
                   2'b00: douta_reg = ram_data;
+                  2'b11: douta_reg = ram_data;
                   default: douta_reg = 4'b0000; // Valor por defecto en caso de selección no válida
               endcase
         end

@@ -26,7 +26,7 @@ ROM mem_inst(
     .i_dina(32'b0),
     .i_clka(i_clk),
     .i_wea(1'b0),
-    .i_ena(1'b1),
+    .i_ena(!i_stall),
     .i_rsta(1'b0),                           // Output reset (does not affect memory contents)
     .i_regcea(1'b1),
     .o_douta(),
@@ -38,12 +38,11 @@ begin
     if(program_counter < 2048)
     begin
        program_counter <= i_branch == 1 ?  i_branch_addr :  
-                          i_stall == 1  ?  program_counter :
+                          i_stall == 1  ?  program_counter:
                           program_counter + 1;
-    end
-    else begin
+    end else begin
        program_counter <= i_branch == 1 ?  i_branch_addr :  
-                          i_stall == 1  ?  program_counter :
+                          i_stall == 1  ?  program_counter:
                           0;
     end
 

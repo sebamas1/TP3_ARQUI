@@ -44,17 +44,16 @@ reg [PC_SIZE - 1 : 0] pc;
 
 always @(negedge i_clk)
 begin
-    if(!i_flush) begin
-        if(!i_stall) begin
+    if(i_flush) begin
+            instruccion <= 0;
+            pc <= 0;
+        end else if(!i_stall) begin //si no esta prendido el stall...
             instruccion <= i_instruccion;
             pc <= i_new_pc;
         end
-    end else begin
-        instruccion <= 0;
-        pc <= 0;
-    end
+            //hacer nada, porque vas a repetir la instruccion
 end
 
-assign o_pc_value = pc;
-assign o_instruccion = instruccion;
+assign o_pc_value = (i_stall == 1) ? 0 : pc;
+assign o_instruccion = (i_stall == 1) ? 0 : instruccion;
 endmodule

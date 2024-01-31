@@ -34,7 +34,7 @@ module Instruction_decode#(
         input                                  i_clk,
         input                                  i_reset,
         input   [TAM_DATA - 1 : 0]             i_instruccion,
-        input   [PC_SIZE - 1 : 0]             i_pc,
+        input   [PC_SIZE - 1 : 0]              i_pc,
         
         input                                  i_reg_write_mem_wb,
         input  [TAM_DATA - 1 : 0]              i_dato_de_escritura_en_reg,
@@ -91,29 +91,30 @@ module Instruction_decode#(
     
 always @(posedge i_clk)
 begin
-    op_tmp <= i_instruccion[31 : 26];
-    inmediato_tmp <= { 16'b0, i_instruccion[15 : 0] };
-    shamt_tmp <= i_instruccion[10 : 6];
-    funct_tmp <= i_instruccion[5 : 0];
-    direccion_tmp <= i_instruccion[25 : 0];
-    rs_dir_tmp <= i_instruccion[25 : 21];
-    rt_dir_tmp <= i_instruccion[20 : 16];
-    rd_dir_tmp <= i_instruccion[15 : 11];
-    pc_tmp <= i_pc;
-    
-    
+
+        op_tmp <= i_instruccion[31 : 26];
+        inmediato_tmp <= { 16'b0, i_instruccion[15 : 0] };
+        shamt_tmp <= i_instruccion[10 : 6];
+        funct_tmp <= i_instruccion[5 : 0];
+        direccion_tmp <= i_instruccion[25 : 0];
+        rs_dir_tmp <= i_instruccion[25 : 21];
+        rt_dir_tmp <= i_instruccion[20 : 16];
+        rd_dir_tmp <= i_instruccion[15 : 11];
+        pc_tmp <= i_pc;
 end
     
-   assign o_op =                op_tmp;
-   assign o_inmediato =         inmediato_tmp;
-   assign o_shamt =             shamt_tmp;
-   assign o_funct =             funct_tmp;
-   assign o_direccion =         direccion_tmp;
-   assign o_rs_dir =            rs_dir_tmp;
-   assign o_rt_dir =            rt_dir_tmp;
-   assign o_rd_dir =            rd_dir_tmp;
-   assign o_pc =                pc_tmp;
-   assign o_rs =                rs_tmp_wire;
-   assign o_rt =                rt_tmp_wire;
+   assign o_op =                 op_tmp;
+   assign o_inmediato =          inmediato_tmp;
+   assign o_shamt =              shamt_tmp;
+   assign o_funct =              funct_tmp;
+   assign o_direccion =          direccion_tmp;
+   assign o_rs_dir =             rs_dir_tmp;
+   assign o_rt_dir =             rt_dir_tmp;
+   assign o_rd_dir =             rd_dir_tmp;
+   assign o_pc =                 pc_tmp;
+   assign o_rs =                 ((i_reg_write_mem_wb == 1) &&  (i_direc_de_escritura_en_reg == rs_dir_tmp)) ? 
+                                 i_dato_de_escritura_en_reg : rs_tmp_wire;
+   assign o_rt =                 ((i_reg_write_mem_wb == 1) &&  (i_direc_de_escritura_en_reg == rt_dir_tmp)) ? 
+                                 i_dato_de_escritura_en_reg : rt_tmp_wire;
    
 endmodule

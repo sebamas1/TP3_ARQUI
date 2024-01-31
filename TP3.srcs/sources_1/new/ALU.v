@@ -114,8 +114,12 @@ module ALU#(
                 operacion = {i_operacion[11 : 6], 6'b000000};
             end
         end
-            
-            always @(i_operando_1, i_operando_2, i_operacion) 
+        
+        
+        /* Antes esto tenia una lista de sensibilidad, pero lo cambie porque si venian 2 instrucciones iguales, como eran 2 ADDI seguidos
+        que tenian su rt igual, su inmediato igual, en fin, todo igual, pero que yo ponia una direccion de destino distinta, no se
+        ejecutaba este always porque no habia cambio en los operadores*/    
+            always @(*)
        begin     
            // resultado[BUS_SIZE] <= 0;//que es esto? no daria error porque resultado ahora es mas chico?
            
@@ -319,7 +323,11 @@ module ALU#(
                     ins_type <= 8'b11100000;
                 end
                 
-                default: resultado <= operador_1 & operador_2 ; 
+                default: 
+                begin
+                    resultado <= 0;
+                    ins_type <= 8'b00001000;
+                end 
             endcase
         end
     endmodule
