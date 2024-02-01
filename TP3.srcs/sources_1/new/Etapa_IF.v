@@ -38,14 +38,17 @@ begin
     if(program_counter < 2048)
     begin
        program_counter <= i_branch == 1 ?  i_branch_addr :  
-                          i_stall == 1  ?  program_counter:
                           program_counter + 1;
     end else begin
        program_counter <= i_branch == 1 ?  i_branch_addr :  
-                          i_stall == 1  ?  program_counter:
                           0;
     end
 
+end
+
+always @(posedge i_stall)
+begin
+    program_counter <= program_counter - 1;
 end
 
 assign o_pc_value   =   program_counter - 1;//es una negrada esto

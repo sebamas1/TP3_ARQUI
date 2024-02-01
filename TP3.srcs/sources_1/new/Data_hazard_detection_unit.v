@@ -21,7 +21,7 @@
 
 
 module Data_hazard_detection_unit #(
-    parameter   OP_SIZE = 6,
+    parameter   OP_SIZE = 5,
     parameter   REGISTER_SIZE = 5
 )
 (
@@ -33,7 +33,7 @@ module Data_hazard_detection_unit #(
     output o_stall
     );
     
-    assign o_stall = ((i_op == 6'b100000 || i_op == 6'b100001 || i_op == 6'b100011) &&
+    assign o_stall =  ((i_op[2] == 1'b1 && i_op[4] == 1'b1) &&
                       (i_actual_rt_dir == i_next_rs_dir || i_actual_rt_dir == i_next_rt_dir) &&
                       (i_op !== 6'bxxxxx && i_actual_rt_dir !== 6'bxxxxx && i_next_rs_dir !== 6'bxxxxx && i_next_rt_dir !== 6'bxxxxx)) ? 1 : 0;
 

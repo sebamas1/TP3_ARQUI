@@ -67,7 +67,8 @@ module Top(
         etapa_id.o_rs_dir,
         etapa_id.o_rt_dir,
         etapa_id.o_rd_dir,
-        ex.o_branch
+        ex.o_branch,
+        dtu.o_stall
     );
     
     etapa_ex ex(
@@ -148,10 +149,10 @@ module Top(
     );
     
     Data_hazard_detection_unit dtu(
-        latch_idex.o_op,
-        latch_idex.o_rt_dir,
-        etapa_id.i_instruccion[25 : 21],
-        etapa_id.i_instruccion[20 : 16]
+        ex.o_alu_ctrl,
+        ex.o_wb_reg_write,
+        etapa_id.o_rs_dir,
+        etapa_id.o_rt_dir //por el lugar desde que el que tomo los datos, esto va a ser detectado en un rising edge
     );
 
 endmodule
