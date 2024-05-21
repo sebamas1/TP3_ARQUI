@@ -94,10 +94,13 @@ module ALU#(
        // assign o_res[BUS_SIZE + 1] = ~| resultado[BUS_SIZE - 1 : 0]; //zero acordate que esto lo pegabas al res, por lo que era 2 bits mas grande de lo que es ahora
         assign o_res[BUS_SIZE - 1 : 0] = resultado;
         assign o_ins_type = ins_type;
-    
-            always @(*)  
-        begin  
-             
+        
+        /* Antes esto tenia una lista de sensibilidad, pero lo cambie porque si venian 2 instrucciones iguales, como eran 2 ADDI seguidos
+        que tenian su rt igual, su inmediato igual, en fin, todo igual, pero que yo ponia una direccion de destino distinta, no se
+        ejecutaba este always porque no habia cambio en los operadores*/    
+            always @(*)
+       begin     
+           // resultado[BUS_SIZE] <= 0;//que es esto? no daria error porque resultado ahora es mas chico?
             operador_1 = i_operando_1;
             operador_2 = i_operando_2;//que onda, por que esto no es un assign?
             operador_i = i_operando_i;
@@ -113,220 +116,210 @@ module ALU#(
             else begin
                 operacion = {i_operacion[11 : 6], 6'b000000};
             end
-        end
-        
-        
-        /* Antes esto tenia una lista de sensibilidad, pero lo cambie porque si venian 2 instrucciones iguales, como eran 2 ADDI seguidos
-        que tenian su rt igual, su inmediato igual, en fin, todo igual, pero que yo ponia una direccion de destino distinta, no se
-        ejecutaba este always porque no habia cambio en los operadores*/    
-            always @(*)
-       begin     
-           // resultado[BUS_SIZE] <= 0;//que es esto? no daria error porque resultado ahora es mas chico?
-           
             
             case(operacion)
                 OP_ADD:
                 begin
-                    resultado <= operador_1 + operador_2;//cualquier cosa fijate en el tp si queres volverlo a como estaba antes     
-                    ins_type <= 8'b00000000;  //el mas significativo es el memory enable, el siguiente es el write enable y  
+                    resultado = operador_1 + operador_2;//cualquier cosa fijate en el tp si queres volverlo a como estaba antes     
+                    ins_type = 8'b00000000;  //el mas significativo es el memory enable, el siguiente es el write enable y  
                                           // el siguente el output enable, los otros dos son 
                                         //para el mux; oo es 32 bits, 01 es 16 bits, 10 es 8 bits, todo esto para la siguiente etapa
                 end
                      
                 OP_SUB:
                 begin
-                    resultado <= operador_1 - operador_2 ;
-                    ins_type <= 8'b00000000;
+                    resultado = operador_1 - operador_2 ;
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_AND: 
                 begin
-                    resultado <= operador_1 & operador_2;
-                    ins_type <= 8'b00000000;
+                    resultado = operador_1 & operador_2;
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_OR:
                 begin
-                    resultado <= operador_1 | operador_2;
-                    ins_type <= 8'b00000000;
+                    resultado = operador_1 | operador_2;
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_XOR:
                 begin
-                    resultado <= operador_1 ^ operador_2;
-                    ins_type <= 8'b00000000;
+                    resultado = operador_1 ^ operador_2;
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_SRA:
                 begin
-                    resultado <= operador_2 >>> shamt; //shiftea sa lugares el operador 2 y lo guarda en rd
-                    ins_type <= 8'b00000000;
+                    resultado = operador_2 >>> shamt; //shiftea sa lugares el operador 2 y lo guarda en rd
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_SRL:
                 begin
-                    resultado <= operador_2 >> shamt;
-                    ins_type <= 8'b00000000;
+                    resultado = operador_2 >> shamt;
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_NOR:
                 begin
-                    resultado <= ~(operador_1 | operador_2);
-                    ins_type <= 8'b00000000;
+                    resultado = ~(operador_1 | operador_2);
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_SLL:
                 begin
-                    resultado <= operador_2 << shamt;
-                    ins_type <= 8'b00000000;
+                    resultado = operador_2 << shamt;
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_SLLV:
                 begin
-                    resultado <= operador_1 << operador_2;//sera asi?
-                    ins_type <= 8'b00000000;
+                    resultado = operador_1 << operador_2;//sera asi?
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_SRLV:
                 begin
-                    resultado <= operador_1 >> operador_2;
-                    ins_type <= 8'b00000000;
+                    resultado = operador_1 >> operador_2;
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_SRAV:
                 begin
-                    resultado <= operador_1 >>> operador_2;
-                    ins_type <= 8'b00000000;
+                    resultado = operador_1 >>> operador_2;
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_SLT:
                 begin
-                    resultado <= operador_1 < operador_2; //setea un registro si op1 < op2
-                    ins_type <= 8'b00000000;
+                    resultado = operador_1 < operador_2; //setea un registro si op1 < op2
+                    ins_type = 8'b00000000;
                 end
                 
                 OP_LB:
                 begin
-                    resultado <= operador_1 + operador_i;//bueno aca tenes que hacer que se meta el inmediato a la ALU y que se sume con rs, supongo que tenes que devolver
-                    ins_type <= 8'b00010110;// este va a ser un read enable
+                    resultado = operador_1 + operador_i;//bueno aca tenes que hacer que se meta el inmediato a la ALU y que se sume con rs, supongo que tenes que devolver
+                    ins_type = 8'b00010110;// este va a ser un read enable
                 end 
                 
                 OP_LH:
                 begin
-                    resultado <= operador_1 + operador_i;
-                    ins_type <= 8'b00010101;// este va a ser un read enable
+                    resultado = operador_1 + operador_i;
+                    ins_type = 8'b00010101;// este va a ser un read enable
                 end   
                   
                 OP_LW:
                 begin
-                    resultado <= operador_1 + operador_i;
-                    ins_type <= 8'b00010100;
+                    resultado = operador_1 + operador_i;
+                    ins_type = 8'b00010100;
                 end 
                 
                 OP_SB:
                 begin
-                    resultado <= operador_1 + operador_i;
-                    ins_type <= 8'b00011010; //este va a ser un write enable
+                    resultado = operador_1 + operador_i;
+                    ins_type = 8'b00011010; //este va a ser un write enable
                 end  
                    
                 OP_SH:
                 begin
-                    resultado <= operador_1 + operador_i;
-                    ins_type <= 8'b00011001;
+                    resultado = operador_1 + operador_i;
+                    ins_type = 8'b00011001;
                 end   
                   
                 OP_SW:
                 begin
-                    resultado <= operador_1 + operador_i;
-                    ins_type <= 8'b00011000;
+                    resultado = operador_1 + operador_i;
+                    ins_type = 8'b00011000;
                 end 
                 
                 OP_ADDI:
                 begin
-                    resultado <= operador_1 + operador_i;
-                    ins_type <= 8'b00000100;//este codigo indica que es una operacion tipo I para que se guarde el res en rt
+                    resultado = operador_1 + operador_i;
+                    ins_type = 8'b00000100;//este codigo indica que es una operacion tipo I para que se guarde el res en rt
                 end 
                 
                 OP_ANDI:
                 begin
-                    resultado <= operador_1 & operador_i;
-                    ins_type <= 8'b00000100;
+                    resultado = operador_1 & operador_i;
+                    ins_type = 8'b00000100;
                 end 
                 
                 OP_ORI:
                 begin
-                    resultado <= operador_1 | operador_i;
-                    ins_type <= 8'b00000100;
+                    resultado = operador_1 | operador_i;
+                    ins_type = 8'b00000100;
                 end 
  
                 OP_XORI:
                 begin
-                    resultado <= operador_1 ^ operador_i;
-                    ins_type <= 8'b00000100;
+                    resultado = operador_1 ^ operador_i;
+                    ins_type = 8'b00000100;
                 end 
                 
                 OP_LUI:
                 begin
-                    resultado <= operador_i << 16;
-                    ins_type <= 8'b00000100; //esto es para reconocer que es tipo I 
+                    resultado = operador_i << 16;
+                    ins_type = 8'b00000100; //esto es para reconocer que es tipo I 
                 end 
                 
                 OP_SLTI:
                 begin
-                    resultado <= operador_1 < operador_i; //setea un registro si op1 < opi
-                    ins_type <= 8'b00000100;
+                    resultado = operador_1 < operador_i; //setea un registro si op1 < opi
+                    ins_type = 8'b00000100;
                 end
                 
                 OP_BEQ: //si op1 == op2 --> pc += (inmediato << 2)
                 begin
                 if(operador_1 == operador_2) begin
-                    resultado <= operador_i << 2;
-                    ins_type <= 8'b10001000;
+                    resultado = operador_i << 2;
+                    ins_type = 8'b10001000;
                 end else begin
-                    resultado <= 1; //le pongo 1 para que haga ruido en caso de que se escriba esto en algun lado
-                    ins_type <= 8'b00001000; //marco que es un store para que no haga nada en wb, pero no le habilito la memoria, por lo que no hace nada
+                    resultado = 1; //le pongo 1 para que haga ruido en caso de que se escriba esto en algun lado
+                    ins_type = 8'b00001000; //marco que es un store para que no haga nada en wb, pero no le habilito la memoria, por lo que no hace nada
                 end
                 end
                 
                 OP_BNE: //si op1 != op2 --> pc += (inmediato << 2)
                 begin
                 if(operador_1 != operador_2) begin
-                    resultado <= operador_i << 2;
-                    ins_type <= 8'b10001000;
+                    resultado = operador_i << 2;
+                    ins_type = 8'b10001000;
                 end else begin
-                    resultado <= 1;
-                    ins_type <= 8'b00001000; //marco que es un store para que no haga nada en wb, pero no le habilito la memoria, por lo que no hace nada
+                    resultado = 1;
+                    ins_type = 8'b00001000; //marco que es un store para que no haga nada en wb, pero no le habilito la memoria, por lo que no hace nada
                 end
                 end
                 
                 OP_J: //no entiendo que hace esta instruccion, leer el manual
                 begin
-                    resultado <= {4'b0000, direccion_tmp << 2};
-                    ins_type <= 8'b10101000;
+                    resultado = {4'b0000, direccion_tmp << 2};
+                    ins_type = 8'b10101000;
                 end
                 
                 OP_JAL: //no entiendo que hace esta instruccion, leer el manual
                 begin
-                    resultado <= {4'b0000, direccion_tmp << 2};
-                    ins_type <= 8'b11000000;
+                    resultado = {4'b0000, direccion_tmp << 2};
+                    ins_type = 8'b11000000;
                 end
                 
                 OP_JR:
                 begin
-                    resultado <= operador_1;
-                    ins_type <= 8'b10101000;
+                    resultado = operador_1;
+                    ins_type = 8'b10101000;
                 end
                 
                 OP_JALR:
                 begin
-                    resultado <= operador_1;
-                    ins_type <= 8'b11100000;
+                    resultado = operador_1;
+                    ins_type = 8'b11100000;
                 end
                 
                 default: 
                 begin
-                    resultado <= 0;
-                    ins_type <= 8'b00001000;
+                    resultado = 0;
+                    ins_type = 8'b00001000;
                 end 
             endcase
         end

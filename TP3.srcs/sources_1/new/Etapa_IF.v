@@ -12,9 +12,13 @@ module Instruction_fetch#(
         input                           i_branch,
         input   [PC_SIZE - 1 : 0]       i_branch_addr,
         input                           i_stall,
+        input  [TAM_DATA - 1 : 0]       i_instruccion,
+        input  [TAM_DATA - 1 : 0]       i_instruccion_addr,
+        input                           i_wea,
         
         output  [TAM_DATA - 1 : 0]      o_instruccion,
-        output  [PC_SIZE - 1 : 0]       o_pc_value
+        output  [PC_SIZE - 1 : 0]       o_pc_value,
+        output                          o_end_pipeline
 
 );
 
@@ -22,10 +26,10 @@ reg [PC_SIZE - 1 : 0] program_counter = 0;
 
 
 ROM mem_inst(
-    .i_addra({21'b0 ,program_counter}), //La salida del PC entra a la mem
-    .i_dina(32'b0),
+    .i_addra(i_instruccion_addr | {21'b0 ,program_counter}), //La salida del PC entra a la mem
+    .i_dina(i_instruccion | program_counter),
     .i_clka(i_clk),
-    .i_wea(1'b0),
+    .i_wea(i_wea),
     .i_ena(!i_stall),
     .i_rsta(1'b0),                           // Output reset (does not affect memory contents)
     .i_regcea(1'b1),
@@ -44,14 +48,16 @@ begin
                           0;
     end
 
+
 end
 
-always @(posedge i_stall)
-begin
-    program_counter <= program_counter - 1;
-end
+// always @(posedge i_stall)
+// begin
+//     program_counter <= program_counter - 1;
+// end
 
 assign o_pc_value   =   program_counter - 1;//es una negrada esto
 assign o_instruccion =  mem_inst.o_douta;
+assign o_end_pipeline = o_instruccion == 32'b000000000000000000000000000000 ? 1 : 0;
 
 endmodule

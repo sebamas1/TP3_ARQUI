@@ -61,11 +61,10 @@ module Etapa_MEM #(
     reg  [PC_SIZE - 1 : 0]              pc_tmp;
     reg                                 reg_write_enable_tmp;
     
-    
 always @(posedge i_clk)
 begin
     pc_tmp <= i_pc;
-    reg_write_enable_tmp = !i_alu_ctrl[3]; //voy a querer escribir en los registros siempre que no sea una instruccion store
+    reg_write_enable_tmp <= !i_alu_ctrl[3]; //voy a querer escribir en los registros siempre que no sea una instruccion store
     wb_reg_write_tmp <= i_wb_reg_write; 
 
 end
