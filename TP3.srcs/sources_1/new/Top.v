@@ -54,7 +54,7 @@ module Top(
     Instruction_decode etapa_id(
         .i_clk(i_clk & reception_end),
         .i_reset(i_reset),
-        .i_instruccion(latch_ifid.o_instruccion),
+        .i_instruccion(etapa_if.o_end_pipeline ? transmisor.o_next_instruction : latch_ifid.o_instruccion),
         .i_pc(latch_ifid.o_pc_value),
         
         .i_reg_write_mem_wb(etapa_if.o_end_pipeline ? 0 : wb.o_reg_write_enable),
@@ -197,8 +197,8 @@ module Top(
                         .i_clk(i_clk),
                         .i_tick(o_tick),
                         .i_reset(i_reset),
-                        .i_instruccion(32'b10101010101010101010101010101010),
-                        .i_enviar(etapa_if.o_end_pipeline),//AGREGA COSAS ACA Y ARRIBA
+                        .i_instruccion(INSTRUCCION),
+                        .i_enviar(reception_end),//AGREGA COSAS ACA Y ARRIBA
                         .o_dato_enviado(),
                         .o_tx(tx),
                         .o_next_instruction()

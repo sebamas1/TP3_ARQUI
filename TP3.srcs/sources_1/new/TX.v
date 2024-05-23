@@ -58,6 +58,7 @@
         reg [7 : 0] dato_transmicion = 8'b00000000;
         reg [31 : 0] reg_instruccion = 32'b1111111111111111111111111111111111111111;
         reg [31 : 0] next_instruction = 32'b0;
+        reg [4 : 0] rs_dir = 5'b0;
 
         always @(posedge i_clk)
         begin
@@ -87,8 +88,9 @@
                         terminado <= 0;
                         next_state <= WAITING_STATE;
                         contador_ticks <= 4'b0000; 
-                        next_instruction <= next_instruction + 1; 
-                        if(reg_instruccion == 32'b00100010001000100001001000010011) i_enviar_prev <= 1;
+                        next_instruction <= {6'b0, rs_dir[4 : 0], 21'b0};
+                        rs_dir <= rs_dir + 1; 
+                        if(rs_dir == 5'b11111) i_enviar_prev <= 1;
                     end
                 end
 

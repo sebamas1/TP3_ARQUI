@@ -58,6 +58,6 @@ end
 
 assign o_pc_value   =   program_counter - 1;//es una negrada esto
 assign o_instruccion =  mem_inst.o_douta;
-assign o_end_pipeline = o_instruccion == 32'b000000000000000000000000000000 ? 1 : 0;
+assign o_end_pipeline = (o_instruccion == 32'b00000000000000000000000000000001) ? 1'b1 : 1'b0;
 
 endmodule
