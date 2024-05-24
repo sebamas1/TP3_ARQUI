@@ -32,13 +32,13 @@ module Top(
     );
     
     Instruction_fetch etapa_if(
-        .i_clk(i_clk & reception_end),
+        .i_clk(i_clk),
         .i_reset(i_reset),
         .i_branch(ex.o_branch), //no se usa
         .i_branch_addr(ex.o_branch_dir), //no se usa
         .i_stall(dtu.o_stall),
         .i_instruccion(INSTRUCCION),
-        .i_instruccion_addr(instruccion_addr),
+        .i_instruccion_addr(etapa_if.o_end_pipeline ? transmisor.o_next_instruction : instruccion_addr),
         .i_wea(wea)
     );
     
@@ -197,7 +197,7 @@ module Top(
                         .i_clk(i_clk),
                         .i_tick(o_tick),
                         .i_reset(i_reset),
-                        .i_instruccion(INSTRUCCION),
+                        .i_instruccion(etapa_if.o_instruccion),
                         .i_enviar(reception_end),//AGREGA COSAS ACA Y ARRIBA
                         .o_dato_enviado(),
                         .o_tx(tx),
@@ -303,7 +303,7 @@ module Top(
                                                 wea <= 0;
                                                 INSTRUCCION [7 : 0] <= 8'b11111111;
                                                 next_state <= IDDLE_STATE;
-                                                instruccion_addr <= 0;
+                                                instruccion_addr <= 32'b00000000000000000000000000000011;
                                                 //salida_op <= 2;
                                                 reception_end <= 1'b1;
                                         end else begin

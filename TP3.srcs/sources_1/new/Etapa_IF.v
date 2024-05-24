@@ -22,12 +22,13 @@ module Instruction_fetch#(
 
 );
 
-reg [PC_SIZE - 1 : 0] program_counter = 0;
+reg [PC_SIZE - 1 : 0] program_counter = 13;
 
 
 ROM mem_inst(
-    .i_addra(i_instruccion_addr | {21'b0 ,program_counter}), //La salida del PC entra a la mem
-    .i_dina(i_instruccion | program_counter),
+    .i_addra(i_wea ? i_instruccion_addr : 
+    o_end_pipeline ? i_instruccion_addr : {21'b0 ,program_counter}), //La salida del PC entra a la mem
+    .i_dina(i_instruccion),
     .i_clka(i_clk),
     .i_wea(i_wea),
     .i_ena(!i_stall),
@@ -37,19 +38,18 @@ ROM mem_inst(
     .o_halt()
 );
 
-always @(posedge i_clk)
-begin
-    if(program_counter < 2048)
-    begin
-       program_counter <= i_branch == 1 ?  i_branch_addr :  
-                          program_counter + 1;
-    end else begin
-       program_counter <= i_branch == 1 ?  i_branch_addr :  
-                          0;
-    end
+// always @(posedge i_clk)
+// begin
+//     if(program_counter < 2048)
+//     begin
+//        program_counter <= i_branch == 1 ?  i_branch_addr :  
+//                           program_counter + 1;
+//     end else begin
+//        program_counter <= i_branch == 1 ?  i_branch_addr :  
+//                           0;
+//     end
 
-
-end
+// end
 
 // always @(posedge i_stall)
 // begin
