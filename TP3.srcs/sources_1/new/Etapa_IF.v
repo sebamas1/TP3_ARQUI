@@ -22,7 +22,7 @@ module Instruction_fetch#(
 
 );
 
-reg [PC_SIZE - 1 : 0] program_counter = 13;
+reg [PC_SIZE - 1 : 0] program_counter = 15;
 
 
 ROM mem_inst(
@@ -38,18 +38,17 @@ ROM mem_inst(
     .o_halt()
 );
 
-// always @(posedge i_clk)
-// begin
-//     if(program_counter < 2048)
-//     begin
-//        program_counter <= i_branch == 1 ?  i_branch_addr :  
-//                           program_counter + 1;
-//     end else begin
-//        program_counter <= i_branch == 1 ?  i_branch_addr :  
-//                           0;
-//     end
-
-// end
+always @(posedge i_clk)
+begin
+    if(program_counter < 2048)
+    begin
+       program_counter <= i_branch == 1 ?  i_branch_addr :  
+                          program_counter + 1;
+    end else begin
+       program_counter <= i_branch == 1 ?  i_branch_addr :  
+                          0;
+    end
+end
 
 // always @(posedge i_stall)
 // begin
@@ -58,6 +57,6 @@ ROM mem_inst(
 
 assign o_pc_value   =   program_counter - 1;//es una negrada esto
 assign o_instruccion =  mem_inst.o_douta;
-assign o_end_pipeline = (o_instruccion == 32'b00000000000000000000000000000001) ? 1'b1 : 1'b0;
+assign o_end_pipeline = (mem_inst.o_douta == 32'b00000000000000000000000000000001) ? 1'b1 : 1'b0;
 
 endmodule

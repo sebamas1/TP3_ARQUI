@@ -1,0 +1,11 @@
++====================+===================+=========================+
+| Launch Setup Clock | Launch Hold Clock | Pin                     |
++====================+===================+=========================+
+| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[12]/D |
+| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[22]/D |
+| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[27]/D |
+| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[30]/D |
+| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[16]/D |
+| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[26]/D |
+| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[8]/D  |
++--------------------+-------------------+-------------------------+
