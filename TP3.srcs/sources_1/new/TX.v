@@ -90,7 +90,7 @@
                         contador_ticks <= 4'b0000; 
                         next_instruction <= {6'b0, rs_dir[4 : 0], 21'b0};
                         rs_dir <= rs_dir + 1; 
-                       // if(rs_dir == 5'b11111) i_enviar_prev <= 1;
+                        if(rs_dir == 5'b11111) i_enviar_prev <= 1;
                     end
                 end
 

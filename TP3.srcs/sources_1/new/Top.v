@@ -39,7 +39,8 @@ module Top(
         .i_stall(dtu.o_stall),
         .i_instruccion(INSTRUCCION),
         .i_instruccion_addr(etapa_if.o_end_pipeline ? transmisor.o_next_instruction : instruccion_addr),
-        .i_wea(wea)
+        .i_wea(wea),
+        .i_start_pipeline(reception_end)
     );
     
     IF_ID latch_ifid(
@@ -197,7 +198,7 @@ module Top(
                         .i_clk(i_clk),
                         .i_tick(o_tick),
                         .i_reset(i_reset),
-                        .i_instruccion(etapa_if.o_instruccion),
+                        .i_instruccion(etapa_id.o_rs),
                         .i_enviar(reception_end),//AGREGA COSAS ACA Y ARRIBA
                         .o_dato_enviado(),
                         .o_tx(tx),

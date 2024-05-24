@@ -34,7 +34,7 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
                             datos_recibidos = conexion_serial.read_all()
                             conexion_serial.flushInput()
                             if datos_recibidos:
-                                datos_recibidos_hex = datos_recibidos.hex(sep="-", bytes_per_sep=4).upper()  # Convertir a hexadecimal
+                                datos_recibidos_hex = datos_recibidos.hex(sep="-", bytes_per_sep=4)  # Convertir a hexadecimal
                                 print("Datos recibidos desde UART en hexadecimal:", datos_recibidos_hex)
                                     
                                 # time.sleep(1)
