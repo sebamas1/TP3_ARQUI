@@ -199,7 +199,7 @@ module Top(
                         .i_tick(o_tick),
                         .i_reset(i_reset),
                         .i_instruccion(etapa_id.o_rs),
-                        .i_enviar(reception_end),//AGREGA COSAS ACA Y ARRIBA
+                        .i_enviar(reception_end),// deberia usar o_end_pipeline
                         .o_dato_enviado(),
                         .o_tx(tx),
                         .o_next_instruction()

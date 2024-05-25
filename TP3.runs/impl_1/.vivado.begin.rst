@@ -23,3 +23,18 @@
     <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="32920" HostCore="4" HostMemory="7793844">
     </Process>
 </ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="37463" HostCore="4" HostMemory="7793844">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="43074" HostCore="4" HostMemory="7793844">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="46793" HostCore="4" HostMemory="7793844">
+    </Process>
+</ProcessHandle>

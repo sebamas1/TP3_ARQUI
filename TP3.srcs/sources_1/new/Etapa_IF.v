@@ -19,9 +19,12 @@ module Instruction_fetch#(
         
         output  [TAM_DATA - 1 : 0]      o_instruccion,
         output  [PC_SIZE - 1 : 0]       o_pc_value,
-        output                          o_end_pipeline
+        output  reg                     o_end_pipeline
 
 );
+initial begin
+o_end_pipeline = 0;
+end
 
 reg [PC_SIZE - 1 : 0] program_counter = 0;
 
@@ -51,6 +54,7 @@ begin
         program_counter <= i_branch == 1 ?  i_branch_addr :  
                             0;
         end
+        if(mem_inst.o_douta == 32'b00000000000000000000000000000001) o_end_pipeline <= 1;
     end
 end
 
@@ -61,6 +65,5 @@ end
 
 assign o_pc_value   =   program_counter - 1;//es una negrada esto
 assign o_instruccion =  mem_inst.o_douta;
-assign o_end_pipeline = (mem_inst.o_douta == 32'b00000000000000000000000000000000) ? 1'b1 : 1'b0;
 
 endmodule
