@@ -34,8 +34,8 @@ module Top(
     Instruction_fetch etapa_if(
         .i_clk(i_clk),
         .i_reset(i_reset),
-        .i_branch(ex.o_branch), //no se usa
-        .i_branch_addr(ex.o_branch_dir), //no se usa
+        .i_branch(ex.o_branch), 
+        .i_branch_addr(ex.o_branch_dir), 
         .i_stall(dtu.o_stall),
         .i_instruccion(INSTRUCCION),
         .i_instruccion_addr(etapa_if.o_end_pipeline ? transmisor.o_next_instruction : instruccion_addr),
@@ -198,8 +198,8 @@ module Top(
                         .i_clk(i_clk),
                         .i_tick(o_tick),
                         .i_reset(i_reset),
-                        .i_instruccion(etapa_if.o_instruccion),
-                        .i_enviar(reception_end),// deberia usar o_end_pipeline
+                        .i_instruccion(etapa_id.o_rs),
+                        .i_enviar(etapa_if.o_end_pipeline),// deberia usar o_end_pipeline
                         .o_dato_enviado(),
                         .o_tx(tx),
                         .o_next_instruction()
