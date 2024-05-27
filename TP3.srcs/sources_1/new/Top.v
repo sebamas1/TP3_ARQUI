@@ -198,7 +198,7 @@ module Top(
                         .i_clk(i_clk),
                         .i_tick(o_tick),
                         .i_reset(i_reset),
-                        .i_instruccion(etapa_id.o_rs),
+                        .i_instruccion(etapa_if.o_instruccion),
                         .i_enviar(reception_end),// deberia usar o_end_pipeline
                         .o_dato_enviado(),
                         .o_tx(tx),
