@@ -11,6 +11,8 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
     try:
         with serial.Serial(port=puerto, baudrate=9600, timeout=1) as conexion_serial:
             print(f"Conexión establecida en {puerto}")
+            conexion_serial.reset_input_buffer()
+            conexion_serial.reset_output_buffer()
             
             array = contenido.split('\n')
             print("array: ", array)
@@ -22,12 +24,13 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
                     datos_hex_bytes = bytes.fromhex(hexa[j])
                     # clear buffer
                     
-                    conexion_serial.flushInput()
+                    conexion_serial.reset_input_buffer()
+                    conexion_serial.reset_output_buffer()
                     conexion_serial.write(datos_hex_bytes)
                     time.sleep(0.01)
                     if (array[i] == "00 00 00 FF" and j == 3):
                         print("Comienza a leer la UART")
-                        time.sleep(1)
+                        time.sleep(2)
                         # Leer continuamente desde la UART y mostrar lo recibido
          #               while True:
                         counter = 0                            

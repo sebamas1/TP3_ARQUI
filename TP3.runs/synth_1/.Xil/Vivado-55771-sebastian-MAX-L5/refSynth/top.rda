@@ -1,0 +1,161 @@
+Data_For_RDAFlowver5.0
+	top level‚F
+Top
+LinkDesign_Blackboxes•$
+synthFileNames9
+14/home/Vivado/2023.2/scripts/rt/data/unisim_VCOMP.vhdJ
+27D/home/Vivado/2023.2/data/verilog/src/unimacro/FIFO_DUALCLOCK_MACRO.vG
+32A/home/Vivado/2023.2/data/vhdl/src/unisims/retarget/MULT18X18S.vhd8
+23/home/Vivado/2023.2/scripts/rt/data/unisim_VPKG.vhdE
+28?/home/Vivado/2023.2/data/verilog/src/unimacro/FIFO_SYNC_MACRO.vG
+33A/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/ALU.v6
+31/home/Vivado/2023.2/scripts/rt/data/unisim_comp.v@
+29:/home/Vivado/2023.2/data/verilog/src/unimacro/MACC_MACRO.v_
+34Y/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Basys3_7SegmentMultiplexing.v9
+44/home/Vivado/2023.2/scripts/rt/data/internal_cells.vL
+35F/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Baud_gen.vI
+40C/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/IF_ID.v/
+5*/home/Vivado/2023.2/scripts/rt/data/BUFT.v^
+36X/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Data_hazard_detection_unit.vV
+41P/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Instruction_decode.vB
+6=/home/Vivado/2023.2/data/vhdl/src/unimacro/unimacro_VCOMP.vhdL
+37F/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.vG
+42A/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RAM.vA
+7</home/Vivado/2023.2/data/vhdl/src/unimacro/ADDMACC_MACRO.vhdM
+38G/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.vG
+43A/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/ROM.v@
+8;/home/Vivado/2023.2/data/vhdl/src/unimacro/ADDSUB_MACRO.vhdS
+39M/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Forwarding_unit.vF
+44@/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.vN
+50H/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_idex.vB
+9=/home/Vivado/2023.2/data/vhdl/src/unimacro/BRAM_SDP_MACRO.vhdM
+45G/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Registros.vO
+51I/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_memwb.vF
+46@/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/TX.vG
+52A/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.vL
+47F/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.vQ
+53K/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/1993/src/std_1164.vhdL
+48F/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_wb.vQ
+54K/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/1993/src/standard.vhdO
+49I/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_exmem.vQ
+60K/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/1993/src/prmtvs_b.vhdT
+55N/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/1993/src/numeric_std.vhdQ
+61K/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/1993/src/syn_arit.vhdO
+56I/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/1993/src/textio.vhdQ
+62K/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/1993/src/syn_unsi.vhdQ
+57K/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/1993/src/timing_p.vhdQ
+58K/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/1993/src/timing_b.vhdQ
+59K/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/1993/src/prmtvs_p.vhdF
+10@/home/Vivado/2023.2/data/vhdl/src/unimacro/BRAM_SINGLE_MACRO.vhdC
+11=/home/Vivado/2023.2/data/vhdl/src/unimacro/BRAM_TDP_MACRO.vhdG
+12A/home/Vivado/2023.2/data/vhdl/src/unimacro/COUNTER_LOAD_MACRO.vhdE
+13?/home/Vivado/2023.2/data/vhdl/src/unimacro/COUNTER_TC_MACRO.vhdE
+14?/home/Vivado/2023.2/data/vhdl/src/unimacro/EQ_COMPARE_MACRO.vhdB
+20</home/Vivado/2023.2/data/verilog/src/unimacro/ADDSUB_MACRO.vI
+15C/home/Vivado/2023.2/data/vhdl/src/unimacro/FIFO_DUALCLOCK_MACRO.vhdD
+21>/home/Vivado/2023.2/data/verilog/src/unimacro/BRAM_SDP_MACRO.vD
+16>/home/Vivado/2023.2/data/vhdl/src/unimacro/FIFO_SYNC_MACRO.vhdG
+22A/home/Vivado/2023.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v?
+179/home/Vivado/2023.2/data/vhdl/src/unimacro/MACC_MACRO.vhd?
+189/home/Vivado/2023.2/data/vhdl/src/unimacro/MULT_MACRO.vhdD
+23>/home/Vivado/2023.2/data/verilog/src/unimacro/BRAM_TDP_MACRO.vC
+19=/home/Vivado/2023.2/data/verilog/src/unimacro/ADDMACC_MACRO.vH
+24B/home/Vivado/2023.2/data/verilog/src/unimacro/COUNTER_LOAD_MACRO.vF
+25@/home/Vivado/2023.2/data/verilog/src/unimacro/COUNTER_TC_MACRO.v@
+30:/home/Vivado/2023.2/data/verilog/src/unimacro/MULT_MACRO.v
+NumFileNames63F
+26@/home/Vivado/2023.2/data/verilog/src/unimacro/EQ_COMPARE_MACRO.vF
+31@/home/Vivado/2023.2/data/vhdl/src/unisims/retarget/MULT18X18.vhdÄ
+
+synthStatsK
+caseNotFullNoDefault
+F44
+Opresent_state
+L65
+MnullnameK
+caseNotFullNoDefault
+L82
+Mnullname
+F46
+Opresent_stateL
+caseNotFullNoDefault
+Opresent_state
+L272
+Mnullname
+F52T
+BRAMNoOutReg
+Mnullname
+F43#
+O\etapa_if/mem_inst/BRAM_reg_0 
+L29T
+BRAMNoOutReg
+L29
+Mnullname
+F43#
+O\etapa_if/mem_inst/BRAM_reg_1 P
+BRAMNoOutReg
+L24
+Mnullname
+F42
+O\mem/mem_datos/BRAM_reg_0 P
+BRAMNoOutReg
+L24
+Mnullname
+F42
+O\mem/mem_datos/BRAM_reg_1 ¨
+ElaboratedNamesForRQSŽ
+DSP_RAM
+172032 {wea_i__0} 
+491528 {ex/in01_i} $
+335891 {transmisor/salida_i__0} *
+188433  {baud_gen/contador_flancos0_i} 
+507912 {ex/in01_i__2} Õ
+409618Ê {receptor/dato_i__0} {receptor/dato_i__1} {receptor/dato_i__2} {receptor/dato_i__3} {receptor/dato_i__4} {receptor/dato_i__5} {receptor/dato_i__6} {receptor/dato_i__7} {receptor/dato_i__8} {receptor/next_state_i__10} {receptor/next_state_i__11} {receptor/next_state_i__12} {receptor/next_state_i__4} {receptor/next_state_i__5} {receptor/next_state_i__6} {receptor/next_state_i__7} {receptor/next_state_i__8} {receptor/next_state_i__9} {receptor/recibido_i} 5
+1126400* {next_state_i} {next_state_i__1} {wea_i} 
+270337 {etapa_if/in00_i} +
+380947! {transmisor/reg_instruccion0_i} 
+176128 {reception_end_i} 
+143377 {baud_gen/tick_i} )
+212993 {etapa_if/program_counter1_i} (
+118786 {etapa_if/mem_inst/BRAM_reg} ,
+385043" {transmisor/next_instruction0_i} `
+77844W {basys3_7SegmentMultiplexing/an_reg_i} {basys3_7SegmentMultiplexing/display_select_i} Â
+245766· {etapa_id/gp/registros_reg[0]_i} {etapa_id/gp/registros_reg[10]_i} {etapa_id/gp/registros_reg[11]_i} {etapa_id/gp/registros_reg[12]_i} {etapa_id/gp/registros_reg[13]_i} {etapa_id/gp/registros_reg[14]_i} {etapa_id/gp/registros_reg[15]_i} {etapa_id/gp/registros_reg[16]_i} {etapa_id/gp/registros_reg[17]_i} {etapa_id/gp/registros_reg[18]_i} {etapa_id/gp/registros_reg[19]_i} {etapa_id/gp/registros_reg[1]_i} {etapa_id/gp/registros_reg[20]_i} {etapa_id/gp/registros_reg[21]_i} {etapa_id/gp/registros_reg[22]_i} {etapa_id/gp/registros_reg[23]_i} {etapa_id/gp/registros_reg[24]_i} {etapa_id/gp/registros_reg[25]_i} {etapa_id/gp/registros_reg[26]_i} {etapa_id/gp/registros_reg[27]_i} {etapa_id/gp/registros_reg[28]_i} {etapa_id/gp/registros_reg[29]_i} {etapa_id/gp/registros_reg[2]_i} {etapa_id/gp/registros_reg[30]_i} {etapa_id/gp/registros_reg[31]_i} {etapa_id/gp/registros_reg[3]_i} {etapa_id/gp/registros_reg[4]_i} {etapa_id/gp/registros_reg[5]_i} {etapa_id/gp/registros_reg[6]_i} {etapa_id/gp/registros_reg[7]_i} {etapa_id/gp/registros_reg[8]_i} {etapa_id/gp/registros_reg[9]_i} $
+536585 {ex/alu/resultado0_i__0} &
+327698 {receptor/next_state_i__2} #
+167936 {instruccion_addr_i__0} H
+303123> {transmisor/dato_transmicion_i__2} {transmisor/next_state_i} Ì
+417811Á {transmisor/contadorTX_i__0} {transmisor/next_state_i__1} {transmisor/next_state_i__10} {transmisor/next_state_i__2} {transmisor/next_state_i__3} {transmisor/next_state_i__4} {transmisor/next_state_i__5} {transmisor/next_state_i__6} {transmisor/next_state_i__7} {transmisor/next_state_i__8} {transmisor/next_state_i__9} "
+1282048 {instruccion_addr0_i} '
+139265 {etapa_if/o_end_pipeline_i} 3
+135188) {basys3_7SegmentMultiplexing/seg_reg_i} (
+262162 {receptor/contador_ticks0_i} #
+98316 {mem/mem_datos/BRAM_reg} &
+765971 {transmisor/contadorTX0_i} %
+831497 {ex/alu/resultado0_i__10} &
+0! {receptor/recibido0_i} {wea0_i} *
+331795  {transmisor/contador_ticks0_i} !
+503817 {ex/alu/resultado0_i} 
+blackBoxInfoÇ
+synth_design
+isIncremental0
+Runtime2
+Threads used4š
+args‘-define default::[not_specified] -verilog_define default::[not_specified] -vhdl_define default::[not_specified] -top  Top -part  xc7a35tcpg236-1 
+resynthPerc0.00
+Cputime2
+blackBoxPerc-nan
+	directive œ
+synth_design_metrics
+bigRAMs-1
+NetsWithMixedFanouts-1
+DSPsWithKeep0$
+mismatchedAddSubOperatorWidths-1
+lowMaxFanout-1
+NumUnregisteredPorts0
+caseNotFullNoDefault3
+	smallSrls-1
+srlsWithResetLogic-1
+shallowRAMWithAttribute-1
+hierMFO0
+RQS_Results
