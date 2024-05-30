@@ -1,50 +1,20 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="9016" HostCore="4" HostMemory="7793844">
+    <Process Command="vivado.bat" Owner="nemia" Host="NEHEMIAS-DELL" Pid="27100" HostCore="12" HostMemory="016849256448">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="47929" HostCore="4" HostMemory="7793844">
+    <Process Command="vivado.bat" Owner="nemia" Host="NEHEMIAS-DELL" Pid="27008" HostCore="12" HostMemory="016849256448">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="50375" HostCore="4" HostMemory="7793844">
+    <Process Command="vivado.bat" Owner="nemia" Host="NEHEMIAS-DELL" Pid="8336" HostCore="12" HostMemory="016849256448">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="56969" HostCore="4" HostMemory="7793844">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="63079" HostCore="4" HostMemory="7793844">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="68731" HostCore="4" HostMemory="7793844">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="77580" HostCore="4" HostMemory="7793844">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="82215" HostCore="4" HostMemory="7793844">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="89956" HostCore="4" HostMemory="7793844">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sebastian" Host="sebastian-MAX-L5" Pid="95213" HostCore="4" HostMemory="7793844">
+    <Process Command="vivado.bat" Owner="nemia" Host="NEHEMIAS-DELL" Pid="7784" HostCore="12" HostMemory="016849256448">
     </Process>
 </ProcessHandle>

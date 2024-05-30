@@ -26,10 +26,22 @@
         input i_reset,
         input [31 : 0] i_instruccion,
         input i_enviar,
+        input [32*23-1:0] array_bus,
         output o_dato_enviado,
         output o_tx,
         output [31 : 0] o_next_instruction
         );
+
+        // Definición del array de 23 posiciones de 32 bits
+        wire [31:0] my_array [0:22];
+
+        // Convertir el bus de nuevo al array
+        genvar i;
+        generate
+            for (i = 0; i < 23; i = i + 1) begin
+                assign my_array[i] = array_bus[32*i +: 32];
+            end
+        endgenerate
 
         localparam IDDLE_STATE = 4'b0000;
         localparam WAITING_STATE = 4'b0001;
@@ -59,6 +71,7 @@
         reg [31 : 0] reg_instruccion = 32'b1111111111111111111111111111111111111111;
         reg [31 : 0] next_instruction = 32'b0;
         reg [4 : 0] rs_dir = 5'b0;
+        reg [4 : 0] contadorArray = 5'b0;
 
         always @(posedge i_clk)
         begin
@@ -67,7 +80,8 @@
             else 
             begin
                 present_state <= next_state;
-                reg_instruccion <= i_instruccion;
+                // reg_instruccion <= i_instruccion;
+                reg_instruccion <= my_array[contadorArray];
                 if(contadorTX == 0) dato_transmicion <= reg_instruccion[31 : 24];
                 else if(contadorTX == 1) dato_transmicion <= reg_instruccion[23 : 16];
                 else if(contadorTX == 2) dato_transmicion <= reg_instruccion[15 : 8];
@@ -189,6 +203,7 @@
                                     next_state <= IDDLE_STATE;
                                     contadorTX <= 0;
                                     contador_ticks <= 4'b0000;
+                                    contadorArray <= contadorArray + 1;
                                 end else begin
                                     next_state <= WAITING_STATE;
                                     contador_ticks <= 4'b0000;

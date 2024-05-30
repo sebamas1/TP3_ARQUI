@@ -200,6 +200,7 @@ module Top(
                         .i_reset(i_reset),
                         .i_instruccion(etapa_id.o_rs),
                         .i_enviar(etapa_if.o_end_pipeline),// deberia usar o_end_pipeline
+                        .array_bus(array_bus),
                         .o_dato_enviado(),
                         .o_tx(tx),
                         .o_next_instruction()
@@ -217,7 +218,11 @@ module Top(
 
 
 
+        reg [31:0] my_array [0:22];
 
+        wire [32*23-1:0] array_bus;
+
+        // reg [32*23-1:0] array_bus_reg;
         
         
         reg [7 : 0] operando_1;
@@ -244,13 +249,49 @@ module Top(
         reg [3 : 0] present_state = IDDLE_STATE;
         reg [3 : 0] next_state = IDDLE_STATE;
 
+        reg [4 : 0] contadorArray = 5'b00000;
+
         assign salida = resultado;
         assign o_operando_1 = operando_1;
         assign o_operando_2 = operando_2;
         assign o_operacion = operacion;
         assign salida_operadores = {etapa_if.o_end_pipeline, {3'b000, reception_end}};
+        // assign array_bus_reg = array_bus;
 
-        //assign pipeline_on = reception_end ^ etapa_if.o_end_pipeline;
+          // Bloque inicial para asignar valores al array
+        // initial begin
+        //         my_array[0] = 32'h00000001;
+        //         my_array[1] = 32'h00000002;
+        //         my_array[2] = 32'h00000003;
+        //         my_array[3] = 32'h00000004;
+        //         my_array[4] = 32'h00000005;
+        //         my_array[5] = 32'h00000006;
+        //         my_array[6] = 32'h00000007;
+        //         my_array[7] = 32'h00000008;
+        //         my_array[8] = 32'h00000009;
+        //         my_array[9] = 32'h0000000A;
+        //         my_array[10] = 32'h0000000B;
+        //         my_array[11] = 32'h0000000C;
+        //         my_array[12] = 32'h0000000D;
+        //         my_array[13] = 32'h0000000E;
+        //         my_array[14] = 32'h0000000F;
+        //         my_array[15] = 32'h00000010;
+        //         my_array[16] = 32'h00000011;
+        //         my_array[17] = 32'h00000012;
+        //         my_array[18] = 32'h00000013;
+        //         my_array[19] = 32'h00000014;
+        //         my_array[20] = 32'h00000015;
+        //         my_array[21] = 32'h00000016;
+        //         my_array[22] = 32'h00000017;
+        // end
+
+         // Asignar el array al bus
+        genvar i;
+        generate
+        for (i = 0; i < 23; i = i + 1) begin
+                assign array_bus[32*i +: 32] = my_array[i];
+        end
+        endgenerate
 
           
         always @(posedge i_clk)
@@ -274,43 +315,45 @@ module Top(
                                 begin
                                         if (rec_data == 8'b11111111)
                                         begin
-                                                next_state <= PRIMER_HEXA;
+                                                next_state = PRIMER_HEXA;
                                         end
                                 end
                                 PRIMER_HEXA:
                                 begin
-                                        wea <= 0;
-                                        next_state <= SEGUNDO_HEXA;
-                                        INSTRUCCION [31 : 24] <= rec_data;
+                                        wea = 0;
+                                        next_state = SEGUNDO_HEXA;
+                                        INSTRUCCION [31 : 24] = rec_data;
                                 end
                                 
                                 SEGUNDO_HEXA:
                                 begin
-                                        next_state <= TERCER_HEXA;
-                                        INSTRUCCION [23 : 16] <= rec_data;
+                                        next_state = TERCER_HEXA;
+                                        INSTRUCCION [23 : 16] = rec_data;
                                 end
 
                                 TERCER_HEXA:
                                 begin
-                                        next_state <= CUARTO_HEXA;
-                                        INSTRUCCION [15 : 8] <= rec_data;
+                                        next_state = CUARTO_HEXA;
+                                        INSTRUCCION [15 : 8] = rec_data;
                                 end
                                 
                                 CUARTO_HEXA:
                                 begin
                                         if(rec_data == 8'b11111111)
                                         begin
-                                                //instruccion_addr <= instruccion_addr + 1;
-                                                wea <= 0;
-                                                INSTRUCCION [7 : 0] <= 8'b11111111;
-                                                next_state <= IDDLE_STATE;
-                                                //salida_op <= 2;
-                                                reception_end <= 1'b1;
+                                                //instruccion_addr = instruccion_addr + 1;
+                                                wea = 0;
+                                                INSTRUCCION [7 : 0] = 8'b11111111;
+                                                next_state = IDDLE_STATE;
+                                                //salida_op = 2;
+                                                reception_end = 1'b1;
                                         end else begin
-                                                INSTRUCCION [7 : 0] <= rec_data;
-                                                next_state <= PRIMER_HEXA;
-                                                instruccion_addr <= instruccion_addr + 1;
-                                                wea <= 1;
+                                                INSTRUCCION [7 : 0] = rec_data;
+                                                next_state = PRIMER_HEXA;
+                                                instruccion_addr = instruccion_addr + 1;
+                                                wea = 1;
+                                                my_array[contadorArray] = INSTRUCCION;
+                                                contadorArray = contadorArray + 1;
                                         end       
                                 end
                         endcase   

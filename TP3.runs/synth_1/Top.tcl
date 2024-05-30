@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/Top.tcl"
+  variable script "C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.runs/synth_1/Top.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,43 +70,43 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 3
 set_param xicom.use_bs_reader 1
-set_param chipscope.maxJobs 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir /home/sebastian/Documentos/TP3_ARQUI/TP3.cache/wt [current_project]
-set_property parent.project_path /home/sebastian/Documentos/TP3_ARQUI/TP3.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.cache/wt [current_project]
+set_property parent.project_path C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo /home/sebastian/Documentos/TP3_ARQUI/TP3.cache/ip [current_project]
+set_property ip_output_repo c:/Users/nemia/facu/repo/TP3_ARQUI/TP3.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/ALU.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Basys3_7SegmentMultiplexing.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Baud_gen.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Data_hazard_detection_unit.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Forwarding_unit.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/IF_ID.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Instruction_decode.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RAM.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/ROM.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Registros.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_wb.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_exmem.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_idex.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_memwb.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/ALU.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Basys3_7SegmentMultiplexing.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Baud_gen.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Data_hazard_detection_unit.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Forwarding_unit.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/IF_ID.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Instruction_decode.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RAM.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/ROM.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Registros.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_wb.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_exmem.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_idex.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_memwb.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -117,12 +117,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/constrs_1/new/tp3.xdc
-set_property used_in_implementation false [get_files /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/constrs_1/new/tp3.xdc]
+read_xdc C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/constrs_1/new/tp3.xdc
+set_property used_in_implementation false [get_files C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/constrs_1/new/tp3.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/utils_1/imports/synth_1/Top.dcp
+read_checkpoint -auto_incremental -incremental C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/utils_1/imports/synth_1/Top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

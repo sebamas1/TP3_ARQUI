@@ -48,6 +48,6 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
 
 # Ejemplo de uso
 archivo_a_enviar = "archivo.txt"  # Reemplaza con el nombre de tu archivo
-puerto_serial = "/dev/ttyUSB1"  # Reemplaza con el puerto serie que deseas utilizar
+puerto_serial = "COM9"  # Reemplaza con el puerto serie que deseas utilizar
 
 enviar_hexadecimal_a_uart(archivo_a_enviar, puerto_serial)

@@ -3,17 +3,19 @@
     with args -log Top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
 
 
+ECHO is off.
+ECHO is off.
+
 ****** Vivado v2023.2 (64-bit)
-  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
   **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
   **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source Top.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1323.539 ; gain = 0.023 ; free physical = 1707 ; free virtual = 7706
-Command: read_checkpoint -auto_incremental -incremental /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/utils_1/imports/synth_1/Top.dcp
-INFO: [Vivado 12-5825] Read reference checkpoint from /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/utils_1/imports/synth_1/Top.dcp for incremental synthesis
+Command: read_checkpoint -auto_incremental -incremental C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/utils_1/imports/synth_1/Top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/utils_1/imports/synth_1/Top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top Top -part xc7a35tcpg236-1
 Starting synth_design
@@ -22,168 +24,202 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
-INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 94053
+INFO: [Synth 8-7075] Helper process launched with PID 25640
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2022.441 ; gain = 405.770 ; free physical = 730 ; free virtual = 6744
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1309.324 ; gain = 440.348
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-10929] literal value 'b1111111111111111111111111111111111111111 truncated to fit in 32 bits [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v:59]
-INFO: [Synth 8-11241] undeclared symbol 'INSTRUCCION', assumed default net type 'wire' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:40]
-INFO: [Synth 8-11241] undeclared symbol 'instruccion_addr', assumed default net type 'wire' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:41]
-INFO: [Synth 8-11241] undeclared symbol 'wea', assumed default net type 'wire' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:42]
-INFO: [Synth 8-11241] undeclared symbol 'reception_end', assumed default net type 'wire' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:43]
-INFO: [Synth 8-11241] undeclared symbol 'o_tick', assumed default net type 'wire' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:185]
-WARNING: [Synth 8-8895] 'instruccion_addr' is already implicitly declared on line 41 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:227]
-WARNING: [Synth 8-8895] 'wea' is already implicitly declared on line 42 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:230]
-WARNING: [Synth 8-8895] 'reception_end' is already implicitly declared on line 43 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:231]
-WARNING: [Synth 8-8895] 'INSTRUCCION' is already implicitly declared on line 40 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:242]
-INFO: [Synth 8-6157] synthesizing module 'Top' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:23]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:34]
-INFO: [Synth 8-6157] synthesizing module 'Instruction_fetch' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.v:4]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.v:32]
-INFO: [Synth 8-6157] synthesizing module 'ROM' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/ROM.v:8]
-INFO: [Synth 8-6155] done synthesizing module 'ROM' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/ROM.v:8]
-INFO: [Synth 8-6155] done synthesizing module 'Instruction_fetch' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.v:4]
-WARNING: [Synth 8-7071] port 'o_instruccion' of module 'Instruction_fetch' is unconnected for instance 'etapa_if' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:34]
-WARNING: [Synth 8-7071] port 'o_pc_value' of module 'Instruction_fetch' is unconnected for instance 'etapa_if' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:34]
-WARNING: [Synth 8-7071] port 'o_end_pipeline' of module 'Instruction_fetch' is unconnected for instance 'etapa_if' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:34]
-WARNING: [Synth 8-7023] instance 'etapa_if' of module 'Instruction_fetch' has 12 connections declared, but only 9 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:34]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:46]
-INFO: [Synth 8-6157] synthesizing module 'IF_ID' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/IF_ID.v:24]
-INFO: [Synth 8-6155] done synthesizing module 'IF_ID' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/IF_ID.v:24]
-WARNING: [Synth 8-7071] port 'o_instruccion' of module 'IF_ID' is unconnected for instance 'latch_ifid' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:46]
-WARNING: [Synth 8-7071] port 'o_pc_value' of module 'IF_ID' is unconnected for instance 'latch_ifid' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:46]
-WARNING: [Synth 8-7023] instance 'latch_ifid' of module 'IF_ID' has 8 connections declared, but only 6 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:46]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-INFO: [Synth 8-6157] synthesizing module 'Instruction_decode' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Instruction_decode.v:23]
-INFO: [Synth 8-6157] synthesizing module 'Registros' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Registros.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'Registros' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Registros.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'Instruction_decode' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Instruction_decode.v:23]
-WARNING: [Synth 8-689] width (32) of port connection 'i_reg_write_mem_wb' does not match port width (1) of module 'Instruction_decode' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:61]
-WARNING: [Synth 8-689] width (32) of port connection 'i_direc_de_escritura_en_reg' does not match port width (5) of module 'Instruction_decode' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:63]
-WARNING: [Synth 8-7071] port 'o_pc' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-7071] port 'o_op' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-7071] port 'o_inmediato' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-7071] port 'o_shamt' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-7071] port 'o_funct' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-7071] port 'o_direccion' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-7071] port 'o_rs' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-7071] port 'o_rt' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-7071] port 'o_rs_dir' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-7071] port 'o_rt_dir' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-7071] port 'o_rd_dir' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-7023] instance 'etapa_id' of module 'Instruction_decode' has 18 connections declared, but only 7 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-INFO: [Synth 8-6157] synthesizing module 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_idex.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'latch_idex' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_idex.v:23]
-WARNING: [Synth 8-7071] port 'o_pc' of module 'latch_idex' is unconnected for instance 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-7071] port 'o_op' of module 'latch_idex' is unconnected for instance 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-7071] port 'o_inmediato' of module 'latch_idex' is unconnected for instance 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-7071] port 'o_shamt' of module 'latch_idex' is unconnected for instance 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-7071] port 'o_funct' of module 'latch_idex' is unconnected for instance 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-7071] port 'o_direccion' of module 'latch_idex' is unconnected for instance 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-7071] port 'o_rs' of module 'latch_idex' is unconnected for instance 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-7071] port 'o_rt' of module 'latch_idex' is unconnected for instance 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-7071] port 'o_rs_dir' of module 'latch_idex' is unconnected for instance 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-7071] port 'o_rt_dir' of module 'latch_idex' is unconnected for instance 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-7071] port 'o_rd_dir' of module 'latch_idex' is unconnected for instance 'latch_idex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-7023] instance 'latch_idex' of module 'latch_idex' has 26 connections declared, but only 15 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
-INFO: [Synth 8-6157] synthesizing module 'etapa_ex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:23]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:78]
-INFO: [Synth 8-6157] synthesizing module 'ALU' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/ALU.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'ALU' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/ALU.v:23]
-WARNING: [Synth 8-7071] port 'o_res' of module 'ALU' is unconnected for instance 'alu' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:78]
-WARNING: [Synth 8-7071] port 'o_ins_type' of module 'ALU' is unconnected for instance 'alu' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:78]
-WARNING: [Synth 8-7023] instance 'alu' of module 'ALU' has 8 connections declared, but only 6 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:78]
-INFO: [Synth 8-6155] done synthesizing module 'etapa_ex' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:23]
-WARNING: [Synth 8-7071] port 'o_pc' of module 'etapa_ex' is unconnected for instance 'ex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
-WARNING: [Synth 8-7071] port 'o_res' of module 'etapa_ex' is unconnected for instance 'ex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
-WARNING: [Synth 8-7071] port 'o_rt' of module 'etapa_ex' is unconnected for instance 'ex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
-WARNING: [Synth 8-7071] port 'o_wb_reg_write' of module 'etapa_ex' is unconnected for instance 'ex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
-WARNING: [Synth 8-7071] port 'o_alu_ctrl' of module 'etapa_ex' is unconnected for instance 'ex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
-WARNING: [Synth 8-7071] port 'o_branch' of module 'etapa_ex' is unconnected for instance 'ex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
-WARNING: [Synth 8-7071] port 'o_branch_dir' of module 'etapa_ex' is unconnected for instance 'ex' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
-WARNING: [Synth 8-7023] instance 'ex' of module 'etapa_ex' has 25 connections declared, but only 18 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
-INFO: [Synth 8-6157] synthesizing module 'latch_exmem' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_exmem.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'latch_exmem' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_exmem.v:23]
-WARNING: [Synth 8-7071] port 'o_rt' of module 'latch_exmem' is unconnected for instance 'exmem' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
-WARNING: [Synth 8-7071] port 'o_res' of module 'latch_exmem' is unconnected for instance 'exmem' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
-WARNING: [Synth 8-7071] port 'o_pc' of module 'latch_exmem' is unconnected for instance 'exmem' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
-WARNING: [Synth 8-7071] port 'o_wb_reg_write' of module 'latch_exmem' is unconnected for instance 'exmem' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
-WARNING: [Synth 8-7071] port 'o_alu_ctrl' of module 'latch_exmem' is unconnected for instance 'exmem' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
-WARNING: [Synth 8-7023] instance 'exmem' of module 'latch_exmem' has 12 connections declared, but only 7 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
-INFO: [Synth 8-6157] synthesizing module 'Etapa_MEM' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.v:23]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.v:46]
-INFO: [Synth 8-6157] synthesizing module 'RAM' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RAM.v:2]
-INFO: [Synth 8-6155] done synthesizing module 'RAM' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RAM.v:2]
-INFO: [Synth 8-6155] done synthesizing module 'Etapa_MEM' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.v:23]
-WARNING: [Synth 8-7071] port 'o_res' of module 'Etapa_MEM' is unconnected for instance 'mem' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
-WARNING: [Synth 8-7071] port 'o_pc' of module 'Etapa_MEM' is unconnected for instance 'mem' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
-WARNING: [Synth 8-7071] port 'o_wb_reg_write' of module 'Etapa_MEM' is unconnected for instance 'mem' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
-WARNING: [Synth 8-7071] port 'o_reg_write_enable' of module 'Etapa_MEM' is unconnected for instance 'mem' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
-WARNING: [Synth 8-7023] instance 'mem' of module 'Etapa_MEM' has 11 connections declared, but only 7 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
-INFO: [Synth 8-6157] synthesizing module 'latch_memwb' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_memwb.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'latch_memwb' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_memwb.v:23]
-WARNING: [Synth 8-7071] port 'o_pc' of module 'latch_memwb' is unconnected for instance 'memwb' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
-WARNING: [Synth 8-7071] port 'o_res' of module 'latch_memwb' is unconnected for instance 'memwb' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
-WARNING: [Synth 8-7071] port 'o_wb_reg_write' of module 'latch_memwb' is unconnected for instance 'memwb' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
-WARNING: [Synth 8-7071] port 'o_reg_write_enable' of module 'latch_memwb' is unconnected for instance 'memwb' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
-WARNING: [Synth 8-7023] instance 'memwb' of module 'latch_memwb' has 10 connections declared, but only 6 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:142]
-INFO: [Synth 8-6157] synthesizing module 'etapa_wb' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_wb.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'etapa_wb' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_wb.v:23]
-WARNING: [Synth 8-7071] port 'o_res' of module 'etapa_wb' is unconnected for instance 'wb' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:142]
-WARNING: [Synth 8-7071] port 'o_wb_reg_write' of module 'etapa_wb' is unconnected for instance 'wb' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:142]
-WARNING: [Synth 8-7071] port 'o_reg_write_enable' of module 'etapa_wb' is unconnected for instance 'wb' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:142]
-WARNING: [Synth 8-7023] instance 'wb' of module 'etapa_wb' has 9 connections declared, but only 6 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:142]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
-INFO: [Synth 8-6157] synthesizing module 'Forwarding_unit' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Forwarding_unit.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'Forwarding_unit' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Forwarding_unit.v:23]
-WARNING: [Synth 8-7071] port 'o_mem_res_rs_enable' of module 'Forwarding_unit' is unconnected for instance 'fu' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
-WARNING: [Synth 8-7071] port 'o_wb_res_rs_enable' of module 'Forwarding_unit' is unconnected for instance 'fu' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
-WARNING: [Synth 8-7071] port 'o_mem_res_rt_enable' of module 'Forwarding_unit' is unconnected for instance 'fu' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
-WARNING: [Synth 8-7071] port 'o_wb_res_rt_enable' of module 'Forwarding_unit' is unconnected for instance 'fu' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
-WARNING: [Synth 8-7071] port 'o_mem_res' of module 'Forwarding_unit' is unconnected for instance 'fu' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
-WARNING: [Synth 8-7071] port 'o_wb_res' of module 'Forwarding_unit' is unconnected for instance 'fu' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
-WARNING: [Synth 8-7023] instance 'fu' of module 'Forwarding_unit' has 14 connections declared, but only 8 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:165]
-INFO: [Synth 8-6157] synthesizing module 'Data_hazard_detection_unit' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Data_hazard_detection_unit.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'Data_hazard_detection_unit' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Data_hazard_detection_unit.v:23]
-WARNING: [Synth 8-7071] port 'o_stall' of module 'Data_hazard_detection_unit' is unconnected for instance 'dtu' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:165]
-WARNING: [Synth 8-7023] instance 'dtu' of module 'Data_hazard_detection_unit' has 5 connections declared, but only 4 given [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:165]
-INFO: [Synth 8-6157] synthesizing module 'Baud_gen' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Baud_gen.v:25]
-INFO: [Synth 8-6155] done synthesizing module 'Baud_gen' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Baud_gen.v:25]
-INFO: [Synth 8-6157] synthesizing module 'RX' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:23]
-WARNING: [Synth 8-6090] variable 'contador_ticks' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:71]
-INFO: [Synth 8-226] default block is never used [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:77]
-INFO: [Synth 8-226] default block is never used [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:180]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:65]
-INFO: [Synth 8-6155] done synthesizing module 'RX' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:23]
-INFO: [Synth 8-6157] synthesizing module 'TX' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v:82]
-INFO: [Synth 8-6155] done synthesizing module 'TX' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v:23]
-INFO: [Synth 8-6157] synthesizing module 'Basys3_7SegmentMultiplexing' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Basys3_7SegmentMultiplexing.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'Basys3_7SegmentMultiplexing' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Basys3_7SegmentMultiplexing.v:3]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:272]
-INFO: [Synth 8-6155] done synthesizing module 'Top' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:23]
-WARNING: [Synth 8-6014] Unused sequential element rt_dir_tmp_reg was removed.  [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:105]
-WARNING: [Synth 8-6014] Unused sequential element rd_dir_tmp_reg was removed.  [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:106]
-WARNING: [Synth 8-6014] Unused sequential element seg_out_reg was removed.  [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Basys3_7SegmentMultiplexing.v:27]
-WARNING: [Synth 8-6014] Unused sequential element operando_1_reg was removed.  [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:248]
-WARNING: [Synth 8-6014] Unused sequential element operando_2_reg was removed.  [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:249]
-WARNING: [Synth 8-6014] Unused sequential element operacion_reg was removed.  [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:250]
-WARNING: [Synth 8-3848] Net resultado in module/entity Top does not have driver. [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:179]
+WARNING: [Synth 8-10929] literal value 'b1111111111111111111111111111111111111111 truncated to fit in 32 bits [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v:71]
+INFO: [Synth 8-11241] undeclared symbol 'INSTRUCCION', assumed default net type 'wire' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:40]
+INFO: [Synth 8-11241] undeclared symbol 'instruccion_addr', assumed default net type 'wire' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:41]
+INFO: [Synth 8-11241] undeclared symbol 'wea', assumed default net type 'wire' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:42]
+INFO: [Synth 8-11241] undeclared symbol 'reception_end', assumed default net type 'wire' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:43]
+INFO: [Synth 8-11241] undeclared symbol 'o_tick', assumed default net type 'wire' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:185]
+INFO: [Synth 8-11241] undeclared symbol 'array_bus', assumed default net type 'wire' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:203]
+WARNING: [Synth 8-8895] 'array_bus' is already implicitly declared on line 203 [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:223]
+WARNING: [Synth 8-8895] 'instruccion_addr' is already implicitly declared on line 41 [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:232]
+WARNING: [Synth 8-8895] 'wea' is already implicitly declared on line 42 [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:235]
+WARNING: [Synth 8-8895] 'reception_end' is already implicitly declared on line 43 [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:236]
+WARNING: [Synth 8-8895] 'INSTRUCCION' is already implicitly declared on line 40 [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:247]
+INFO: [Synth 8-6157] synthesizing module 'Top' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:23]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:34]
+INFO: [Synth 8-6157] synthesizing module 'Instruction_fetch' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.v:4]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.v:32]
+INFO: [Synth 8-6157] synthesizing module 'ROM' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/ROM.v:8]
+INFO: [Synth 8-6155] done synthesizing module 'ROM' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/ROM.v:8]
+INFO: [Synth 8-6155] done synthesizing module 'Instruction_fetch' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.v:4]
+WARNING: [Synth 8-7071] port 'o_instruccion' of module 'Instruction_fetch' is unconnected for instance 'etapa_if' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:34]
+WARNING: [Synth 8-7071] port 'o_pc_value' of module 'Instruction_fetch' is unconnected for instance 'etapa_if' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:34]
+WARNING: [Synth 8-7071] port 'o_end_pipeline' of module 'Instruction_fetch' is unconnected for instance 'etapa_if' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:34]
+WARNING: [Synth 8-7023] instance 'etapa_if' of module 'Instruction_fetch' has 12 connections declared, but only 9 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:34]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:46]
+INFO: [Synth 8-6157] synthesizing module 'IF_ID' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/IF_ID.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'IF_ID' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/IF_ID.v:24]
+WARNING: [Synth 8-7071] port 'o_instruccion' of module 'IF_ID' is unconnected for instance 'latch_ifid' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:46]
+WARNING: [Synth 8-7071] port 'o_pc_value' of module 'IF_ID' is unconnected for instance 'latch_ifid' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:46]
+WARNING: [Synth 8-7023] instance 'latch_ifid' of module 'IF_ID' has 8 connections declared, but only 6 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:46]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+INFO: [Synth 8-6157] synthesizing module 'Instruction_decode' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Instruction_decode.v:23]
+INFO: [Synth 8-6157] synthesizing module 'Registros' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Registros.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Registros' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Registros.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Instruction_decode' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Instruction_decode.v:23]
+WARNING: [Synth 8-689] width (32) of port connection 'i_reg_write_mem_wb' does not match port width (1) of module 'Instruction_decode' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:61]
+WARNING: [Synth 8-689] width (32) of port connection 'i_direc_de_escritura_en_reg' does not match port width (5) of module 'Instruction_decode' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:63]
+WARNING: [Synth 8-7071] port 'o_pc' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-7071] port 'o_op' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-7071] port 'o_inmediato' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-7071] port 'o_shamt' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-7071] port 'o_funct' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-7071] port 'o_direccion' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-7071] port 'o_rs' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-7071] port 'o_rt' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-7071] port 'o_rs_dir' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-7071] port 'o_rt_dir' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-7071] port 'o_rd_dir' of module 'Instruction_decode' is unconnected for instance 'etapa_id' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-7023] instance 'etapa_id' of module 'Instruction_decode' has 18 connections declared, but only 7 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:55]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+INFO: [Synth 8-6157] synthesizing module 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_idex.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'latch_idex' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_idex.v:23]
+WARNING: [Synth 8-7071] port 'o_pc' of module 'latch_idex' is unconnected for instance 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-7071] port 'o_op' of module 'latch_idex' is unconnected for instance 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-7071] port 'o_inmediato' of module 'latch_idex' is unconnected for instance 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-7071] port 'o_shamt' of module 'latch_idex' is unconnected for instance 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-7071] port 'o_funct' of module 'latch_idex' is unconnected for instance 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-7071] port 'o_direccion' of module 'latch_idex' is unconnected for instance 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-7071] port 'o_rs' of module 'latch_idex' is unconnected for instance 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-7071] port 'o_rt' of module 'latch_idex' is unconnected for instance 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-7071] port 'o_rs_dir' of module 'latch_idex' is unconnected for instance 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-7071] port 'o_rt_dir' of module 'latch_idex' is unconnected for instance 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-7071] port 'o_rd_dir' of module 'latch_idex' is unconnected for instance 'latch_idex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-7023] instance 'latch_idex' of module 'latch_idex' has 26 connections declared, but only 15 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:70]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
+INFO: [Synth 8-6157] synthesizing module 'etapa_ex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:23]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:78]
+INFO: [Synth 8-6157] synthesizing module 'ALU' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/ALU.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'ALU' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/ALU.v:23]
+WARNING: [Synth 8-7071] port 'o_res' of module 'ALU' is unconnected for instance 'alu' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:78]
+WARNING: [Synth 8-7071] port 'o_ins_type' of module 'ALU' is unconnected for instance 'alu' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:78]
+WARNING: [Synth 8-7023] instance 'alu' of module 'ALU' has 8 connections declared, but only 6 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:78]
+INFO: [Synth 8-6155] done synthesizing module 'etapa_ex' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:23]
+WARNING: [Synth 8-7071] port 'o_pc' of module 'etapa_ex' is unconnected for instance 'ex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
+WARNING: [Synth 8-7071] port 'o_res' of module 'etapa_ex' is unconnected for instance 'ex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
+WARNING: [Synth 8-7071] port 'o_rt' of module 'etapa_ex' is unconnected for instance 'ex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
+WARNING: [Synth 8-7071] port 'o_wb_reg_write' of module 'etapa_ex' is unconnected for instance 'ex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
+WARNING: [Synth 8-7071] port 'o_alu_ctrl' of module 'etapa_ex' is unconnected for instance 'ex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
+WARNING: [Synth 8-7071] port 'o_branch' of module 'etapa_ex' is unconnected for instance 'ex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
+WARNING: [Synth 8-7071] port 'o_branch_dir' of module 'etapa_ex' is unconnected for instance 'ex' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
+WARNING: [Synth 8-7023] instance 'ex' of module 'etapa_ex' has 25 connections declared, but only 18 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:88]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
+INFO: [Synth 8-6157] synthesizing module 'latch_exmem' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_exmem.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'latch_exmem' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_exmem.v:23]
+WARNING: [Synth 8-7071] port 'o_rt' of module 'latch_exmem' is unconnected for instance 'exmem' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
+WARNING: [Synth 8-7071] port 'o_res' of module 'latch_exmem' is unconnected for instance 'exmem' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
+WARNING: [Synth 8-7071] port 'o_pc' of module 'latch_exmem' is unconnected for instance 'exmem' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
+WARNING: [Synth 8-7071] port 'o_wb_reg_write' of module 'latch_exmem' is unconnected for instance 'exmem' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
+WARNING: [Synth 8-7071] port 'o_alu_ctrl' of module 'latch_exmem' is unconnected for instance 'exmem' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
+WARNING: [Synth 8-7023] instance 'exmem' of module 'latch_exmem' has 12 connections declared, but only 7 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:110]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
+INFO: [Synth 8-6157] synthesizing module 'Etapa_MEM' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.v:23]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.v:46]
+INFO: [Synth 8-6157] synthesizing module 'RAM' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RAM.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'RAM' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RAM.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'Etapa_MEM' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.v:23]
+WARNING: [Synth 8-7071] port 'o_res' of module 'Etapa_MEM' is unconnected for instance 'mem' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
+WARNING: [Synth 8-7071] port 'o_pc' of module 'Etapa_MEM' is unconnected for instance 'mem' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
+WARNING: [Synth 8-7071] port 'o_wb_reg_write' of module 'Etapa_MEM' is unconnected for instance 'mem' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
+WARNING: [Synth 8-7071] port 'o_reg_write_enable' of module 'Etapa_MEM' is unconnected for instance 'mem' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
+WARNING: [Synth 8-7023] instance 'mem' of module 'Etapa_MEM' has 11 connections declared, but only 7 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:120]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
+INFO: [Synth 8-6157] synthesizing module 'latch_memwb' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_memwb.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'latch_memwb' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_memwb.v:23]
+WARNING: [Synth 8-7071] port 'o_pc' of module 'latch_memwb' is unconnected for instance 'memwb' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
+WARNING: [Synth 8-7071] port 'o_res' of module 'latch_memwb' is unconnected for instance 'memwb' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
+WARNING: [Synth 8-7071] port 'o_wb_reg_write' of module 'latch_memwb' is unconnected for instance 'memwb' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
+WARNING: [Synth 8-7071] port 'o_reg_write_enable' of module 'latch_memwb' is unconnected for instance 'memwb' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
+WARNING: [Synth 8-7023] instance 'memwb' of module 'latch_memwb' has 10 connections declared, but only 6 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:131]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:142]
+INFO: [Synth 8-6157] synthesizing module 'etapa_wb' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_wb.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'etapa_wb' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_wb.v:23]
+WARNING: [Synth 8-7071] port 'o_res' of module 'etapa_wb' is unconnected for instance 'wb' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:142]
+WARNING: [Synth 8-7071] port 'o_wb_reg_write' of module 'etapa_wb' is unconnected for instance 'wb' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:142]
+WARNING: [Synth 8-7071] port 'o_reg_write_enable' of module 'etapa_wb' is unconnected for instance 'wb' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:142]
+WARNING: [Synth 8-7023] instance 'wb' of module 'etapa_wb' has 9 connections declared, but only 6 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:142]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
+INFO: [Synth 8-6157] synthesizing module 'Forwarding_unit' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Forwarding_unit.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Forwarding_unit' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Forwarding_unit.v:23]
+WARNING: [Synth 8-7071] port 'o_mem_res_rs_enable' of module 'Forwarding_unit' is unconnected for instance 'fu' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
+WARNING: [Synth 8-7071] port 'o_wb_res_rs_enable' of module 'Forwarding_unit' is unconnected for instance 'fu' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
+WARNING: [Synth 8-7071] port 'o_mem_res_rt_enable' of module 'Forwarding_unit' is unconnected for instance 'fu' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
+WARNING: [Synth 8-7071] port 'o_wb_res_rt_enable' of module 'Forwarding_unit' is unconnected for instance 'fu' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
+WARNING: [Synth 8-7071] port 'o_mem_res' of module 'Forwarding_unit' is unconnected for instance 'fu' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
+WARNING: [Synth 8-7071] port 'o_wb_res' of module 'Forwarding_unit' is unconnected for instance 'fu' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
+WARNING: [Synth 8-7023] instance 'fu' of module 'Forwarding_unit' has 14 connections declared, but only 8 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:153]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:165]
+INFO: [Synth 8-6157] synthesizing module 'Data_hazard_detection_unit' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Data_hazard_detection_unit.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Data_hazard_detection_unit' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Data_hazard_detection_unit.v:23]
+WARNING: [Synth 8-7071] port 'o_stall' of module 'Data_hazard_detection_unit' is unconnected for instance 'dtu' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:165]
+WARNING: [Synth 8-7023] instance 'dtu' of module 'Data_hazard_detection_unit' has 5 connections declared, but only 4 given [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:165]
+INFO: [Synth 8-6157] synthesizing module 'Baud_gen' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Baud_gen.v:25]
+INFO: [Synth 8-6155] done synthesizing module 'Baud_gen' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Baud_gen.v:25]
+INFO: [Synth 8-6157] synthesizing module 'RX' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:23]
+WARNING: [Synth 8-6090] variable 'contador_ticks' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:71]
+INFO: [Synth 8-226] default block is never used [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:77]
+INFO: [Synth 8-226] default block is never used [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:180]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:65]
+INFO: [Synth 8-6155] done synthesizing module 'RX' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:23]
+INFO: [Synth 8-6157] synthesizing module 'TX' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v:96]
+INFO: [Synth 8-6155] done synthesizing module 'TX' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v:23]
+INFO: [Synth 8-6157] synthesizing module 'Basys3_7SegmentMultiplexing' [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Basys3_7SegmentMultiplexing.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'Basys3_7SegmentMultiplexing' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Basys3_7SegmentMultiplexing.v:3]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:313]
+INFO: [Synth 8-6155] done synthesizing module 'Top' (0#1) [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:23]
+WARNING: [Synth 8-6014] Unused sequential element rt_dir_tmp_reg was removed.  [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:105]
+WARNING: [Synth 8-6014] Unused sequential element rd_dir_tmp_reg was removed.  [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:106]
+WARNING: [Synth 8-6014] Unused sequential element seg_out_reg was removed.  [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Basys3_7SegmentMultiplexing.v:27]
+WARNING: [Synth 8-6014] Unused sequential element operando_1_reg was removed.  [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:255]
+WARNING: [Synth 8-6014] Unused sequential element operando_2_reg was removed.  [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:256]
+WARNING: [Synth 8-6014] Unused sequential element operacion_reg was removed.  [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:257]
+WARNING: [Synth 8-3848] Net resultado in module/entity Top does not have driver. [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:179]
 WARNING: [Synth 8-3917] design Top has port salida_operadores[7] driven by constant 0
 WARNING: [Synth 8-3917] design Top has port salida_operadores[6] driven by constant 0
 WARNING: [Synth 8-3917] design Top has port salida_operadores[5] driven by constant 0
 WARNING: [Synth 8-3917] design Top has port salida_operadores[3] driven by constant 0
 WARNING: [Synth 8-3917] design Top has port salida_operadores[2] driven by constant 0
 WARNING: [Synth 8-3917] design Top has port salida_operadores[1] driven by constant 0
+WARNING: [Synth 8-7129] Port i_instruccion[31] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[30] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[29] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[28] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[27] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[26] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[25] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[24] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[23] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[22] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[21] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[20] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[19] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[18] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[17] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[16] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[15] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[14] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[13] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[12] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[11] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[10] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[9] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[8] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[7] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[6] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[5] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[4] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[3] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[2] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[1] in module TX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion[0] in module TX is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_op[3] in module Data_hazard_detection_unit is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_op[1] in module Data_hazard_detection_unit is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_op[0] in module Data_hazard_detection_unit is either unconnected or has no load
@@ -252,84 +288,53 @@ WARNING: [Synth 8-7129] Port i_addra[11] in module ROM is either unconnected or 
 WARNING: [Synth 8-7129] Port i_dina[31] in module ROM is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_dina[30] in module ROM is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_dina[29] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[28] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[27] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[26] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[25] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[24] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[23] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[22] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[21] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[20] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[19] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[18] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[17] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[16] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[15] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[14] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[13] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[12] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[11] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[10] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[9] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[8] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[7] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[6] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[5] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[4] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[3] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[2] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[1] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[0] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_rsta in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_regcea in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_reset in module Instruction_fetch is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2124.426 ; gain = 507.754 ; free physical = 602 ; free virtual = 6620
+Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 1450.441 ; gain = 581.465
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2142.238 ; gain = 525.566 ; free physical = 600 ; free virtual = 6618
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 1450.441 ; gain = 581.465
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2142.238 ; gain = 525.566 ; free physical = 600 ; free virtual = 6618
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 1450.441 ; gain = 581.465
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.2 ; elapsed = 00:00:00.22 . Memory (MB): peak = 2148.176 ; gain = 0.000 ; free physical = 583 ; free virtual = 6612
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.144 . Memory (MB): peak = 1450.441 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/constrs_1/new/tp3.xdc]
-Finished Parsing XDC File [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/constrs_1/new/tp3.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/constrs_1/new/tp3.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_propImpl.xdc].
+Parsing XDC File [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/constrs_1/new/tp3.xdc]
+Finished Parsing XDC File [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/constrs_1/new/tp3.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/constrs_1/new/tp3.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2202.004 ; gain = 0.000 ; free physical = 549 ; free virtual = 6589
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1486.199 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2202.039 ; gain = 0.000 ; free physical = 549 ; free virtual = 6588
+The system cannot find the path specified.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1486.199 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2202.039 ; gain = 585.367 ; free physical = 556 ; free virtual = 6596
+Finished Constraint Validation : Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 1486.199 ; gain = 617.223
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2202.039 ; gain = 585.367 ; free physical = 556 ; free virtual = 6596
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 1486.199 ; gain = 617.223
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2202.039 ; gain = 585.367 ; free physical = 556 ; free virtual = 6596
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 1486.199 ; gain = 617.223
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'present_state_reg' in module 'RX'
 INFO: [Synth 8-802] inferred FSM for state register 'present_state_reg' in module 'TX'
@@ -388,7 +393,7 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'display_select_reg' in 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'present_state_reg' using encoding 'one-hot' in module 'Top'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2202.039 ; gain = 585.367 ; free physical = 553 ; free virtual = 6589
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 1486.199 ; gain = 617.223
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -400,19 +405,19 @@ Detailed RTL Component Info :
 	   2 Input   16 Bit       Adders := 1     
 	   2 Input   12 Bit       Adders := 1     
 	   2 Input   11 Bit       Adders := 3     
-	   2 Input    5 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 3     
 	   2 Input    4 Bit       Adders := 3     
 +---XORs : 
 	   2 Input     32 Bit         XORs := 2     
 +---Registers : 
-	               32 Bit    Registers := 58    
+	               32 Bit    Registers := 81    
 	               26 Bit    Registers := 3     
 	               16 Bit    Registers := 2     
 	               11 Bit    Registers := 8     
 	                8 Bit    Registers := 2     
 	                7 Bit    Registers := 1     
 	                6 Bit    Registers := 6     
-	                5 Bit    Registers := 15    
+	                5 Bit    Registers := 17    
 	                4 Bit    Registers := 4     
 	                2 Bit    Registers := 1     
 	                1 Bit    Registers := 10    
@@ -420,7 +425,7 @@ Detailed RTL Component Info :
 	              64K Bit	(2048 X 32 bit)          RAMs := 1     
 +---Muxes : 
 	   9 Input   32 Bit        Muxes := 1     
-	   2 Input   32 Bit        Muxes := 17    
+	   2 Input   32 Bit        Muxes := 16    
 	  22 Input   32 Bit        Muxes := 1     
 	   4 Input   32 Bit        Muxes := 2     
 	   5 Input   32 Bit        Muxes := 1     
@@ -431,7 +436,7 @@ Detailed RTL Component Info :
 	   3 Input    8 Bit        Muxes := 1     
 	  11 Input    8 Bit        Muxes := 2     
 	   4 Input    8 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 2     
 	   5 Input    7 Bit        Muxes := 1     
 	   2 Input    7 Bit        Muxes := 1     
 	  32 Input    5 Bit        Muxes := 1     
@@ -442,11 +447,11 @@ Detailed RTL Component Info :
 	  11 Input    4 Bit        Muxes := 4     
 	   5 Input    4 Bit        Muxes := 3     
 	   2 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 86    
+	   2 Input    1 Bit        Muxes := 135   
 	   3 Input    1 Bit        Muxes := 1     
-	  11 Input    1 Bit        Muxes := 11    
+	  11 Input    1 Bit        Muxes := 12    
 	   4 Input    1 Bit        Muxes := 1     
-	   5 Input    1 Bit        Muxes := 4     
+	   5 Input    1 Bit        Muxes := 27    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -463,7 +468,7 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-3936] Found unconnected internal register 'direccion_tmp_reg' and it is trimmed from '26' to '24' bits. [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:83]
+WARNING: [Synth 8-3936] Found unconnected internal register 'direccion_tmp_reg' and it is trimmed from '26' to '24' bits. [C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:83]
 WARNING: [Synth 8-3917] design Top has port salida_operadores[7] driven by constant 0
 WARNING: [Synth 8-3917] design Top has port salida_operadores[6] driven by constant 0
 WARNING: [Synth 8-3917] design Top has port salida_operadores[5] driven by constant 0
@@ -471,7 +476,7 @@ WARNING: [Synth 8-3917] design Top has port salida_operadores[3] driven by const
 WARNING: [Synth 8-3917] design Top has port salida_operadores[2] driven by constant 0
 WARNING: [Synth 8-3917] design Top has port salida_operadores[1] driven by constant 0
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:56 ; elapsed = 00:02:59 . Memory (MB): peak = 2218.012 ; gain = 601.340 ; free physical = 526 ; free virtual = 6559
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:01:17 . Memory (MB): peak = 1486.199 ; gain = 617.223
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -492,13 +497,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:01 ; elapsed = 00:03:03 . Memory (MB): peak = 2218.012 ; gain = 601.340 ; free physical = 519 ; free virtual = 6560
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:01:21 . Memory (MB): peak = 1486.199 ; gain = 617.223
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:03:26 ; elapsed = 00:03:29 . Memory (MB): peak = 2255.012 ; gain = 638.340 ; free physical = 485 ; free virtual = 6528
+Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:01:36 . Memory (MB): peak = 1595.859 ; gain = 726.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -520,7 +525,7 @@ Start Technology Mapping
 INFO: [Synth 8-7052] The timing for the instance mem/mem_datos/BRAM_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance mem/mem_datos/BRAM_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:03:28 ; elapsed = 00:03:30 . Memory (MB): peak = 2255.012 ; gain = 638.340 ; free physical = 484 ; free virtual = 6530
+Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:01:37 . Memory (MB): peak = 1595.859 ; gain = 726.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -538,37 +543,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:03:32 ; elapsed = 00:03:34 . Memory (MB): peak = 2255.012 ; gain = 638.340 ; free physical = 490 ; free virtual = 6533
+Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:01:41 . Memory (MB): peak = 1595.859 ; gain = 726.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:03:32 ; elapsed = 00:03:34 . Memory (MB): peak = 2255.012 ; gain = 638.340 ; free physical = 490 ; free virtual = 6533
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:01:41 . Memory (MB): peak = 1595.859 ; gain = 726.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:32 ; elapsed = 00:03:35 . Memory (MB): peak = 2255.012 ; gain = 638.340 ; free physical = 489 ; free virtual = 6533
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:26 ; elapsed = 00:01:41 . Memory (MB): peak = 1595.859 ; gain = 726.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:03:32 ; elapsed = 00:03:35 . Memory (MB): peak = 2255.012 ; gain = 638.340 ; free physical = 489 ; free virtual = 6533
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:01:41 . Memory (MB): peak = 1595.859 ; gain = 726.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:03:32 ; elapsed = 00:03:35 . Memory (MB): peak = 2255.012 ; gain = 638.340 ; free physical = 489 ; free virtual = 6533
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:01:41 . Memory (MB): peak = 1595.859 ; gain = 726.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:03:32 ; elapsed = 00:03:35 . Memory (MB): peak = 2255.012 ; gain = 638.340 ; free physical = 489 ; free virtual = 6533
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:26 ; elapsed = 00:01:41 . Memory (MB): peak = 1595.859 ; gain = 726.883
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -584,50 +589,49 @@ Report Cell Usage:
 +------+---------+------+
 |      |Cell     |Count |
 +------+---------+------+
-|1     |BUFG     |     3|
+|1     |BUFG     |     4|
 |2     |CARRY4   |    48|
-|3     |LUT1     |   147|
-|4     |LUT2     |   207|
+|3     |LUT1     |   150|
+|4     |LUT2     |   215|
 |5     |LUT3     |   268|
-|6     |LUT4     |   168|
-|7     |LUT5     |   384|
-|8     |LUT6     |   986|
-|9     |MUXF7    |   273|
+|6     |LUT4     |   173|
+|7     |LUT5     |   420|
+|8     |LUT6     |  1201|
+|9     |MUXF7    |   337|
 |10    |RAMB36E1 |     2|
-|11    |FDRE     |  1534|
+|11    |FDRE     |  2282|
 |12    |FDR      |   165|
-|13    |FDSE     |     6|
+|13    |FDSE     |    30|
 |14    |FD       |   134|
 |15    |IBUF     |     3|
 |16    |OBUF     |    20|
 |17    |OBUFT    |     8|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:03:32 ; elapsed = 00:03:35 . Memory (MB): peak = 2255.012 ; gain = 638.340 ; free physical = 489 ; free virtual = 6532
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:26 ; elapsed = 00:01:41 . Memory (MB): peak = 1595.859 ; gain = 726.883
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 68 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:03:29 ; elapsed = 00:03:31 . Memory (MB): peak = 2255.012 ; gain = 578.539 ; free physical = 489 ; free virtual = 6533
-Synthesis Optimization Complete : Time (s): cpu = 00:03:32 ; elapsed = 00:03:35 . Memory (MB): peak = 2255.020 ; gain = 638.340 ; free physical = 489 ; free virtual = 6533
+Synthesis finished with 0 errors, 0 critical warnings and 100 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:01:39 . Memory (MB): peak = 1595.859 ; gain = 691.125
+Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:01:41 . Memory (MB): peak = 1595.859 ; gain = 726.883
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2255.020 ; gain = 0.000 ; free physical = 769 ; free virtual = 6815
-INFO: [Netlist 29-17] Analyzing 622 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 1595.859 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 686 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2255.020 ; gain = 0.000 ; free physical = 770 ; free virtual = 6817
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1595.859 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 299 instances were transformed.
   FDR_1 => FDRE (inverted pins: C): 165 instances
   FD_1 => FDRE (inverted pins: C): 134 instances
 
-Synth Design complete | Checksum: f1cb1612
+The system cannot find the path specified.
+Synth Design complete | Checksum: ac0ed90
 INFO: [Common 17-83] Releasing license: Synthesis
-82 Infos, 214 Warnings, 0 Critical Warnings and 0 Errors encountered.
+83 Infos, 215 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:03:40 ; elapsed = 00:03:39 . Memory (MB): peak = 2255.047 ; gain = 931.508 ; free physical = 770 ; free virtual = 6816
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2058.994; main = 1757.678; forked = 427.100
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3252.559; main = 2255.016; forked = 997.543
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2279.023 ; gain = 0.000 ; free physical = 770 ; free virtual = 6816
-INFO: [Common 17-1381] The checkpoint '/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/Top.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:27 ; elapsed = 00:01:46 . Memory (MB): peak = 1595.859 ; gain = 1117.441
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1595.859 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.runs/synth_1/Top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed May 29 21:41:20 2024...
+INFO: [Common 17-206] Exiting Vivado at Thu May 30 20:05:31 2024...
