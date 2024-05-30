@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Wed May 29 21:43:05 2024
+| Date         : Thu May 30 20:02:01 2024
 | Host         : sebastian-MAX-L5 running 64-bit Linux Mint 20.3
 | Command      : report_methodology -file Top_methodology_drc_routed.rpt -pb Top_methodology_drc_routed.pb -rpx Top_methodology_drc_routed.rpx
 | Design       : Top
@@ -23,13 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 98
+             Violations found: 95
 +-----------+------------------+-------------------------------+------------+
 | Rule      | Severity         | Description                   | Violations |
 +-----------+------------------+-------------------------------+------------+
 | TIMING-14 | Critical Warning | LUT on the clock tree         | 1          |
 | TIMING-17 | Critical Warning | Non-clocked sequential cell   | 85         |
-| TIMING-16 | Warning          | Large setup violation         | 3          |
 | TIMING-18 | Warning          | Missing input or output delay | 9          |
 +-----------+------------------+-------------------------------+------------+
 
@@ -463,21 +462,6 @@ Related violations: <none>
 TIMING-17#85 Critical Warning
 Non-clocked sequential cell  
 The clock pin wea_reg/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-16#1 Warning
-Large setup violation  
-There is a large setup violation of -1.016 ns between ex/op_tmp_reg[1]/C (clocked by sys_clk_pin) and exmem/res_tmp_reg[10]/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#2 Warning
-Large setup violation  
-There is a large setup violation of -1.023 ns between ex/op_tmp_reg[1]/C (clocked by sys_clk_pin) and exmem/res_tmp_reg[0]/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#3 Warning
-Large setup violation  
-There is a large setup violation of -1.206 ns between ex/op_tmp_reg[2]_replica/C (clocked by sys_clk_pin) and exmem/res_tmp_reg[3]/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-18#1 Warning

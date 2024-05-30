@@ -46,7 +46,6 @@
         reg [3 : 0] present_state = IDDLE_STATE;
         reg [3 : 0] next_state = IDDLE_STATE;
         
-        // wire [9 : 0] dato;   
         reg [3 : 0] contador_ticks = 5'b00000;
         reg [4 : 0] reg_index = 0;
         reg terminado = 1'b1;

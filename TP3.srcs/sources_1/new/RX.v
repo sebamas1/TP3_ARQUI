@@ -45,7 +45,6 @@ module RX(
     reg [3 : 0] present_state = IDDLE_STATE;
     reg [3 : 0] next_state = IDDLE_STATE;
     reg [7 : 0] dato;
-    wire [7 : 0] puente;
     reg [3 : 0] contador_ticks = 4'b0000;
     reg recibido = 1'b0;
     
@@ -207,14 +206,7 @@ module RX(
                endcase
             endcase
      end
-    
-    // always @*
-    //     begin
-        
-    //         end
-
-    assign puente = dato;
-    assign o_dato_recibido = puente;
+    assign o_dato_recibido = dato;
     assign o_recibido = recibido;
         
     endmodule

@@ -37,8 +37,8 @@ module Top(
         .i_branch(ex.o_branch), 
         .i_branch_addr(ex.o_branch_dir), 
         .i_stall(dtu.o_stall),
-        .i_instruccion(INSTRUCCION),
-        .i_instruccion_addr(etapa_if.o_end_pipeline ? transmisor.o_next_instruction : instruccion_addr),
+        .i_instruccion_carga(instruccion_para_guardar),
+        .i_instruccion_carga_addr(etapa_if.o_end_pipeline ? transmisor.o_next_instruction : instruccion_addr),
         .i_wea(wea),
         .i_start_pipeline(reception_end)
     );
@@ -169,152 +169,118 @@ module Top(
         etapa_id.o_rt_dir //por el lugar desde que el que tomo los datos, esto va a ser detectado en un rising edge
     );
 
-            wire i_recibido;
-            wire o_transmitir;
-            wire dato_enviado;
-            wire [7 : 0] rec_data;
-            wire [7 : 0] o_operando_1;
-            wire [7 : 0] o_operando_2;
-            wire [7 : 0] o_operacion;
-            wire [7 : 0] resultado;
-            
 
-             Baud_gen baud_gen
-                (
-                        .i_clk(i_clk),
-                        .o_tick(o_tick)
-                );
-    
-                RX receptor(
-                       .i_clk(i_clk),   
-                       .i_tick(o_tick),
-                       .i_rx(rx),
-                       .i_reset(i_reset),
-                       .o_dato_recibido(rec_data),
-                       .o_recibido(i_recibido)              
-                );
+    Baud_gen baud_gen(
+        .i_clk(i_clk),
+        .o_tick(o_tick)
+    );
 
-                TX transmisor(
-                        .i_clk(i_clk),
-                        .i_tick(o_tick),
-                        .i_reset(i_reset),
-                        .i_instruccion(etapa_id.o_rs),
-                        .i_enviar(etapa_if.o_end_pipeline),// deberia usar o_end_pipeline
-                        .o_dato_enviado(),
-                        .o_tx(tx),
-                        .o_next_instruction()
-                );
+    RX receptor(
+        .i_clk(i_clk),   
+        .i_tick(o_tick),
+        .i_rx(rx),
+        .i_reset(i_reset),
+        .o_dato_recibido(),
+        .o_recibido(i_recibido)              
+    );
 
-                Basys3_7SegmentMultiplexing basys3_7SegmentMultiplexing (
-                        
-                        .data(salida_operadores),
-                        .seg(display1),
-                        .an(an),
-                        .clk(o_tick),
-                        .rst(resultado)
-                );
+    TX transmisor(
+        .i_clk(i_clk),
+        .i_tick(o_tick),
+        .i_reset(i_reset),
+        .i_instruccion(etapa_id.o_rs),
+        .i_enviar(etapa_if.o_end_pipeline),// deberia usar o_end_pipeline
+        .o_dato_enviado(),
+        .o_tx(tx),
+        .o_next_instruction()
+    );
 
+    Basys3_7SegmentMultiplexing basys3_7SegmentMultiplexing (      
+        .data(salida_operadores),
+        .seg(display1),
+        .an(an),
+        .clk(o_tick),
+        .rst(resultado)
+    );
 
+        wire            i_recibido;
+        wire [7 : 0]    resultado;
+
+        reg [7 : 0]     salida_op = 8'b00000000;
+        reg [31 : 0]    instruccion_addr = 32'b00000000000000000000000000000000;
+        reg             wea = 1'b0;
+        reg             reception_end = 1'b0;
+        reg [31 : 0]    instruccion_para_guardar = 0;
+        reg [3 : 0]     present_state = IDDLE_STATE;
+        reg [3 : 0]     next_state = IDDLE_STATE;
 
 
-
-        
-        
-        reg [7 : 0] operando_1;
-        reg [7 : 0] operando_2;
-        reg [7 : 0] operacion;
-        reg [7 : 0] salida_op = 8'b00000000;
-        reg [31 : 0] instruccion_addr = 32'b00000000000000000000000000000000;
-        reg initiate_tx = 1'b0;
-        reg [3 : 0] contador_ticks = 4'b00000;
-        reg         wea = 1'b0;
-        reg         reception_end = 1'b0;
-        
-        
-        wire pipeline_on = 1'b0;
-        
         localparam PRIMER_HEXA = 3'b000;
         localparam SEGUNDO_HEXA = 3'b001;
         localparam TERCER_HEXA = 3'b010;
         localparam CUARTO_HEXA = 3'b011;
         localparam IDDLE_STATE = 3'b101;
 
-        reg [31 : 0] INSTRUCCION;
-
-        reg [3 : 0] present_state = IDDLE_STATE;
-        reg [3 : 0] next_state = IDDLE_STATE;
-
         assign salida = resultado;
-        assign o_operando_1 = operando_1;
-        assign o_operando_2 = operando_2;
-        assign o_operacion = operacion;
         assign salida_operadores = {etapa_if.o_end_pipeline, {3'b000, reception_end}};
 
-        //assign pipeline_on = reception_end ^ etapa_if.o_end_pipeline;
-
-          
         always @(posedge i_clk)
         begin
-            if(i_reset == 1)
-            begin
+                if(i_reset == 1)
+                begin
                 present_state <= IDDLE_STATE;
-                operando_1 <= 8'bxxxxxxxx;
-                operando_2 <= 8'bxxxxxxxx;
-                operacion <= 8'bxxxxxxxx;
                 end
-            else begin
+                else begin
                 present_state <= next_state;
-            end
+                end
         end
-        
+
         always @(posedge i_recibido)
                 begin
                         case(present_state)
                                 IDDLE_STATE:
                                 begin
-                                        if (rec_data == 8'b11111111)
+                                        if (receptor.o_dato_recibido == 8'b11111111)
                                         begin
-                                                next_state <= PRIMER_HEXA;
+                                                next_state = PRIMER_HEXA;
                                         end
                                 end
                                 PRIMER_HEXA:
                                 begin
-                                        wea <= 0;
-                                        next_state <= SEGUNDO_HEXA;
-                                        INSTRUCCION [31 : 24] <= rec_data;
+                                        wea = 0;
+                                        next_state = SEGUNDO_HEXA;
+                                        instruccion_para_guardar [31 : 24] = receptor.o_dato_recibido;
                                 end
                                 
                                 SEGUNDO_HEXA:
                                 begin
-                                        next_state <= TERCER_HEXA;
-                                        INSTRUCCION [23 : 16] <= rec_data;
+                                        next_state = TERCER_HEXA;
+                                        instruccion_para_guardar [23 : 16] = receptor.o_dato_recibido;
                                 end
 
                                 TERCER_HEXA:
                                 begin
-                                        next_state <= CUARTO_HEXA;
-                                        INSTRUCCION [15 : 8] <= rec_data;
+                                        next_state = CUARTO_HEXA;
+                                        instruccion_para_guardar [15 : 8] = receptor.o_dato_recibido;
                                 end
                                 
                                 CUARTO_HEXA:
                                 begin
-                                        if(rec_data == 8'b11111111)
+                                        if(receptor.o_dato_recibido == 8'b11111111)
                                         begin
-                                                //instruccion_addr <= instruccion_addr + 1;
-                                                wea <= 0;
-                                                INSTRUCCION [7 : 0] <= 8'b11111111;
-                                                next_state <= IDDLE_STATE;
-                                                //salida_op <= 2;
-                                                reception_end <= 1'b1;
+                                                wea = 0;
+                                                instruccion_para_guardar [7 : 0] = 8'b11111111;
+                                                next_state = IDDLE_STATE;
+                                                reception_end = 1'b1;
                                         end else begin
-                                                INSTRUCCION [7 : 0] <= rec_data;
-                                                next_state <= PRIMER_HEXA;
-                                                instruccion_addr <= instruccion_addr + 1;
-                                                wea <= 1;
+                                                instruccion_para_guardar [7 : 0] = receptor.o_dato_recibido;
+                                                next_state = PRIMER_HEXA;
+                                                instruccion_addr = instruccion_addr + 1;
+                                                wea = 1;
                                         end       
                                 end
                         endcase   
                 end 
 
 
-endmodule
+        endmodule

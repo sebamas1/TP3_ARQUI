@@ -12,8 +12,8 @@ module Instruction_fetch#(
         input                           i_branch,
         input   [PC_SIZE - 1 : 0]       i_branch_addr,
         input                           i_stall,
-        input  [TAM_DATA - 1 : 0]       i_instruccion,
-        input  [TAM_DATA - 1 : 0]       i_instruccion_addr,
+        input  [TAM_DATA - 1 : 0]       i_instruccion_carga,
+        input  [TAM_DATA - 1 : 0]       i_instruccion_carga_addr,
         input                           i_wea,
         input                           i_start_pipeline,
         
@@ -30,9 +30,9 @@ reg [PC_SIZE - 1 : 0] program_counter = 0;
 
 
 ROM mem_inst(
-    .i_addra(i_wea ? i_instruccion_addr : 
-    o_end_pipeline ? i_instruccion_addr : {21'b0 ,program_counter}), //La salida del PC entra a la mem
-    .i_dina(i_instruccion),
+    .i_addra(i_wea ? i_instruccion_carga_addr : 
+    o_end_pipeline ? i_instruccion_carga_addr : {21'b0 ,program_counter}), //La salida del PC entra a la mem
+    .i_dina(i_instruccion_carga),
     .i_clka(i_clk),
     .i_wea(i_wea),
     .i_ena(!i_stall),
