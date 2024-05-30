@@ -198,7 +198,7 @@ module Top(
                         .i_clk(i_clk),
                         .i_tick(o_tick),
                         .i_reset(i_reset),
-                        .i_instruccion(etapa_if.o_instruccion),
+                        .i_instruccion(etapa_id.o_rs),
                         .i_enviar(etapa_if.o_end_pipeline),// deberia usar o_end_pipeline
                         .o_dato_enviado(),
                         .o_tx(tx),
@@ -304,7 +304,6 @@ module Top(
                                                 wea <= 0;
                                                 INSTRUCCION [7 : 0] <= 8'b11111111;
                                                 next_state <= IDDLE_STATE;
-                                                instruccion_addr <= 32'b00000000000000000000000000000011;
                                                 //salida_op <= 2;
                                                 reception_end <= 1'b1;
                                         end else begin
