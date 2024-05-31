@@ -185,7 +185,7 @@ module Top(
                         .o_tick(o_tick)
                 );
     
-                RX receptor(
+                rx_uart receptor(
                        .i_clk(i_clk),   
                        .i_tick(o_tick),
                        .i_rx(rx),
@@ -255,7 +255,8 @@ module Top(
         assign o_operando_1 = operando_1;
         assign o_operando_2 = operando_2;
         assign o_operacion = operacion;
-        assign salida_operadores = {etapa_if.o_end_pipeline, {3'b000, reception_end}};
+        // assign salida_operadores = {etapa_if.o_end_pipeline, {3'b000, reception_end}};
+        assign salida_operadores = salida_op;
         // assign array_bus_reg = array_bus;
 
           // Bloque inicial para asignar valores al array
@@ -323,18 +324,21 @@ module Top(
                                         wea = 0;
                                         next_state = SEGUNDO_HEXA;
                                         INSTRUCCION [31 : 24] = rec_data;
+                                        salida_op = rec_data;
                                 end
                                 
                                 SEGUNDO_HEXA:
                                 begin
                                         next_state = TERCER_HEXA;
                                         INSTRUCCION [23 : 16] = rec_data;
+                                        salida_op = rec_data;
                                 end
 
                                 TERCER_HEXA:
                                 begin
                                         next_state = CUARTO_HEXA;
                                         INSTRUCCION [15 : 8] = rec_data;
+                                        salida_op = rec_data;
                                 end
                                 
                                 CUARTO_HEXA:
@@ -345,8 +349,8 @@ module Top(
                                                 wea = 0;
                                                 INSTRUCCION [7 : 0] = 8'b11111111;
                                                 next_state = IDDLE_STATE;
-                                                //salida_op = 2;
                                                 reception_end = 1'b1;
+                                                salida_op = rec_data;
                                         end else begin
                                                 INSTRUCCION [7 : 0] = rec_data;
                                                 next_state = PRIMER_HEXA;
@@ -354,6 +358,7 @@ module Top(
                                                 wea = 1;
                                                 my_array[contadorArray] = INSTRUCCION;
                                                 contadorArray = contadorArray + 1;
+                                                salida_op = rec_data;
                                         end       
                                 end
                         endcase   

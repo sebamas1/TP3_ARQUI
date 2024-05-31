@@ -98,7 +98,6 @@ read_verilog -library xil_defaultlib {
   C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Instruction_decode.v
   C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RAM.v
   C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/ROM.v
-  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v
   C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Registros.v
   C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v
   C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v
@@ -106,6 +105,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_exmem.v
   C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_idex.v
   C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/latch_memwb.v
+  C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/rx_uart.v
   C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v
 }
 OPTRACE "Adding files" END { }

@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Thu May 30 20:05:38 2024
-# Process ID: 23120
+# Start of session at: Thu May 30 21:01:35 2024
+# Process ID: 18920
 # Current directory: C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.runs/impl_1
 # Command line: vivado.exe -log Top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Top.tcl -notrace
 # Log file: C:/Users/nemia/facu/repo/TP3_ARQUI/TP3.runs/impl_1/Top.vdi

@@ -27,10 +27,10 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
                     conexion_serial.reset_input_buffer()
                     conexion_serial.reset_output_buffer()
                     conexion_serial.write(datos_hex_bytes)
-                    time.sleep(0.01)
+                    time.sleep(0.8)
                     if (array[i] == "00 00 00 FF" and j == 3):
                         print("Comienza a leer la UART")
-                        time.sleep(2)
+                        time.sleep(0.1)
                         # Leer continuamente desde la UART y mostrar lo recibido
          #               while True:
                         counter = 0                            
