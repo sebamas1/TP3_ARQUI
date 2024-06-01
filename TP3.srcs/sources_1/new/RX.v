@@ -67,7 +67,7 @@ module RX(
                 if(i_rx == 0)
                      begin
                          next_state <= WAITING_STATE;
-                         contador_ticks = 0;
+                         contador_ticks <= 0;
                      end
                 recibido <= 1'b0;
             end

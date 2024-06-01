@@ -11,6 +11,7 @@
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source Top.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1284.090 ; gain = 23.805 ; free physical = 1495 ; free virtual = 8833
 Command: read_checkpoint -auto_incremental -incremental /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/utils_1/imports/synth_1/Top.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/utils_1/imports/synth_1/Top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -23,9 +24,9 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 69706
+INFO: [Synth 8-7075] Helper process launched with PID 55949
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2022.961 ; gain = 404.801 ; free physical = 831 ; free virtual = 8495
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2022.781 ; gain = 403.715 ; free physical = 433 ; free virtual = 7800
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-10929] literal value 'b1111111111111111111111111111111111111111 truncated to fit in 32 bits [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v:58]
 INFO: [Synth 8-11241] undeclared symbol 'instruccion_para_guardar', assumed default net type 'wire' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:40]
@@ -164,7 +165,6 @@ WARNING: [Synth 8-7023] instance 'dtu' of module 'Data_hazard_detection_unit' ha
 INFO: [Synth 8-6157] synthesizing module 'Baud_gen' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Baud_gen.v:25]
 INFO: [Synth 8-6155] done synthesizing module 'Baud_gen' (0#1) [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Baud_gen.v:25]
 INFO: [Synth 8-6157] synthesizing module 'RX' [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:23]
-WARNING: [Synth 8-6090] variable 'contador_ticks' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:70]
 INFO: [Synth 8-226] default block is never used [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:76]
 INFO: [Synth 8-226] default block is never used [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:179]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/RX.v:64]
@@ -180,12 +180,6 @@ WARNING: [Synth 8-6014] Unused sequential element rt_dir_tmp_reg was removed.  [
 WARNING: [Synth 8-6014] Unused sequential element rd_dir_tmp_reg was removed.  [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:106]
 WARNING: [Synth 8-6014] Unused sequential element seg_out_reg was removed.  [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Basys3_7SegmentMultiplexing.v:27]
 WARNING: [Synth 8-3848] Net resultado in module/entity Top does not have driver. [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:203]
-WARNING: [Synth 8-3917] design Top has port salida_operadores[7] driven by constant 0
-WARNING: [Synth 8-3917] design Top has port salida_operadores[6] driven by constant 0
-WARNING: [Synth 8-3917] design Top has port salida_operadores[5] driven by constant 0
-WARNING: [Synth 8-3917] design Top has port salida_operadores[3] driven by constant 0
-WARNING: [Synth 8-3917] design Top has port salida_operadores[2] driven by constant 0
-WARNING: [Synth 8-3917] design Top has port salida_operadores[1] driven by constant 0
 WARNING: [Synth 8-7129] Port i_op[3] in module Data_hazard_detection_unit is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_op[1] in module Data_hazard_detection_unit is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_op[0] in module Data_hazard_detection_unit is either unconnected or has no load
@@ -251,55 +245,22 @@ WARNING: [Synth 8-7129] Port i_addra[14] in module ROM is either unconnected or 
 WARNING: [Synth 8-7129] Port i_addra[13] in module ROM is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_addra[12] in module ROM is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_addra[11] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[31] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[30] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[29] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[28] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[27] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[26] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[25] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[24] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[23] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[22] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[21] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[20] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[19] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[18] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[17] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[16] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[15] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[14] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[13] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[12] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[11] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[10] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[9] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[8] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[7] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[6] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[5] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[4] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[3] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[2] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[1] in module ROM is either unconnected or has no load
-WARNING: [Synth 8-7129] Port i_dina[0] in module ROM is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_rsta in module ROM is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_regcea in module ROM is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_reset in module Instruction_fetch is either unconnected or has no load
-INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2123.945 ; gain = 505.785 ; free physical = 708 ; free virtual = 8373
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2109.750 ; gain = 490.684 ; free physical = 317 ; free virtual = 7688
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2141.758 ; gain = 523.598 ; free physical = 706 ; free virtual = 8371
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2124.594 ; gain = 505.527 ; free physical = 315 ; free virtual = 7686
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2141.758 ; gain = 523.598 ; free physical = 706 ; free virtual = 8371
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2124.594 ; gain = 505.527 ; free physical = 315 ; free virtual = 7686
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.13 . Memory (MB): peak = 2147.695 ; gain = 0.000 ; free physical = 700 ; free virtual = 8365
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2130.531 ; gain = 0.000 ; free physical = 309 ; free virtual = 7681
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -310,28 +271,28 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2194.555 ; gain = 0.000 ; free physical = 690 ; free virtual = 8356
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2243.328 ; gain = 0.000 ; free physical = 302 ; free virtual = 7684
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2194.590 ; gain = 0.000 ; free physical = 689 ; free virtual = 8355
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2243.363 ; gain = 0.000 ; free physical = 302 ; free virtual = 7684
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2194.590 ; gain = 576.430 ; free physical = 686 ; free virtual = 8352
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2243.363 ; gain = 624.297 ; free physical = 302 ; free virtual = 7685
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2194.590 ; gain = 576.430 ; free physical = 686 ; free virtual = 8352
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2243.363 ; gain = 624.297 ; free physical = 302 ; free virtual = 7685
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2194.590 ; gain = 576.430 ; free physical = 686 ; free virtual = 8352
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2243.363 ; gain = 624.297 ; free physical = 302 ; free virtual = 7685
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'present_state_reg' in module 'RX'
 INFO: [Synth 8-802] inferred FSM for state register 'present_state_reg' in module 'TX'
@@ -390,7 +351,7 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'display_select_reg' in 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'present_state_reg' using encoding 'one-hot' in module 'Top'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2194.590 ; gain = 576.430 ; free physical = 685 ; free virtual = 8352
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2243.363 ; gain = 624.297 ; free physical = 303 ; free virtual = 7686
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -407,7 +368,7 @@ Detailed RTL Component Info :
 +---XORs : 
 	   2 Input     32 Bit         XORs := 2     
 +---Registers : 
-	               32 Bit    Registers := 58    
+	               32 Bit    Registers := 50    
 	               26 Bit    Registers := 3     
 	               16 Bit    Registers := 2     
 	               11 Bit    Registers := 8     
@@ -419,9 +380,8 @@ Detailed RTL Component Info :
 	                2 Bit    Registers := 1     
 	                1 Bit    Registers := 10    
 +---RAMs : 
-	              64K Bit	(2048 X 32 bit)          RAMs := 1     
+	              64K Bit	(2048 X 32 bit)          RAMs := 2     
 +---Muxes : 
-	   9 Input   32 Bit        Muxes := 1     
 	   2 Input   32 Bit        Muxes := 17    
 	  22 Input   32 Bit        Muxes := 1     
 	   4 Input   32 Bit        Muxes := 2     
@@ -439,12 +399,11 @@ Detailed RTL Component Info :
 	  32 Input    5 Bit        Muxes := 1     
 	   2 Input    5 Bit        Muxes := 5     
 	   5 Input    5 Bit        Muxes := 1     
-	2048 Input    4 Bit        Muxes := 1     
-	   2 Input    4 Bit        Muxes := 6     
+	   2 Input    4 Bit        Muxes := 7     
 	  11 Input    4 Bit        Muxes := 4     
 	   5 Input    4 Bit        Muxes := 3     
 	   2 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 86    
+	   2 Input    1 Bit        Muxes := 87    
 	   3 Input    1 Bit        Muxes := 1     
 	  11 Input    1 Bit        Muxes := 11    
 	   4 Input    1 Bit        Muxes := 1     
@@ -466,14 +425,36 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 WARNING: [Synth 8-3936] Found unconnected internal register 'direccion_tmp_reg' and it is trimmed from '26' to '24' bits. [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v:83]
-WARNING: [Synth 8-3917] design Top has port salida_operadores[7] driven by constant 0
-WARNING: [Synth 8-3917] design Top has port salida_operadores[6] driven by constant 0
-WARNING: [Synth 8-3917] design Top has port salida_operadores[5] driven by constant 0
-WARNING: [Synth 8-3917] design Top has port salida_operadores[3] driven by constant 0
-WARNING: [Synth 8-3917] design Top has port salida_operadores[2] driven by constant 0
-WARNING: [Synth 8-3917] design Top has port salida_operadores[1] driven by constant 0
+WARNING: [Synth 8-7129] Port i_reset in module Etapa_MEM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_alu_ctrl[2] in module Etapa_MEM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_reset in module etapa_ex is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_direccion[25] in module etapa_ex is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_direccion[24] in module etapa_ex is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_reset in module IF_ID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_reset in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[31] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[30] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[29] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[28] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[27] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[26] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[25] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[24] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[23] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[22] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[21] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[20] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[19] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[18] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[17] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[16] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[15] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[14] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[13] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[12] in module Instruction_fetch is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_instruccion_carga_addr[11] in module Instruction_fetch is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:04 ; elapsed = 00:01:05 . Memory (MB): peak = 2210.562 ; gain = 592.402 ; free physical = 650 ; free virtual = 8329
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:02 ; elapsed = 00:01:02 . Memory (MB): peak = 2243.363 ; gain = 624.297 ; free physical = 232 ; free virtual = 7639
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -483,6 +464,7 @@ Block RAM: Preliminary Mapping Report (see note below)
 +------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 |Module Name | RTL Object         | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
 +------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|etapa_if    | mem_inst/BRAM_reg  | 2 K x 32(NO_CHANGE)    | W | R |                        |   |   | Port A           | 0      | 2      | 
 |mem         | mem_datos/BRAM_reg | 2 K x 32(NO_CHANGE)    | W | R |                        |   |   | Port A           | 0      | 2      | 
 +------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 
@@ -494,13 +476,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:08 ; elapsed = 00:01:08 . Memory (MB): peak = 2210.562 ; gain = 592.402 ; free physical = 650 ; free virtual = 8328
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:06 ; elapsed = 00:01:06 . Memory (MB): peak = 2243.363 ; gain = 624.297 ; free physical = 229 ; free virtual = 7644
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:32 ; elapsed = 00:01:33 . Memory (MB): peak = 2262.578 ; gain = 644.418 ; free physical = 563 ; free virtual = 8259
+Finished Timing Optimization : Time (s): cpu = 00:01:29 ; elapsed = 00:01:30 . Memory (MB): peak = 2259.336 ; gain = 640.270 ; free physical = 177 ; free virtual = 7592
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -510,6 +492,7 @@ Block RAM: Final Mapping Report
 +------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 |Module Name | RTL Object         | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
 +------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|etapa_if    | mem_inst/BRAM_reg  | 2 K x 32(NO_CHANGE)    | W | R |                        |   |   | Port A           | 0      | 2      | 
 |mem         | mem_datos/BRAM_reg | 2 K x 32(NO_CHANGE)    | W | R |                        |   |   | Port A           | 0      | 2      | 
 +------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 
@@ -519,10 +502,12 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance etapa_if/mem_inst/BRAM_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance etapa_if/mem_inst/BRAM_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance mem/mem_datos/BRAM_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance mem/mem_datos/BRAM_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:34 ; elapsed = 00:01:35 . Memory (MB): peak = 2262.578 ; gain = 644.418 ; free physical = 544 ; free virtual = 8247
+Finished Technology Mapping : Time (s): cpu = 00:01:30 ; elapsed = 00:01:31 . Memory (MB): peak = 2259.336 ; gain = 640.270 ; free physical = 173 ; free virtual = 7589
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -540,37 +525,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:38 ; elapsed = 00:01:39 . Memory (MB): peak = 2262.578 ; gain = 644.418 ; free physical = 570 ; free virtual = 8259
+Finished IO Insertion : Time (s): cpu = 00:01:34 ; elapsed = 00:01:35 . Memory (MB): peak = 2259.336 ; gain = 640.270 ; free physical = 173 ; free virtual = 7589
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:38 ; elapsed = 00:01:39 . Memory (MB): peak = 2262.578 ; gain = 644.418 ; free physical = 570 ; free virtual = 8259
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:34 ; elapsed = 00:01:35 . Memory (MB): peak = 2259.336 ; gain = 640.270 ; free physical = 173 ; free virtual = 7589
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:38 ; elapsed = 00:01:39 . Memory (MB): peak = 2262.578 ; gain = 644.418 ; free physical = 574 ; free virtual = 8258
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:34 ; elapsed = 00:01:35 . Memory (MB): peak = 2259.336 ; gain = 640.270 ; free physical = 172 ; free virtual = 7589
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:38 ; elapsed = 00:01:39 . Memory (MB): peak = 2262.578 ; gain = 644.418 ; free physical = 574 ; free virtual = 8258
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:34 ; elapsed = 00:01:35 . Memory (MB): peak = 2259.336 ; gain = 640.270 ; free physical = 172 ; free virtual = 7589
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:38 ; elapsed = 00:01:39 . Memory (MB): peak = 2262.578 ; gain = 644.418 ; free physical = 574 ; free virtual = 8258
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:34 ; elapsed = 00:01:35 . Memory (MB): peak = 2259.336 ; gain = 640.270 ; free physical = 172 ; free virtual = 7588
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:38 ; elapsed = 00:01:39 . Memory (MB): peak = 2262.578 ; gain = 644.418 ; free physical = 574 ; free virtual = 8258
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:34 ; elapsed = 00:01:35 . Memory (MB): peak = 2259.336 ; gain = 640.270 ; free physical = 172 ; free virtual = 7588
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -586,50 +571,50 @@ Report Cell Usage:
 +------+---------+------+
 |      |Cell     |Count |
 +------+---------+------+
-|1     |BUFG     |     3|
+|1     |BUFG     |     4|
 |2     |CARRY4   |    48|
-|3     |LUT1     |   147|
-|4     |LUT2     |   207|
-|5     |LUT3     |   268|
-|6     |LUT4     |   168|
-|7     |LUT5     |   384|
-|8     |LUT6     |   986|
+|3     |LUT1     |   131|
+|4     |LUT2     |   211|
+|5     |LUT3     |   273|
+|6     |LUT4     |   169|
+|7     |LUT5     |   367|
+|8     |LUT6     |   991|
 |9     |MUXF7    |   273|
-|10    |RAMB36E1 |     2|
-|11    |FDRE     |  1534|
+|10    |RAMB36E1 |     4|
+|11    |FDRE     |  1517|
 |12    |FDR      |   165|
-|13    |FDSE     |     6|
+|13    |FDSE     |    42|
 |14    |FD       |   134|
 |15    |IBUF     |     3|
 |16    |OBUF     |    20|
 |17    |OBUFT    |     8|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:38 ; elapsed = 00:01:39 . Memory (MB): peak = 2262.578 ; gain = 644.418 ; free physical = 574 ; free virtual = 8258
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:34 ; elapsed = 00:01:35 . Memory (MB): peak = 2259.336 ; gain = 640.270 ; free physical = 172 ; free virtual = 7588
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 68 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:36 ; elapsed = 00:01:37 . Memory (MB): peak = 2262.578 ; gain = 591.586 ; free physical = 576 ; free virtual = 8260
-Synthesis Optimization Complete : Time (s): cpu = 00:01:39 ; elapsed = 00:01:39 . Memory (MB): peak = 2262.586 ; gain = 644.418 ; free physical = 576 ; free virtual = 8260
+Synthesis finished with 0 errors, 0 critical warnings and 30 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:33 ; elapsed = 00:01:33 . Memory (MB): peak = 2259.336 ; gain = 521.500 ; free physical = 172 ; free virtual = 7588
+Synthesis Optimization Complete : Time (s): cpu = 00:01:34 ; elapsed = 00:01:35 . Memory (MB): peak = 2259.344 ; gain = 640.270 ; free physical = 172 ; free virtual = 7588
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2262.586 ; gain = 0.000 ; free physical = 862 ; free virtual = 8545
-INFO: [Netlist 29-17] Analyzing 622 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2259.344 ; gain = 0.000 ; free physical = 456 ; free virtual = 7872
+INFO: [Netlist 29-17] Analyzing 624 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2262.586 ; gain = 0.000 ; free physical = 868 ; free virtual = 8547
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2259.344 ; gain = 0.000 ; free physical = 454 ; free virtual = 7871
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 299 instances were transformed.
   FDR_1 => FDRE (inverted pins: C): 165 instances
   FD_1 => FDRE (inverted pins: C): 134 instances
 
-Synth Design complete | Checksum: b4aa9d50
+Synth Design complete | Checksum: 9a717c70
 INFO: [Common 17-83] Releasing license: Synthesis
-84 Infos, 215 Warnings, 0 Critical Warnings and 0 Errors encountered.
+85 Infos, 198 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:45 ; elapsed = 00:01:43 . Memory (MB): peak = 2262.613 ; gain = 975.492 ; free physical = 868 ; free virtual = 8547
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2037.490; main = 1745.839; forked = 419.230
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3252.113; main = 2262.582; forked = 997.539
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2286.590 ; gain = 0.000 ; free physical = 868 ; free virtual = 8547
+synth_design: Time (s): cpu = 00:01:41 ; elapsed = 00:01:39 . Memory (MB): peak = 2259.371 ; gain = 972.312 ; free physical = 453 ; free virtual = 7871
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2047.898; main = 1747.521; forked = 423.476
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3256.879; main = 2259.340; forked = 997.539
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2283.348 ; gain = 0.000 ; free physical = 453 ; free virtual = 7871
 INFO: [Common 17-1381] The checkpoint '/home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/Top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu May 30 20:00:24 2024...
+INFO: [Common 17-206] Exiting Vivado at Fri May 31 20:35:37 2024...

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date             : Thu May 30 20:02:02 2024
+| Date             : Fri May 31 20:37:57 2024
 | Host             : sebastian-MAX-L5 running 64-bit Linux Mint 20.3
 | Command          : report_power -file Top_power_routed.rpt -pb Top_power_summary_routed.pb -rpx Top_power_routed.rpx
 | Design           : Top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.123        |
+| Total On-Chip Power (W)  | 0.143        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.052        |
+| Dynamic (W)              | 0.070        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 84.4         |
-| Junction Temperature (C) | 25.6         |
+| Max Ambient (C)          | 84.3         |
+| Junction Temperature (C) | 25.7         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,17 +53,18 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.007 |        3 |       --- |             --- |
-| Slice Logic    |     0.008 |     3442 |       --- |             --- |
-|   LUT as Logic |     0.007 |     1395 |     20800 |            6.71 |
-|   Register     |    <0.001 |     1663 |     41600 |            4.00 |
+| Slice Logic    |     0.012 |     4172 |       --- |             --- |
+|   LUT as Logic |     0.011 |     1876 |     20800 |            9.02 |
+|   Register     |    <0.001 |     1807 |     41600 |            4.34 |
 |   CARRY4       |    <0.001 |       48 |      8150 |            0.59 |
-|   F7/F8 Muxes  |    <0.001 |      209 |     32600 |            0.64 |
-|   BUFG         |    <0.001 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |       33 |       --- |             --- |
-| Signals        |     0.015 |     2638 |       --- |             --- |
-| I/O            |     0.022 |       31 |       106 |           29.25 |
+|   F7/F8 Muxes  |    <0.001 |      273 |     32600 |            0.84 |
+|   BUFG         |    <0.001 |        2 |        32 |            6.25 |
+|   Others       |     0.000 |       36 |       --- |             --- |
+| Signals        |     0.021 |     3257 |       --- |             --- |
+| Block RAM      |     0.005 |        4 |        50 |            8.00 |
+| I/O            |     0.025 |       31 |       106 |           29.25 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.123 |          |           |                 |
+| Total          |     0.143 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,16 +74,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.039 |       0.030 |      0.010 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.013 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.007 |       0.006 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.055 |       0.045 |      0.010 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.014 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.008 |       0.007 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vccbram   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vccbram   |       1.000 |     0.001 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |       NA    | Unspecified | NA         |
@@ -142,14 +143,16 @@ Table of Contents
 +--------------+-----------+
 | Name         | Power (W) |
 +--------------+-----------+
-| Top          |     0.052 |
-|   etapa_id   |     0.005 |
-|     gp       |     0.005 |
-|   ex         |     0.014 |
-|     alu      |     0.009 |
-|   latch_idex |     0.001 |
+| Top          |     0.070 |
+|   etapa_id   |     0.009 |
+|     gp       |     0.008 |
+|   etapa_if   |     0.005 |
+|     mem_inst |     0.005 |
+|   ex         |     0.020 |
+|     alu      |     0.013 |
+|   latch_idex |     0.002 |
 |   transmisor |     0.001 |
-|   wb         |     0.004 |
+|   wb         |     0.003 |
 +--------------+-----------+
 
 

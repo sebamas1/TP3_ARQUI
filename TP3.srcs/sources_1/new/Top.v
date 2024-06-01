@@ -222,7 +222,7 @@ module Top(
         localparam IDDLE_STATE = 3'b101;
 
         assign salida = resultado;
-        assign salida_operadores = {etapa_if.o_end_pipeline, {3'b000, reception_end}};
+        assign salida_operadores = receptor.o_dato_recibido;
 
         always @(posedge i_clk)
         begin
@@ -250,6 +250,7 @@ module Top(
                                         wea = 0;
                                         next_state = SEGUNDO_HEXA;
                                         instruccion_para_guardar [31 : 24] = receptor.o_dato_recibido;
+
                                 end
                                 
                                 SEGUNDO_HEXA:
