@@ -28,7 +28,6 @@ end
 
 reg [PC_SIZE - 1 : 0] program_counter = 0;
 
-
 ROM mem_inst(
     .i_addra(i_wea ? i_instruccion_carga_addr : 
     o_end_pipeline ? i_instruccion_carga_addr : {21'b0 ,program_counter}), //La salida del PC entra a la mem
