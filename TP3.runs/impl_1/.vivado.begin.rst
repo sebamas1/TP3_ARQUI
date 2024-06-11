@@ -38,3 +38,13 @@
     <Process Command="vivado.bat" Owner="nemia" Host="NEHEMIAS-DELL" Pid="23436" HostCore="12" HostMemory="016849256448">
     </Process>
 </ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="nemia" Host="NEHEMIAS-DELL" Pid="1872" HostCore="12" HostMemory="016849256448">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="nemia" Host="NEHEMIAS-DELL" Pid="22520" HostCore="12" HostMemory="016849256448">
+    </Process>
+</ProcessHandle>

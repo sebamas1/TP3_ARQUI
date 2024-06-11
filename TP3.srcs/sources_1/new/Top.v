@@ -176,7 +176,9 @@ module Top(
             wire [7 : 0] o_operando_1;
             wire [7 : 0] o_operando_2;
             wire [7 : 0] o_operacion;
-            wire [7 : 0] resultado;
+        //     wire [7 : 0] resultado;
+
+        reg [7:0] resultado = 8'b00000000;
             
 
              Baud_gen baud_gen
@@ -359,6 +361,7 @@ module Top(
                                                 my_array[contadorArray] = INSTRUCCION;
                                                 contadorArray = contadorArray + 1;
                                                 salida_op = rec_data;
+                                                resultado = INSTRUCCION;
                                         end       
                                 end
                         endcase   

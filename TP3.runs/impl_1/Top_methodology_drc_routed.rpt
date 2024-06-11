@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu May 30 21:04:23 2024
+| Date         : Fri May 31 18:52:28 2024
 | Host         : nehemias-dell running 64-bit major release  (build 9200)
 | Command      : report_methodology -file Top_methodology_drc_routed.rpt -pb Top_methodology_drc_routed.pb -rpx Top_methodology_drc_routed.rpx
 | Design       : Top
@@ -23,13 +23,13 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 845
+             Violations found: 854
 +-----------+------------------+-------------------------------+------------+
 | Rule      | Severity         | Description                   | Violations |
 +-----------+------------------+-------------------------------+------------+
 | TIMING-14 | Critical Warning | LUT on the clock tree         | 1          |
-| TIMING-17 | Critical Warning | Non-clocked sequential cell   | 840        |
-| TIMING-16 | Warning          | Large setup violation         | 2          |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell   | 848        |
+| TIMING-16 | Warning          | Large setup violation         | 3          |
 | TIMING-18 | Warning          | Missing input or output delay | 2          |
 +-----------+------------------+-------------------------------+------------+
 
@@ -4017,237 +4017,282 @@ Related violations: <none>
 
 TIMING-17#796 Critical Warning
 Non-clocked sequential cell  
-The clock pin salida_op_reg[0]/C is not reached by a timing clock
+The clock pin resultado_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#797 Critical Warning
 Non-clocked sequential cell  
-The clock pin salida_op_reg[1]/C is not reached by a timing clock
+The clock pin resultado_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#798 Critical Warning
 Non-clocked sequential cell  
-The clock pin salida_op_reg[2]/C is not reached by a timing clock
+The clock pin resultado_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#799 Critical Warning
 Non-clocked sequential cell  
-The clock pin salida_op_reg[3]/C is not reached by a timing clock
+The clock pin resultado_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#800 Critical Warning
 Non-clocked sequential cell  
-The clock pin salida_op_reg[4]/C is not reached by a timing clock
+The clock pin resultado_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#801 Critical Warning
 Non-clocked sequential cell  
-The clock pin salida_op_reg[5]/C is not reached by a timing clock
+The clock pin resultado_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#802 Critical Warning
 Non-clocked sequential cell  
-The clock pin salida_op_reg[6]/C is not reached by a timing clock
+The clock pin resultado_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#803 Critical Warning
 Non-clocked sequential cell  
-The clock pin salida_op_reg[7]/C is not reached by a timing clock
+The clock pin resultado_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#804 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/FSM_onehot_next_state_reg[0]/C is not reached by a timing clock
+The clock pin salida_op_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#805 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/FSM_onehot_next_state_reg[10]/C is not reached by a timing clock
+The clock pin salida_op_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#806 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/FSM_onehot_next_state_reg[1]/C is not reached by a timing clock
+The clock pin salida_op_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#807 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/FSM_onehot_next_state_reg[2]/C is not reached by a timing clock
+The clock pin salida_op_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#808 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/FSM_onehot_next_state_reg[3]/C is not reached by a timing clock
+The clock pin salida_op_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#809 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/FSM_onehot_next_state_reg[4]/C is not reached by a timing clock
+The clock pin salida_op_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#810 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/FSM_onehot_next_state_reg[5]/C is not reached by a timing clock
+The clock pin salida_op_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#811 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/FSM_onehot_next_state_reg[6]/C is not reached by a timing clock
+The clock pin salida_op_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#812 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/FSM_onehot_next_state_reg[7]/C is not reached by a timing clock
+The clock pin transmisor/FSM_onehot_next_state_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#813 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/FSM_onehot_next_state_reg[8]/C is not reached by a timing clock
+The clock pin transmisor/FSM_onehot_next_state_reg[10]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#814 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/FSM_onehot_next_state_reg[9]/C is not reached by a timing clock
+The clock pin transmisor/FSM_onehot_next_state_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#815 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contadorArray_reg[0]/C is not reached by a timing clock
+The clock pin transmisor/FSM_onehot_next_state_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#816 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contadorArray_reg[1]/C is not reached by a timing clock
+The clock pin transmisor/FSM_onehot_next_state_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#817 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contadorArray_reg[2]/C is not reached by a timing clock
+The clock pin transmisor/FSM_onehot_next_state_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#818 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contadorArray_reg[3]/C is not reached by a timing clock
+The clock pin transmisor/FSM_onehot_next_state_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#819 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contadorArray_reg[4]/C is not reached by a timing clock
+The clock pin transmisor/FSM_onehot_next_state_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#820 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contadorTX_reg[0]/C is not reached by a timing clock
+The clock pin transmisor/FSM_onehot_next_state_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#821 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contadorTX_reg[1]/C is not reached by a timing clock
+The clock pin transmisor/FSM_onehot_next_state_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#822 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contadorTX_reg[2]/C is not reached by a timing clock
+The clock pin transmisor/FSM_onehot_next_state_reg[9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#823 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contadorTX_reg[3]/C is not reached by a timing clock
+The clock pin transmisor/contadorArray_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#824 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contador_ticks_reg[0]/C is not reached by a timing clock
+The clock pin transmisor/contadorArray_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#825 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contador_ticks_reg[1]/C is not reached by a timing clock
+The clock pin transmisor/contadorArray_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#826 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contador_ticks_reg[2]/C is not reached by a timing clock
+The clock pin transmisor/contadorArray_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#827 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/contador_ticks_reg[3]/C is not reached by a timing clock
+The clock pin transmisor/contadorArray_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#828 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/i_enviar_prev_reg/C is not reached by a timing clock
+The clock pin transmisor/contadorTX_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#829 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/next_instruction_reg[21]/C is not reached by a timing clock
+The clock pin transmisor/contadorTX_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#830 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/next_instruction_reg[22]/C is not reached by a timing clock
+The clock pin transmisor/contadorTX_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#831 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/next_instruction_reg[23]/C is not reached by a timing clock
+The clock pin transmisor/contadorTX_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#832 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/next_instruction_reg[24]/C is not reached by a timing clock
+The clock pin transmisor/contador_ticks_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#833 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/next_instruction_reg[25]/C is not reached by a timing clock
+The clock pin transmisor/contador_ticks_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#834 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/rs_dir_reg[0]/C is not reached by a timing clock
+The clock pin transmisor/contador_ticks_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#835 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/rs_dir_reg[1]/C is not reached by a timing clock
+The clock pin transmisor/contador_ticks_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#836 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/rs_dir_reg[2]/C is not reached by a timing clock
+The clock pin transmisor/i_enviar_prev_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#837 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/rs_dir_reg[3]/C is not reached by a timing clock
+The clock pin transmisor/next_instruction_reg[21]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#838 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/rs_dir_reg[4]/C is not reached by a timing clock
+The clock pin transmisor/next_instruction_reg[22]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#839 Critical Warning
 Non-clocked sequential cell  
-The clock pin transmisor/salida_reg/C is not reached by a timing clock
+The clock pin transmisor/next_instruction_reg[23]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#840 Critical Warning
+Non-clocked sequential cell  
+The clock pin transmisor/next_instruction_reg[24]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#841 Critical Warning
+Non-clocked sequential cell  
+The clock pin transmisor/next_instruction_reg[25]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#842 Critical Warning
+Non-clocked sequential cell  
+The clock pin transmisor/rs_dir_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#843 Critical Warning
+Non-clocked sequential cell  
+The clock pin transmisor/rs_dir_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#844 Critical Warning
+Non-clocked sequential cell  
+The clock pin transmisor/rs_dir_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#845 Critical Warning
+Non-clocked sequential cell  
+The clock pin transmisor/rs_dir_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#846 Critical Warning
+Non-clocked sequential cell  
+The clock pin transmisor/rs_dir_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#847 Critical Warning
+Non-clocked sequential cell  
+The clock pin transmisor/salida_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#848 Critical Warning
 Non-clocked sequential cell  
 The clock pin wea_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-16#1 Warning
 Large setup violation  
-There is a large setup violation of -1.021 ns between ex/rt_tmp_reg[15]/C (clocked by sys_clk_pin) and exmem/res_tmp_reg[0]/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.044 ns between ex/op_tmp_reg[3]_replica_1/C (clocked by sys_clk_pin) and exmem/res_tmp_reg[0]/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#2 Warning
 Large setup violation  
-There is a large setup violation of -1.098 ns between ex/op_tmp_reg[3]/C (clocked by sys_clk_pin) and exmem/res_tmp_reg[9]/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.055 ns between ex/op_tmp_reg[3]_replica_1/C (clocked by sys_clk_pin) and exmem/res_tmp_reg[6]/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -1.145 ns between ex/op_tmp_reg[3]_replica_1/C (clocked by sys_clk_pin) and exmem/res_tmp_reg[5]/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-18#1 Warning

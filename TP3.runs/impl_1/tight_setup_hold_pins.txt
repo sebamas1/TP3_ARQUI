@@ -1,10 +1,10 @@
 +====================+===================+=================================+
 | Launch Setup Clock | Launch Hold Clock | Pin                             |
 +====================+===================+=================================+
-| sys_clk_pin        | sys_clk_pin       | exmem/res_tmp_reg[3]/D          |
+| sys_clk_pin        | sys_clk_pin       | exmem/res_tmp_reg[6]/D          |
 | sys_clk_pin        | sys_clk_pin       | exmem/res_tmp_reg[7]/D          |
-| sys_clk_pin        | sys_clk_pin       | exmem/res_tmp_reg[5]/D          |
-| sys_clk_pin        | sys_clk_pin       | exmem/res_tmp_reg[10]/D         |
-| sys_clk_pin        | sys_clk_pin       | exmem/wb_reg_write_tmp_reg[0]/D |
-| sys_clk_pin        | sys_clk_pin       | etapa_id/gp/reg_a_reg[6]/D      |
+| sys_clk_pin        | sys_clk_pin       | exmem/wb_reg_write_tmp_reg[2]/D |
+| sys_clk_pin        | sys_clk_pin       | etapa_id/gp/reg_b_reg[15]/D     |
+| sys_clk_pin        | sys_clk_pin       | exmem/wb_reg_write_tmp_reg[4]/D |
+| sys_clk_pin        | sys_clk_pin       | etapa_id/gp/reg_a_reg[19]/D     |
 +--------------------+-------------------+---------------------------------+

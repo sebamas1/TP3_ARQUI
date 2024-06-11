@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu May 30 21:03:18 2024
+| Date         : Fri May 31 18:51:49 2024
 | Host         : nehemias-dell running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_control_sets_placed.rpt
 | Design       : Top
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             337 |          158 |
+| No           | No                    | No                     |             337 |          172 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             194 |           60 |
-| Yes          | No                    | No                     |             882 |          266 |
+| No           | Yes                   | No                     |             194 |           42 |
+| Yes          | No                    | No                     |             890 |          261 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |            1004 |          351 |
+| Yes          | Yes                   | No                     |            1004 |          437 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -78,81 +78,81 @@ Table of Contents
 |  i_clk_IBUF_BUFG | receptor/next_tick_counter             | i_reset_IBUF                           |                2 |              4 |         2.00 |
 |  o_tick_BUFG     |                                        | transmisor/contador_ticks[3]_i_1_n_0   |                2 |              4 |         2.00 |
 |  o_tick_BUFG     | transmisor/contadorTX[3]_i_1_n_0       |                                        |                1 |              4 |         4.00 |
-|  i_recibido_BUFG |                                        |                                        |                2 |              5 |         2.50 |
-|  o_tick_BUFG     | transmisor/contadorArray               |                                        |                2 |              5 |         2.50 |
+|  i_recibido_BUFG |                                        |                                        |                3 |              5 |         1.67 |
+|  o_tick_BUFG     | transmisor/contadorArray               |                                        |                1 |              5 |         5.00 |
 |  o_tick_BUFG     |                                        | basys3_7SegmentMultiplexing/seg_out[4] |                1 |              7 |         7.00 |
-|  i_recibido_BUFG | INSTRUCCION[23]_i_1_n_0                |                                        |                1 |              8 |         8.00 |
-|  i_recibido_BUFG | INSTRUCCION[31]_i_1_n_0                |                                        |                1 |              8 |         8.00 |
-|  i_recibido_BUFG | salida_op[7]_i_1_n_0                   |                                        |                1 |              8 |         8.00 |
-|  i_recibido_BUFG | next_state__1[2]                       |                                        |                1 |              8 |         8.00 |
-|  i_clk_IBUF_BUFG | transmisor/dato_transmicion[7]_i_1_n_0 |                                        |                2 |              8 |         4.00 |
 |  i_clk_IBUF_BUFG | receptor/next_shiftreg                 | i_reset_IBUF                           |                2 |              8 |         4.00 |
-|  o_tick_BUFG     |                                        |                                        |                3 |              9 |         3.00 |
-|  o_tick_BUFG     | transmisor/next_instruction            |                                        |                2 |             10 |         5.00 |
-|  i_clk_IBUF_BUFG | reception_end_reg_n_0                  |                                        |                6 |             11 |         1.83 |
-|  o_tick_BUFG     | transmisor/next_state                  |                                        |                2 |             11 |         5.50 |
-|  i_recibido_BUFG | receptor/instruccion_addr              |                                        |                5 |             16 |         3.20 |
+|  i_clk_IBUF_BUFG | transmisor/dato_transmicion[7]_i_1_n_0 |                                        |                3 |              8 |         2.67 |
+|  i_recibido_BUFG | INSTRUCCION[31]_i_1_n_0                |                                        |                1 |              8 |         8.00 |
+|  i_recibido_BUFG | INSTRUCCION[23]_i_1_n_0                |                                        |                1 |              8 |         8.00 |
+|  i_recibido_BUFG | salida_op[7]_i_1_n_0                   |                                        |                2 |              8 |         4.00 |
+|  i_recibido_BUFG | next_state__1[2]                       |                                        |                2 |              8 |         4.00 |
+|  o_tick_BUFG     |                                        |                                        |                4 |              9 |         2.25 |
+|  o_tick_BUFG     | transmisor/next_instruction            |                                        |                3 |             10 |         3.33 |
+|  i_clk_IBUF_BUFG | reception_end_reg_n_0                  |                                        |                4 |             11 |         2.75 |
+|  o_tick_BUFG     | transmisor/next_state                  |                                        |                3 |             11 |         3.67 |
 |  i_clk_IBUF_BUFG |                                        | baud_gen/contador_flancos[15]_i_1_n_0  |                5 |             16 |         3.20 |
-|  i_clk_IBUF_BUFG | etapa_if/mem_inst/ram_data             |                                        |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | etapa_if/mem_inst/ram_data             |                                        |                3 |             16 |         5.33 |
 |  i_clk_IBUF_BUFG |                                        | i_reset_IBUF                           |                4 |             19 |         4.75 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[3]_2[0]     |                                        |                8 |             32 |         4.00 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[1][0]       |                                        |                8 |             32 |         4.00 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[1]_0[0]     |                                        |                8 |             32 |         4.00 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[1]_2[0]     |                                        |                7 |             32 |         4.57 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[3][0]       |                                        |                5 |             32 |         6.40 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[2]_2[0]     |                                        |               11 |             32 |         2.91 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[0]_1[0]     |                                        |               10 |             32 |         3.20 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[0][0]       |                                        |                8 |             32 |         4.00 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[0]_2[0]     |                                        |               11 |             32 |         2.91 |
+|  i_recibido_BUFG | receptor/instruccion_addr              |                                        |                8 |             24 |         3.00 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_13[0]    |                                        |               10 |             32 |         3.20 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_6[0]     |                                        |                8 |             32 |         4.00 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[3][0]       |                                        |                6 |             32 |         5.33 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[3]_0[0]     |                                        |               16 |             32 |         2.00 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_10[0]    |                                        |               12 |             32 |         2.67 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_1[0]     |                                        |                5 |             32 |         6.40 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_14[0]    |                                        |               10 |             32 |         3.20 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[0][0]       |                                        |                9 |             32 |         3.56 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2][0]       |                                        |                6 |             32 |         5.33 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_0[0]     |                                        |                6 |             32 |         5.33 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_12[0]    |                                        |               18 |             32 |         1.78 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_16[0]    |                                        |               11 |             32 |         2.91 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_4[0]     |                                        |               10 |             32 |         3.20 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_8[0]     |                                        |                5 |             32 |         6.40 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[0]_0[0]     |                                        |                8 |             32 |         4.00 |
 |  i_recibido_BUFG | receptor/E[0]                          |                                        |               10 |             32 |         3.20 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[2][0]       |                                        |               12 |             32 |         2.67 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[2]_0[0]     |                                        |                8 |             32 |         4.00 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[2]_1[0]     |                                        |               18 |             32 |         1.78 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[1]_1[0]     |                                        |                7 |             32 |         4.57 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[2]_3[0]     |                                        |                7 |             32 |         4.57 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[3]_4[0]     |                                        |                7 |             32 |         4.57 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[3]_3[0]     |                                        |                9 |             32 |         3.56 |
-|  i_clk_IBUF_BUFG | transmisor/reg_instruccion[31]_i_1_n_0 |                                        |               17 |             32 |         1.88 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[15][31]_i_1_n_0  | i_reset_IBUF                           |               10 |             32 |         3.20 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[17][31]_i_1_n_0  | i_reset_IBUF                           |                9 |             32 |         3.56 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[19][31]_i_1_n_0  | i_reset_IBUF                           |                8 |             32 |         4.00 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[1][31]_i_1_n_0   | i_reset_IBUF                           |               11 |             32 |         2.91 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[20][31]_i_1_n_0  | i_reset_IBUF                           |               10 |             32 |         3.20 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[10][31]_i_1_n_0  | i_reset_IBUF                           |               10 |             32 |         3.20 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[11][31]_i_1_n_0  | i_reset_IBUF                           |               11 |             32 |         2.91 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[12][31]_i_1_n_0  | i_reset_IBUF                           |                9 |             32 |         3.56 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[13][31]_i_1_n_0  | i_reset_IBUF                           |               10 |             32 |         3.20 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[14][31]_i_1_n_0  | i_reset_IBUF                           |               11 |             32 |         2.91 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_2[0]     |                                        |                9 |             32 |         3.56 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_3[0]     |                                        |                5 |             32 |         6.40 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_15[0]    |                                        |                9 |             32 |         3.56 |
+|  i_clk_IBUF_BUFG | transmisor/reg_instruccion[31]_i_1_n_0 |                                        |               14 |             32 |         2.29 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_7[0]     |                                        |                8 |             32 |         4.00 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_9[0]     |                                        |               14 |             32 |         2.29 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_11[0]    |                                        |                8 |             32 |         4.00 |
+|  i_recibido_BUFG | receptor/contadorArray_reg[2]_5[0]     |                                        |               11 |             32 |         2.91 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[25][31]_i_1_n_0  | i_reset_IBUF                           |               15 |             32 |         2.13 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[14][31]_i_1_n_0  | i_reset_IBUF                           |               10 |             32 |         3.20 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[22][31]_i_1_n_0  | i_reset_IBUF                           |               17 |             32 |         1.88 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[29][31]_i_1_n_0  | i_reset_IBUF                           |               12 |             32 |         2.67 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[23][31]_i_1_n_0  | i_reset_IBUF                           |               18 |             32 |         1.78 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[31][31]_i_1_n_0  | i_reset_IBUF                           |               19 |             32 |         1.68 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[3][31]_i_1_n_0   | i_reset_IBUF                           |               12 |             32 |         2.67 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[4][31]_i_1_n_0   | i_reset_IBUF                           |               16 |             32 |         2.00 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[30][31]_i_1_n_0  | i_reset_IBUF                           |               14 |             32 |         2.29 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[6][31]_i_1_n_0   | i_reset_IBUF                           |               20 |             32 |         1.60 |
 | ~p_2_out_BUFG    | etapa_id/gp/registros[16][31]_i_1_n_0  | i_reset_IBUF                           |               10 |             32 |         3.20 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[18][31]_i_1_n_0  | i_reset_IBUF                           |               14 |             32 |         2.29 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[22][31]_i_1_n_0  | i_reset_IBUF                           |               14 |             32 |         2.29 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[6][31]_i_1_n_0   | i_reset_IBUF                           |               17 |             32 |         1.88 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[30][31]_i_1_n_0  | i_reset_IBUF                           |               10 |             32 |         3.20 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[26][31]_i_1_n_0  | i_reset_IBUF                           |               11 |             32 |         2.91 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[25][31]_i_1_n_0  | i_reset_IBUF                           |                7 |             32 |         4.57 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[27][31]_i_1_n_0  | i_reset_IBUF                           |               14 |             32 |         2.29 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[28][31]_i_1_n_0  | i_reset_IBUF                           |               10 |             32 |         3.20 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[5][31]_i_1_n_0   | i_reset_IBUF                           |                7 |             32 |         4.57 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[4][31]_i_1_n_0   | i_reset_IBUF                           |                9 |             32 |         3.56 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[3][31]_i_1_n_0   | i_reset_IBUF                           |               10 |             32 |         3.20 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[29][31]_i_1_n_0  | i_reset_IBUF                           |                9 |             32 |         3.56 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[9][31]_i_1_n_0   | i_reset_IBUF                           |               18 |             32 |         1.78 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[23][31]_i_1_n_0  | i_reset_IBUF                           |               15 |             32 |         2.13 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[15][31]_i_1_n_0  | i_reset_IBUF                           |               14 |             32 |         2.29 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[18][31]_i_1_n_0  | i_reset_IBUF                           |               13 |             32 |         2.46 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[26][31]_i_1_n_0  | i_reset_IBUF                           |               13 |             32 |         2.46 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[1][31]_i_1_n_0   | i_reset_IBUF                           |               17 |             32 |         1.88 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[19][31]_i_1_n_0  | i_reset_IBUF                           |               13 |             32 |         2.46 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[9][31]_i_1_n_0   | i_reset_IBUF                           |               19 |             32 |         1.68 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[13][31]_i_1_n_0  | i_reset_IBUF                           |                9 |             32 |         3.56 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[2][31]_i_1_n_0   | i_reset_IBUF                           |               14 |             32 |         2.29 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[20][31]_i_1_n_0  | i_reset_IBUF                           |               10 |             32 |         3.20 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[28][31]_i_1_n_0  | i_reset_IBUF                           |               14 |             32 |         2.29 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[8][31]_i_1_n_0   | i_reset_IBUF                           |               14 |             32 |         2.29 |
 | ~p_2_out_BUFG    | etapa_id/gp/registros[24][31]_i_1_n_0  | i_reset_IBUF                           |               11 |             32 |         2.91 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[2][31]_i_1_n_0   | i_reset_IBUF                           |                8 |             32 |         4.00 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[21][31]_i_1_n_0  | i_reset_IBUF                           |               10 |             32 |         3.20 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[7][31]_i_1_n_0   | i_reset_IBUF                           |               17 |             32 |         1.88 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[8][31]_i_1_n_0   | i_reset_IBUF                           |               11 |             32 |         2.91 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[0]_0[0]     |                                        |               11 |             32 |         2.91 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[0]_3[0]     |                                        |               17 |             32 |         1.88 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[0]_4[0]     |                                        |               12 |             32 |         2.67 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[3]_0[0]     |                                        |               10 |             32 |         3.20 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[2]_4[0]     |                                        |                9 |             32 |         3.56 |
-|  i_recibido_BUFG | receptor/contadorArray_reg[3]_1[0]     |                                        |                7 |             32 |         4.57 |
-| ~p_2_out_BUFG    | etapa_id/gp/registros[31][31]_i_1_n_0  | i_reset_IBUF                           |               16 |             32 |         2.00 |
-| ~p_2_out_BUFG    |                                        |                                        |               45 |             76 |         1.69 |
-| ~p_2_out_BUFG    |                                        | ex/alu/o_ins_type[7]                   |               48 |            148 |         3.08 |
-|  p_2_out_BUFG    |                                        |                                        |              105 |            244 |         2.32 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[27][31]_i_1_n_0  | i_reset_IBUF                           |               13 |             32 |         2.46 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[11][31]_i_1_n_0  | i_reset_IBUF                           |               14 |             32 |         2.29 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[12][31]_i_1_n_0  | i_reset_IBUF                           |               11 |             32 |         2.91 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[5][31]_i_1_n_0   | i_reset_IBUF                           |               17 |             32 |         1.88 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[21][31]_i_1_n_0  | i_reset_IBUF                           |               11 |             32 |         2.91 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[7][31]_i_1_n_0   | i_reset_IBUF                           |               22 |             32 |         1.45 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[17][31]_i_1_n_0  | i_reset_IBUF                           |               11 |             32 |         2.91 |
+| ~p_2_out_BUFG    | etapa_id/gp/registros[10][31]_i_1_n_0  | i_reset_IBUF                           |               10 |             32 |         3.20 |
+| ~p_2_out_BUFG    |                                        |                                        |               48 |             76 |         1.58 |
+| ~p_2_out_BUFG    |                                        | ex/alu/o_ins_type[7]                   |               30 |            148 |         4.93 |
+|  p_2_out_BUFG    |                                        |                                        |              114 |            244 |         2.14 |
 +------------------+----------------------------------------+----------------------------------------+------------------+----------------+--------------+
 
 
