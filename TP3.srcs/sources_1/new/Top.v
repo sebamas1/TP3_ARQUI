@@ -361,7 +361,7 @@ module Top(
                                                 my_array[contadorArray] = INSTRUCCION;
                                                 contadorArray = contadorArray + 1;
                                                 salida_op = rec_data;
-                                                resultado = INSTRUCCION;
+                                                resultado = INSTRUCCION; //22 53 00 08
                                         end       
                                 end
                         endcase   
