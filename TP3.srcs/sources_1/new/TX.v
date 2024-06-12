@@ -27,6 +27,7 @@
         input [31 : 0] i_gpregisters,
         input [31 : 0] i_data_memory,
         input i_enviar,
+        input [10 : 0] i_pc,
         output o_dato_enviado,
         output o_tx,
         output [31 : 0] o_next_memory_addr
@@ -61,6 +62,7 @@
         reg [4 : 0] rs_dir = 5'b0;
         reg[10 : 0] memory_addr = 11'b0;
         reg send_data_memory = 1'b0;
+        reg send_pc = 1'b0;
 
         always @(posedge i_clk)
         begin
@@ -69,7 +71,10 @@
             else 
             begin
                 present_state <= next_state;
-                reg_instruccion <= send_data_memory == 1 ? i_data_memory : i_gpregisters;
+                reg_instruccion <= 
+                    send_pc == 1 ? i_pc 
+                    : send_data_memory == 1 ? i_data_memory 
+                    : i_gpregisters;
                 if(contadorTX == 0) dato_transmicion <= reg_instruccion[31 : 24];
                 else if(contadorTX == 1) dato_transmicion <= reg_instruccion[23 : 16];
                 else if(contadorTX == 2) dato_transmicion <= reg_instruccion[15 : 8];
@@ -94,7 +99,10 @@
                             send_data_memory <= 1;
                             memory_addr <= memory_addr + 1;
                             next_memory_addr = {21'b0, memory_addr};
-                            if(memory_addr == 11'b11111111111) i_enviar_prev <= 1;
+                            if(memory_addr == 11'b00000001111) begin
+                                send_pc <= 1;
+                                i_enviar_prev <= 1;
+                            end
                         end else 
                         begin 
                             rs_dir <= rs_dir + 1;

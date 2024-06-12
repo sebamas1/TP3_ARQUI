@@ -43,7 +43,7 @@ ROM mem_inst(
 
 always @(posedge i_clk)
 begin
-    if(i_start_pipeline == 1 && i_stall == 0)
+    if(i_start_pipeline == 1 && i_stall == 0 && o_end_pipeline == 0)
     begin
         if(program_counter < 2048)
         begin

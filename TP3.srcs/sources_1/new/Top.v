@@ -193,6 +193,7 @@ module Top(
         .i_gpregisters(etapa_id.o_rs),
         .i_data_memory(mem.o_data_memory),
         .i_enviar(etapa_if.o_end_pipeline),// deberia usar o_end_pipeline
+        .i_pc(etapa_if.o_pc_value),
         .o_dato_enviado(),
         .o_tx(tx)
     );

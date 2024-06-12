@@ -30,20 +30,25 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
                     time.sleep(0.01)
                     if (array[i] == "00 00 00 FF" and j == 3):
                         print("El receptor esta esperando que la placa termine de enviar datos...")
-                        time.sleep(10)
-                        # Leer continuamente desde la UART y mostrar lo recibido
-         #               while True:
-                        counter = 0                            
-                        datos_recibidos = conexion_serial.read_all()
+                        time.sleep(5)
+                        
+                        # datos_recibidos = conexion_serial.read_all()
+                        datos_recibidos = conexion_serial.read(440)
                         conexion_serial.flushInput()
                         if datos_recibidos:
                             datos_recibidos_hex = datos_recibidos.hex(sep="-", bytes_per_sep=4)  # Convertir a hexadecimal
                             datos_recibidos = datos_recibidos_hex.split("-")
                             for i in range(len(datos_recibidos)):
+                                if(i == 46) : 
+                                    print(f"Program counter : {datos_recibidos[i]}")
+                                    break
                                 if(i < 32) : 
                                     print(f"Registro {i}: {datos_recibidos[i]}")
                                 elif (datos_recibidos[i] != "00000000") : 
                                     print(f"Data memory {i - 31}: {datos_recibidos[i]}")
+                                
+
+                                
                                 
 
     except serial.SerialException as e:
@@ -51,7 +56,7 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
 
 
 # Ejemplo de uso
-archivo_a_enviar = "archivo.txt"  # Reemplaza con el nombre de tu archivo
+archivo_a_enviar = "instrucciones.txt"  # Reemplaza con el nombre de tu archivo
 puerto_serial = "/dev/ttyUSB1"  # Reemplaza con el puerto serie que deseas utilizar
 
 enviar_hexadecimal_a_uart(archivo_a_enviar, puerto_serial)

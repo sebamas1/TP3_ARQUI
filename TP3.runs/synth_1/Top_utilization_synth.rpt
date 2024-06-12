@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Wed Jun 12 16:42:31 2024
+| Date         : Wed Jun 12 19:50:58 2024
 | Host         : sebastian-MAX-L5 running 64-bit Linux Mint 20.3
 | Command      : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
 | Design       : Top
@@ -31,8 +31,8 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             | 2060 |     0 |          0 |     20800 |  9.90 |
-|   LUT as Logic          | 2060 |     0 |          0 |     20800 |  9.90 |
+| Slice LUTs*             | 2077 |     0 |          0 |     20800 |  9.99 |
+|   LUT as Logic          | 2077 |     0 |          0 |     20800 |  9.99 |
 |   LUT as Memory         |    0 |     0 |          0 |      9600 |  0.00 |
 | Slice Registers         | 1869 |     0 |          0 |     41600 |  4.49 |
 |   Register as Flip Flop | 1869 |     0 |          0 |     41600 |  4.49 |
@@ -153,12 +153,12 @@ Warning! LUT value is adjusted to account for LUT combining.
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
 | FDRE     | 1828 |        Flop & Latch |
-| LUT6     | 1009 |                 LUT |
-| LUT5     |  377 |                 LUT |
-| LUT3     |  316 |                 LUT |
+| LUT6     | 1008 |                 LUT |
+| LUT5     |  389 |                 LUT |
+| LUT3     |  284 |                 LUT |
 | MUXF7    |  273 |               MuxFx |
-| LUT2     |  219 |                 LUT |
-| LUT4     |  174 |                 LUT |
+| LUT2     |  217 |                 LUT |
+| LUT4     |  198 |                 LUT |
 | LUT1     |  153 |                 LUT |
 | CARRY4   |   48 |          CarryLogic |
 | FDSE     |   41 |        Flop & Latch |
