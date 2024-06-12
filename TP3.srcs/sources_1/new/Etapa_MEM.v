@@ -36,19 +36,22 @@ module Etapa_MEM #(
         input  [TAM_DATA - 1 : 0]              i_rt,
         input  [REGISTER_SIZE - 1 : 0]         i_wb_reg_write,
         input  [ALU_CTRL - 1  : 0]             i_alu_ctrl,
+        input  [TAM_DATA - 1 : 0]              i_data_addr_memory,
+        input                                  i_end_pipeline,
         
         output  [TAM_DATA - 1 : 0]             o_res,
         output  [PC_SIZE - 1 : 0]              o_pc,
         output  [REGISTER_SIZE - 1 : 0]        o_wb_reg_write,
-        output                                 o_reg_write_enable
+        output                                 o_reg_write_enable,
+        output  [TAM_DATA - 1 : 0]             o_data_memory
     );
     
     RAM mem_datos(
-    .i_addra(i_res), //La salida del PC entra a la mem
+    .i_addra(i_end_pipeline == 0 ? i_res : i_data_addr_memory), //La salida del PC entra a la mem
     .i_dina(i_rt),
     .i_clka(i_clk),
-    .i_wea(i_alu_ctrl[3]),                      //write enable    
-    .i_ena(i_alu_ctrl[4]),                      //memory enable
+    .i_wea(i_end_pipeline == 0 ? i_alu_ctrl[3] : 0),                      //write enable    
+    .i_ena(i_end_pipeline == 0 ? i_alu_ctrl[4] : 1),                      //memory enable
     .i_rsta(1'b0),                           // Output reset (does not affect memory contents)
     .i_regcea(i_alu_ctrl[2]),               // output register enable
     .i_output_format(i_alu_ctrl[1 : 0]),
@@ -73,4 +76,5 @@ end
         assign o_res =                   (i_alu_ctrl[4] == 1 && i_alu_ctrl[3] == 0) ? mem_datos.o_douta : i_res; //si es un load toma la memoria, si no, sigue con el resultado de la ALU
         assign o_wb_reg_write =          wb_reg_write_tmp;
         assign o_reg_write_enable =      reg_write_enable_tmp;
+        assign o_data_memory =           mem_datos.o_douta;
 endmodule

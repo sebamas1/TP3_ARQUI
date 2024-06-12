@@ -38,11 +38,11 @@ module Top(
         .i_branch_addr(ex.o_branch_dir), 
         .i_stall(dtu.o_stall),
         .i_instruccion_carga(instruccion_para_guardar),
-        .i_instruccion_carga_addr(etapa_if.o_end_pipeline ? transmisor.o_next_instruction : instruccion_addr),
+        .i_instruccion_carga_addr(etapa_if.o_end_pipeline ? transmisor.o_next_memory_addr : instruccion_addr),
         .i_wea(wea),
         .i_start_pipeline(reception_end)
     );
-    
+
     IF_ID latch_ifid(
         i_clk & reception_end,
         i_reset,
@@ -55,12 +55,12 @@ module Top(
     Instruction_decode etapa_id(
         .i_clk(i_clk & reception_end),
         .i_reset(i_reset),
-        .i_instruccion(etapa_if.o_end_pipeline ? transmisor.o_next_instruction : latch_ifid.o_instruccion),
+        .i_instruccion(etapa_if.o_end_pipeline ? transmisor.o_next_memory_addr : latch_ifid.o_instruccion),
         .i_pc(latch_ifid.o_pc_value),
         
         .i_reg_write_mem_wb(etapa_if.o_end_pipeline ? 0 : wb.o_reg_write_enable),
         .i_dato_de_escritura_en_reg(wb.o_res),
-        .i_direc_de_escritura_en_reg(etapa_if.o_end_pipeline ? transmisor.o_next_instruction : wb.o_wb_reg_write)
+        .i_direc_de_escritura_en_reg(etapa_if.o_end_pipeline ? transmisor.o_next_memory_addr : wb.o_wb_reg_write)
     );
     /*
     bueno hay cambiarle el nombre al clock en las instancias y hay que hacer
@@ -125,7 +125,9 @@ module Top(
         exmem.o_res,
         exmem.o_rt,
         exmem.o_wb_reg_write,
-        exmem.o_alu_ctrl
+        exmem.o_alu_ctrl,
+        transmisor.o_next_memory_addr,
+        etapa_if.o_end_pipeline
     
     );
     latch_memwb memwb(
@@ -188,11 +190,11 @@ module Top(
         .i_clk(i_clk),
         .i_tick(o_tick),
         .i_reset(i_reset),
-        .i_instruccion(etapa_id.o_rs),
+        .i_gpregisters(etapa_id.o_rs),
+        .i_data_memory(mem.o_data_memory),
         .i_enviar(etapa_if.o_end_pipeline),// deberia usar o_end_pipeline
         .o_dato_enviado(),
-        .o_tx(tx),
-        .o_next_instruction()
+        .o_tx(tx)
     );
 
     Basys3_7SegmentMultiplexing basys3_7SegmentMultiplexing (      

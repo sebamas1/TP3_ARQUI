@@ -62,7 +62,7 @@ end
 //     program_counter <= program_counter - 1;
 // end
 
-assign o_pc_value   =   program_counter - 1;//es una negrada esto
+assign o_pc_value   =   program_counter - 1;
 assign o_instruccion =  mem_inst.o_douta;
 
 endmodule

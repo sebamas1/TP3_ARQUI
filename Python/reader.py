@@ -10,17 +10,17 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
 
     try:
         with serial.Serial(port=puerto, baudrate=9600, timeout=1) as conexion_serial:
-            print(f"Conexión establecida en {puerto}")
+           # print(f"Conexión establecida en {puerto}")
             conexion_serial.reset_input_buffer()
             conexion_serial.reset_output_buffer()
             
             array = contenido.split('\n')
-            print("array: ", array)
+            #print("array: ", array)
             for i in range(len(array)):
                 hexa = array[i].split(' ')
-                print("hexaCompleto: ", hexa)
+               # print("hexaCompleto: ", hexa)
                 for j in range(len(hexa)):
-                    print("se envió el hexa: ", hexa[j])
+                    # print("se envió el hexa: ", hexa[j])
                     datos_hex_bytes = bytes.fromhex(hexa[j])
                     # clear buffer
                     
@@ -29,8 +29,8 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
                     conexion_serial.write(datos_hex_bytes)
                     time.sleep(0.01)
                     if (array[i] == "00 00 00 FF" and j == 3):
-                        print("Comienza a leer la UART")
-                        time.sleep(2)
+                        print("El receptor esta esperando que la placa termine de enviar datos...")
+                        time.sleep(10)
                         # Leer continuamente desde la UART y mostrar lo recibido
          #               while True:
                         counter = 0                            
@@ -40,7 +40,11 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
                             datos_recibidos_hex = datos_recibidos.hex(sep="-", bytes_per_sep=4)  # Convertir a hexadecimal
                             datos_recibidos = datos_recibidos_hex.split("-")
                             for i in range(len(datos_recibidos)):
-                                print(f"Registro {i}: {datos_recibidos[i]}")
+                                if(i < 32) : 
+                                    print(f"Registro {i}: {datos_recibidos[i]}")
+                                elif (datos_recibidos[i] != "00000000") : 
+                                    print(f"Data memory {i - 31}: {datos_recibidos[i]}")
+                                
 
     except serial.SerialException as e:
         print(f"Error al abrir puerto serial: {e}")

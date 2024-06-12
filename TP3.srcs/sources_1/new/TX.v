@@ -24,11 +24,12 @@
         input i_clk,
         input i_tick,
         input i_reset,
-        input [31 : 0] i_instruccion,
+        input [31 : 0] i_gpregisters,
+        input [31 : 0] i_data_memory,
         input i_enviar,
         output o_dato_enviado,
         output o_tx,
-        output [31 : 0] o_next_instruction
+        output [31 : 0] o_next_memory_addr
         );
 
         localparam IDDLE_STATE = 4'b0000;
@@ -56,8 +57,10 @@
         reg [3 : 0] contadorTX = 4'b0000;
         reg [7 : 0] dato_transmicion = 8'b00000000;
         reg [31 : 0] reg_instruccion = 32'b1111111111111111111111111111111111111111;
-        reg [31 : 0] next_instruction = 32'b0;
+        reg [31 : 0] next_memory_addr = 32'b0;
         reg [4 : 0] rs_dir = 5'b0;
+        reg[10 : 0] memory_addr = 11'b0;
+        reg send_data_memory = 1'b0;
 
         always @(posedge i_clk)
         begin
@@ -66,7 +69,7 @@
             else 
             begin
                 present_state <= next_state;
-                reg_instruccion <= i_instruccion;
+                reg_instruccion <= send_data_memory == 1 ? i_data_memory : i_gpregisters;
                 if(contadorTX == 0) dato_transmicion <= reg_instruccion[31 : 24];
                 else if(contadorTX == 1) dato_transmicion <= reg_instruccion[23 : 16];
                 else if(contadorTX == 2) dato_transmicion <= reg_instruccion[15 : 8];
@@ -87,10 +90,16 @@
                         terminado <= 0;
                         next_state <= WAITING_STATE;
                         contador_ticks <= 4'b0000; 
-                        next_instruction <= {6'b0, rs_dir[4 : 0], 21'b0};
-                        rs_dir <= rs_dir + 1; 
-                       // next_instruction <= next_instruction + 1;
-                        if(rs_dir == 5'b11111) i_enviar_prev <= 1;
+                        if(rs_dir == 5'b11111) begin 
+                            send_data_memory <= 1;
+                            memory_addr <= memory_addr + 1;
+                            next_memory_addr = {21'b0, memory_addr};
+                            if(memory_addr == 11'b11111111111) i_enviar_prev <= 1;
+                        end else 
+                        begin 
+                            rs_dir <= rs_dir + 1;
+                            next_memory_addr <= {6'b0, rs_dir[4 : 0], 21'b0}; 
+                        end
                     end
                 end
 
@@ -199,7 +208,7 @@
 
         assign o_tx = salida;
         assign o_dato_enviado = terminado;
-        assign o_next_instruction = next_instruction;
+        assign o_next_memory_addr = next_memory_addr;
        
         
     endmodule

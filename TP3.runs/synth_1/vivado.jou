@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Wed Jun  5 21:23:31 2024
-# Process ID: 530517
+# Start of session at: Wed Jun 12 16:39:17 2024
+# Process ID: 38501
 # Current directory: /home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1
 # Command line: vivado -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
 # Log file: /home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/Top.vds
 # Journal file: /home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/vivado.jou
-# Running On: sebastian-MAX-L5, OS: Linux, CPU Frequency: 3142.850 MHz, CPU Physical cores: 2, Host memory: 7980 MB
+# Running On: sebastian-MAX-L5, OS: Linux, CPU Frequency: 2232.323 MHz, CPU Physical cores: 2, Host memory: 7980 MB
 #-----------------------------------------------------------
 source Top.tcl -notrace
