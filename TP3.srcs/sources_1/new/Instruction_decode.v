@@ -78,7 +78,7 @@ module Instruction_decode#(
      
     Registros gp(
         i_clk,
-        i_reset,
+        0,
         i_reg_write_mem_wb,
         i_dato_de_escritura_en_reg,
         i_direc_de_escritura_en_reg,

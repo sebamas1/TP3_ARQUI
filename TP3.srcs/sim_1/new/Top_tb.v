@@ -31,7 +31,8 @@ module Top_tb;
     end
     
     Top top(
-    clk,
-    reset
+    0,
+    reset,
+    clk
     );
 endmodule

@@ -26,12 +26,15 @@
         input i_reset,
         input [31 : 0] i_gpregisters,
         input [31 : 0] i_data_memory,
-        input i_enviar,
         input [10 : 0] i_pc,
         output o_dato_enviado,
         output o_tx,
         output [31 : 0] o_next_memory_addr
         );
+
+        initial begin
+            enviar_prev = 1'b1;
+        end
 
         localparam IDDLE_STATE = 4'b0000;
         localparam WAITING_STATE = 4'b0001;
@@ -53,12 +56,18 @@
         reg terminado = 1'b1;
         reg salida = 1;
         reg contador = 1'b0;
-        reg i_enviar_prev = 1'b0;
+        reg enviar_prev = 1'b1;
+
+        reg next_enviar_prev = 1'b1;
+        reg next_send_pc = 1'b0;
+        reg next_send_data_memory = 1'b0;
+        reg [4 : 0] next_rs_dir = 5'b0;
+        reg [10 : 0] next_memory_addr = 11'b0;
         
         reg [3 : 0] contadorTX = 4'b0000;
         reg [7 : 0] dato_transmicion = 8'b00000000;
         reg [31 : 0] reg_instruccion = 32'b1111111111111111111111111111111111111111;
-        reg [31 : 0] next_memory_addr = 32'b0;
+        reg [31 : 0] actual_memory_adress = 32'b0;
         reg [4 : 0] rs_dir = 5'b0;
         reg[10 : 0] memory_addr = 11'b0;
         reg send_data_memory = 1'b0;
@@ -67,10 +76,24 @@
         always @(posedge i_clk)
         begin
             if(i_reset == 1)
+            begin
                 present_state <= IDDLE_STATE;
+                enviar_prev <= 0;
+                send_pc <= 0;
+                send_data_memory <= 0;
+                rs_dir <= 5'b0;
+                memory_addr <= 11'b0;
+            end
+            
             else 
             begin
                 present_state <= next_state;
+                enviar_prev <= next_enviar_prev;
+                send_pc <= next_send_pc;
+                send_data_memory <= next_send_data_memory;
+                rs_dir <= next_rs_dir;
+                memory_addr <= next_memory_addr;
+
                 reg_instruccion <= 
                     send_pc == 1 ? i_pc 
                     : send_data_memory == 1 ? i_data_memory 
@@ -86,27 +109,32 @@
         always @(posedge i_tick)
         begin
             contador_ticks <= contador_ticks + 1;
+            next_enviar_prev <= enviar_prev;
+            next_send_pc <= send_pc;
+            next_send_data_memory <= send_data_memory;
+            next_rs_dir <= rs_dir;
+            next_memory_addr <= memory_addr;
             case(present_state)
                 IDDLE_STATE:
                 begin
                     //salida <= 1;
-                    if (i_enviar == 1 && i_enviar_prev == 0) 
+                    if (enviar_prev == 0) 
                     begin //si se activa el envio por primera vez
                         terminado <= 0;
                         next_state <= WAITING_STATE;
                         contador_ticks <= 4'b0000; 
                         if(rs_dir == 5'b11111) begin 
-                            send_data_memory <= 1;
-                            memory_addr <= memory_addr + 1;
-                            next_memory_addr = {21'b0, memory_addr};
+                            next_send_data_memory <= 1;
+                            next_memory_addr <= memory_addr + 1;
+                            actual_memory_adress = {21'b0, next_memory_addr};
                             if(memory_addr == 11'b00000001111) begin
-                                send_pc <= 1;
-                                i_enviar_prev <= 1;
+                                next_send_pc <= 1;
+                                next_enviar_prev <= 1;
                             end
                         end else 
                         begin 
-                            rs_dir <= rs_dir + 1;
-                            next_memory_addr <= {6'b0, rs_dir[4 : 0], 21'b0}; 
+                            next_rs_dir <= rs_dir + 1;
+                            actual_memory_adress <= {6'b0, next_rs_dir[4 : 0], 21'b0}; 
                         end
                     end
                 end
@@ -216,7 +244,7 @@
 
         assign o_tx = salida;
         assign o_dato_enviado = terminado;
-        assign o_next_memory_addr = next_memory_addr;
+        assign o_next_memory_addr = actual_memory_adress;
        
         
     endmodule

@@ -30,9 +30,12 @@ module Top(
             output [6:0] display1,
             output [3:0] an
     );
+    initial begin
+        step = 1'b0;
+    end
     
     Instruction_fetch etapa_if(
-        .i_clk(i_clk),
+        .i_clk(step == 1 ? i_reset : i_clk),
         .i_reset(i_reset),
         .i_branch(ex.o_branch), 
         .i_branch_addr(ex.o_branch_dir), 
@@ -44,7 +47,7 @@ module Top(
     );
 
     IF_ID latch_ifid(
-        i_clk & reception_end,
+        step == 1 ? i_reset : i_clk,
         i_reset,
         etapa_if.o_pc_value,
         etapa_if.o_instruccion,
@@ -53,7 +56,7 @@ module Top(
     );
     
     Instruction_decode etapa_id(
-        .i_clk(i_clk & reception_end),
+        .i_clk(step == 1 ? i_reset : i_clk),
         .i_reset(i_reset),
         .i_instruccion(etapa_if.o_end_pipeline ? transmisor.o_next_memory_addr : latch_ifid.o_instruccion),
         .i_pc(latch_ifid.o_pc_value),
@@ -62,13 +65,9 @@ module Top(
         .i_dato_de_escritura_en_reg(wb.o_res),
         .i_direc_de_escritura_en_reg(etapa_if.o_end_pipeline ? transmisor.o_next_memory_addr : wb.o_wb_reg_write)
     );
-    /*
-    bueno hay cambiarle el nombre al clock en las instancias y hay que hacer
-    que el clock se enchufe al pipeline una vez se terminen de transmitir las instrucciones
-    */
     
     latch_idex latch_idex(
-        i_clk & reception_end,
+        step == 1 ? i_reset  : i_clk,
         i_reset,
         etapa_id.o_pc,
         etapa_id.o_op,
@@ -86,7 +85,7 @@ module Top(
     );
     
     etapa_ex ex(
-        i_clk & reception_end,
+        step == 1 ? i_reset  : i_clk,
         i_reset,
         latch_idex.o_pc,
         latch_idex.o_op,
@@ -108,7 +107,7 @@ module Top(
      
     );
     latch_exmem exmem(
-        i_clk & reception_end,
+        step == 1 ? i_reset : i_clk,// OJO, si no lee las instrucciones, ES POSIBLE QUE EL REA este deshabilitado segun la instruccion
         i_reset,
         ex.o_pc,
         ex.o_res,
@@ -118,7 +117,7 @@ module Top(
     );
     
     Etapa_MEM mem(
-        i_clk & reception_end,
+        step == 1 ? i_reset : i_clk,
         i_reset,
         
         exmem.o_pc,
@@ -131,7 +130,7 @@ module Top(
     
     );
     latch_memwb memwb(
-        i_clk & reception_end,
+        step == 1 ? i_reset : i_clk,
         i_reset,
         
         mem.o_pc,
@@ -142,7 +141,7 @@ module Top(
     );
     
    etapa_wb wb(
-        i_clk & reception_end,
+        step == 1 ? i_reset : i_clk,
         i_reset,
         
         memwb.o_pc,
@@ -192,7 +191,6 @@ module Top(
         .i_reset(i_reset),
         .i_gpregisters(etapa_id.o_rs),
         .i_data_memory(mem.o_data_memory),
-        .i_enviar(etapa_if.o_end_pipeline),// deberia usar o_end_pipeline
         .i_pc(etapa_if.o_pc_value),
         .o_dato_enviado(),
         .o_tx(tx)
@@ -206,6 +204,12 @@ module Top(
         .rst(resultado)
     );
 
+    pulse_generator pulse_generator (
+        .clk(i_clk),
+        .reset(i_reset),
+        .data_ready(receptor.o_dato_recibido)
+    );
+
         wire            i_recibido;
         wire [7 : 0]    resultado;
 
@@ -216,6 +220,7 @@ module Top(
         reg [31 : 0]    instruccion_para_guardar = 0;
         reg [3 : 0]     present_state = IDDLE_STATE;
         reg [3 : 0]     next_state = IDDLE_STATE;
+        reg             step = 1'b0;
 
 
         localparam PRIMER_HEXA = 3'b000;
@@ -225,7 +230,7 @@ module Top(
         localparam IDDLE_STATE = 3'b101;
 
         assign salida = resultado;
-        assign salida_operadores = receptor.o_dato_recibido;
+        assign salida_operadores = i_reset;
 
         always @(posedge i_clk)
         begin
@@ -271,12 +276,21 @@ module Top(
                                 CUARTO_HEXA:
                                 begin
                                         if(receptor.o_dato_recibido == 8'b11111111)
-                                        begin
+                                        begin //step
                                                 wea = 0;
                                                 instruccion_para_guardar [7 : 0] = 8'b11111111;
                                                 next_state = IDDLE_STATE;
                                                 reception_end = 1'b1;
-                                        end else begin
+                                                step = 1'b1;
+                                        end else if (receptor.o_dato_recibido == 8'b11111110) begin
+                                            //ejecucion continua
+                                                wea = 0;
+                                                instruccion_para_guardar [7 : 0] = 8'b11111111;
+                                                next_state = IDDLE_STATE;
+                                                reception_end = 1'b1;
+                                                step = 1'b0;
+                                        end else
+                                            begin
                                                 instruccion_para_guardar [7 : 0] = receptor.o_dato_recibido;
                                                 next_state = PRIMER_HEXA;
                                                 instruccion_addr = instruccion_addr + 1;

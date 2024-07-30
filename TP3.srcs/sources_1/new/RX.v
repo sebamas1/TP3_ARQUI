@@ -68,7 +68,7 @@ module RX(
                      begin
                          next_state <= WAITING_STATE;
                          contador_ticks <= 0;
-                     end
+                     end //hay que ver si tengo que resetear el dato para que el step no se rompa
                 recibido <= 1'b0;
             end
             WAITING_STATE:
