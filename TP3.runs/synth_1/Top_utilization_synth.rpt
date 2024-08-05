@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Mon Jul 29 21:43:13 2024
+| Date         : Mon Aug  5 19:57:49 2024
 | Host         : sebastian-MAX-L5 running 64-bit Ubuntu 24.04 LTS
 | Command      : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
 | Design       : Top
@@ -31,11 +31,11 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             | 2077 |     0 |          0 |     20800 |  9.99 |
-|   LUT as Logic          | 2077 |     0 |          0 |     20800 |  9.99 |
+| Slice LUTs*             | 2094 |     0 |          0 |     20800 | 10.07 |
+|   LUT as Logic          | 2094 |     0 |          0 |     20800 | 10.07 |
 |   LUT as Memory         |    0 |     0 |          0 |      9600 |  0.00 |
-| Slice Registers         | 1886 |     0 |          0 |     41600 |  4.53 |
-|   Register as Flip Flop | 1886 |     0 |          0 |     41600 |  4.53 |
+| Slice Registers         | 1904 |     0 |          0 |     41600 |  4.58 |
+|   Register as Flip Flop | 1904 |     0 |          0 |     41600 |  4.58 |
 |   Register as Latch     |    0 |     0 |          0 |     41600 |  0.00 |
 | F7 Muxes                |  273 |     0 |          0 |     16300 |  1.67 |
 | F8 Muxes                |    0 |     0 |          0 |      8150 |  0.00 |
@@ -60,7 +60,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 36    |          Yes |         Set |            - |
-| 1850  |          Yes |       Reset |            - |
+| 1868  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -153,14 +153,14 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     | 1850 |        Flop & Latch |
-| LUT6     | 1018 |                 LUT |
-| LUT5     |  384 |                 LUT |
-| LUT3     |  277 |                 LUT |
+| FDRE     | 1868 |        Flop & Latch |
+| LUT6     | 1010 |                 LUT |
+| LUT5     |  387 |                 LUT |
+| LUT3     |  279 |                 LUT |
 | MUXF7    |  273 |               MuxFx |
+| LUT4     |  215 |                 LUT |
 | LUT2     |  215 |                 LUT |
-| LUT4     |  192 |                 LUT |
-| LUT1     |  151 |                 LUT |
+| LUT1     |  154 |                 LUT |
 | CARRY4   |   51 |          CarryLogic |
 | FDSE     |   36 |        Flop & Latch |
 | OBUF     |   20 |                  IO |

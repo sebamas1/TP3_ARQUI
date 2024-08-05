@@ -29,7 +29,8 @@
         input [10 : 0] i_pc,
         output o_dato_enviado,
         output o_tx,
-        output [31 : 0] o_next_memory_addr
+        output [31 : 0] o_next_memory_addr,
+        output o_enviar_prev
         );
 
         initial begin
@@ -83,6 +84,11 @@
                 send_data_memory <= 0;
                 rs_dir <= 5'b0;
                 memory_addr <= 11'b0;
+                next_enviar_prev <= 0;
+                next_send_pc <= 0;
+                next_send_data_memory <= 0;
+                next_rs_dir <= 0;
+                next_memory_addr <= 0;
             end
             
             else 
@@ -109,11 +115,12 @@
         always @(posedge i_tick)
         begin
             contador_ticks <= contador_ticks + 1;
-            next_enviar_prev <= enviar_prev;
-            next_send_pc <= send_pc;
-            next_send_data_memory <= send_data_memory;
-            next_rs_dir <= rs_dir;
-            next_memory_addr <= memory_addr;
+
+            // next_enviar_prev <= enviar_prev;
+            // next_send_pc <= send_pc;
+            // next_send_data_memory <= send_data_memory;
+            // next_rs_dir <= rs_dir;
+            // next_memory_addr <= memory_addr;
             case(present_state)
                 IDDLE_STATE:
                 begin
@@ -126,7 +133,7 @@
                         if(rs_dir == 5'b11111) begin 
                             next_send_data_memory <= 1;
                             next_memory_addr <= memory_addr + 1;
-                            actual_memory_adress = {21'b0, next_memory_addr};
+                            actual_memory_adress <= {21'b0, next_memory_addr};
                             if(memory_addr == 11'b00000001111) begin
                                 next_send_pc <= 1;
                                 next_enviar_prev <= 1;
@@ -245,6 +252,7 @@
         assign o_tx = salida;
         assign o_dato_enviado = terminado;
         assign o_next_memory_addr = actual_memory_adress;
+        assign o_enviar_prev = enviar_prev;
        
         
     endmodule

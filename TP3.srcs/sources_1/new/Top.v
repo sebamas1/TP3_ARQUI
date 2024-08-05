@@ -35,19 +35,19 @@ module Top(
     end
     
     Instruction_fetch etapa_if(
-        .i_clk(step == 1 ? i_reset : i_clk),
+        .i_clk(step == 1 ? pulse_generate.pulse1 : i_clk),
         .i_reset(i_reset),
         .i_branch(ex.o_branch), 
         .i_branch_addr(ex.o_branch_dir), 
         .i_stall(dtu.o_stall),
         .i_instruccion_carga(instruccion_para_guardar),
-        .i_instruccion_carga_addr(etapa_if.o_end_pipeline ? transmisor.o_next_memory_addr : instruccion_addr),
+        .i_instruccion_carga_addr(instruccion_addr),
         .i_wea(wea),
         .i_start_pipeline(reception_end)
     );
 
     IF_ID latch_ifid(
-        step == 1 ? i_reset : i_clk,
+        step == 1 ? pulse_generate.pulse1 : i_clk,
         i_reset,
         etapa_if.o_pc_value,
         etapa_if.o_instruccion,
@@ -56,18 +56,20 @@ module Top(
     );
     
     Instruction_decode etapa_id(
-        .i_clk(step == 1 ? i_reset : i_clk),
+        .i_clk(i_clk), //acordate que aca tenes que dejarle 
+        //pasado el pulso de reloj para que alimente la memoria, 
+        //igual que en la etapa mems
         .i_reset(i_reset),
-        .i_instruccion(etapa_if.o_end_pipeline ? transmisor.o_next_memory_addr : latch_ifid.o_instruccion),
+        .i_instruccion(!transmisor.o_enviar_prev ? transmisor.o_next_memory_addr : latch_ifid.o_instruccion),
         .i_pc(latch_ifid.o_pc_value),
         
-        .i_reg_write_mem_wb(etapa_if.o_end_pipeline ? 0 : wb.o_reg_write_enable),
+        .i_reg_write_mem_wb(!transmisor.o_enviar_prev ? 0 : wb.o_reg_write_enable),
         .i_dato_de_escritura_en_reg(wb.o_res),
-        .i_direc_de_escritura_en_reg(etapa_if.o_end_pipeline ? transmisor.o_next_memory_addr : wb.o_wb_reg_write)
+        .i_direc_de_escritura_en_reg(!transmisor.o_enviar_prev ? transmisor.o_next_memory_addr : wb.o_wb_reg_write)
     );
     
     latch_idex latch_idex(
-        step == 1 ? i_reset  : i_clk,
+        step == 1 ? pulse_generate.pulse1  : i_clk,
         i_reset,
         etapa_id.o_pc,
         etapa_id.o_op,
@@ -85,7 +87,7 @@ module Top(
     );
     
     etapa_ex ex(
-        step == 1 ? i_reset  : i_clk,
+        step == 1 ? pulse_generate.pulse1  : i_clk,
         i_reset,
         latch_idex.o_pc,
         latch_idex.o_op,
@@ -107,7 +109,7 @@ module Top(
      
     );
     latch_exmem exmem(
-        step == 1 ? i_reset : i_clk,// OJO, si no lee las instrucciones, ES POSIBLE QUE EL REA este deshabilitado segun la instruccion
+        step == 1 ? pulse_generate.pulse1 : i_clk,// OJO, si no lee las instrucciones, ES POSIBLE QUE EL REA este deshabilitado segun la instruccion
         i_reset,
         ex.o_pc,
         ex.o_res,
@@ -117,7 +119,7 @@ module Top(
     );
     
     Etapa_MEM mem(
-        step == 1 ? i_reset : i_clk,
+        i_clk,
         i_reset,
         
         exmem.o_pc,
@@ -126,11 +128,11 @@ module Top(
         exmem.o_wb_reg_write,
         exmem.o_alu_ctrl,
         transmisor.o_next_memory_addr,
-        etapa_if.o_end_pipeline
+        !transmisor.o_enviar_prev
     
     );
     latch_memwb memwb(
-        step == 1 ? i_reset : i_clk,
+        step == 1 ? pulse_generate.pulse1 : i_clk,
         i_reset,
         
         mem.o_pc,
@@ -141,7 +143,7 @@ module Top(
     );
     
    etapa_wb wb(
-        step == 1 ? i_reset : i_clk,
+        step == 1 ? pulse_generate.pulse1 : i_clk,
         i_reset,
         
         memwb.o_pc,
@@ -188,7 +190,7 @@ module Top(
     TX transmisor(
         .i_clk(i_clk),
         .i_tick(o_tick),
-        .i_reset(i_reset),
+        .i_reset(pulse_generate.pulse2),
         .i_gpregisters(etapa_id.o_rs),
         .i_data_memory(mem.o_data_memory),
         .i_pc(etapa_if.o_pc_value),
@@ -201,18 +203,16 @@ module Top(
         .seg(display1),
         .an(an),
         .clk(o_tick),
-        .rst(resultado)
+        .rst(display2)
     );
 
-    pulse_generator pulse_generator (
+    pulse_generator pulse_generate (
         .clk(i_clk),
-        .reset(i_reset),
-        .data_ready(receptor.o_dato_recibido)
+        .button(i_reset)
     );
 
         wire            i_recibido;
-        wire [7 : 0]    resultado;
-
+        
         reg [7 : 0]     salida_op = 8'b00000000;
         reg [31 : 0]    instruccion_addr = 32'b00000000000000000000000000000000;
         reg             wea = 1'b0;
@@ -221,7 +221,7 @@ module Top(
         reg [3 : 0]     present_state = IDDLE_STATE;
         reg [3 : 0]     next_state = IDDLE_STATE;
         reg             step = 1'b0;
-
+        wire [7 : 0]     display2;
 
         localparam PRIMER_HEXA = 3'b000;
         localparam SEGUNDO_HEXA = 3'b001;
@@ -229,8 +229,11 @@ module Top(
         localparam CUARTO_HEXA = 3'b011;
         localparam IDDLE_STATE = 3'b101;
 
-        assign salida = resultado;
-        assign salida_operadores = i_reset;
+        // assign salida = pulse_generate.flag_pulse1;
+        // assign salida_operadores = pulse_generate.flag_pulse2;
+
+        assign display2 = pulse_generate.flag_pulse2; //display 2 (derecha)
+        assign salida_operadores = pulse_generate.flag_pulse1; //display 1 (izquierda)
 
         always @(posedge i_clk)
         begin

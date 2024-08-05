@@ -49,7 +49,7 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
                                         print(f"Data memory {i - 31}: {datos_recibidos[i]}")
                             conexion_serial.reset_input_buffer()
                             conexion_serial.reset_output_buffer()
-                            time.sleep(3)
+                            # time.sleep(3)
 
                                 
                                 
