@@ -28,7 +28,7 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
                     conexion_serial.reset_output_buffer()
                     conexion_serial.write(datos_hex_bytes)
                     time.sleep(0.01)
-                    if (array[i] == "00 00 00 FF" and j == 3):
+                    if (array[i] == "00 00 00 FE" and j == 3):
                         print("El receptor esta esperando que la placa termine de enviar datos...")
                         # time.sleep(5)
                         
@@ -41,7 +41,12 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
                                 datos_recibidos = datos_recibidos_hex.split("-")
                                 for i in range(len(datos_recibidos)):
                                     if(i == 46) : 
-                                        print(f"Program counter : {datos_recibidos[i]}")
+                                        # print(f"Program counter : {datos_recibidos[i]}")
+                                        # convierte el hexa recibido en string a hexa y le suma 1
+                                        pc = int(datos_recibidos[i], 16) + 1
+                                        if(pc == 2048) : 
+                                            pc = 0
+                                        print(f"Program counter : {pc}")
                                         break
                                     if(i < 32) : 
                                         print(f"Registro {i}: {datos_recibidos[i]}")
@@ -49,7 +54,7 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
                                         print(f"Data memory {i - 31}: {datos_recibidos[i]}")
                             conexion_serial.reset_input_buffer()
                             conexion_serial.reset_output_buffer()
-                            # time.sleep(3)
+                            time.sleep(2)
 
                                 
                                 
@@ -59,7 +64,7 @@ def enviar_hexadecimal_a_uart(archivo, puerto):
 
 
 # Ejemplo de uso
-archivo_a_enviar = "instrucciones.txt"  # Reemplaza con el nombre de tu archivo
+archivo_a_enviar = "fibonachi.txt"  # Reemplaza con el nombre de tu archivo
 puerto_serial = "/dev/ttyUSB1"  # Reemplaza con el puerto serie que deseas utilizar
 
 enviar_hexadecimal_a_uart(archivo_a_enviar, puerto_serial)
