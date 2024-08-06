@@ -8,7 +8,7 @@ May 22 2024
 /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Basys3_7SegmentMultiplexing.v,1721696284,verilog,,/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Baud_gen.v,,Basys3_7SegmentMultiplexing,,,,,,,,
 /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Baud_gen.v,1721696284,verilog,,/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Data_hazard_detection_unit.v,,Baud_gen,,,,,,,,
 /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Data_hazard_detection_unit.v,1721696284,verilog,,/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.v,,Data_hazard_detection_unit,,,,,,,,
-/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.v,1721696284,verilog,,/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.v,,Instruction_fetch,,,,,,,,
+/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_IF.v,1722388465,verilog,,/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.v,,Instruction_fetch,,,,,,,,
 /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Etapa_MEM.v,1721696284,verilog,,/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Forwarding_unit.v,,Etapa_MEM,,,,,,,,
 /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Forwarding_unit.v,1721696284,verilog,,/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/IF_ID.v,,Forwarding_unit,,,,,,,,
 /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/IF_ID.v,1721696284,verilog,,/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Instruction_decode.v,,IF_ID,,,,,,,,

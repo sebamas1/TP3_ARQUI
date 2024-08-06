@@ -92,7 +92,6 @@ read_verilog -library xil_defaultlib {
   /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_exmem.v
   /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_idex.v
   /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/latch_memwb.v
-  /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/pulse_generator.v
   /home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v
 }
 OPTRACE "Adding files" END { }

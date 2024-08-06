@@ -23,6 +23,8 @@
 module Top(
             input rx,//UART RX
             input i_reset,
+            input step_button,
+            input send_button,
             input i_clk,
             output [7 : 0] salida,
             output [7 : 0] salida_operadores,
@@ -35,19 +37,19 @@ module Top(
     end
     
     Instruction_fetch etapa_if(
-        .i_clk(step == 1 ? i_reset : i_clk),
+        .i_clk(step == 1 ? step_button : i_clk),
         .i_reset(i_reset),
         .i_branch(ex.o_branch), 
         .i_branch_addr(ex.o_branch_dir), 
         .i_stall(dtu.o_stall),
         .i_instruccion_carga(instruccion_para_guardar),
-        .i_instruccion_carga_addr(etapa_if.o_end_pipeline ? transmisor.o_next_memory_addr : instruccion_addr),
+        .i_instruccion_carga_addr(instruccion_addr),
         .i_wea(wea),
         .i_start_pipeline(reception_end)
     );
 
     IF_ID latch_ifid(
-        step == 1 ? i_reset : i_clk,
+        step == 1 ? step_button : i_clk,
         i_reset,
         etapa_if.o_pc_value,
         etapa_if.o_instruccion,
@@ -56,18 +58,18 @@ module Top(
     );
     
     Instruction_decode etapa_id(
-        .i_clk(step == 1 ? i_reset : i_clk),
+        .i_clk(i_clk),
         .i_reset(i_reset),
-        .i_instruccion(etapa_if.o_end_pipeline ? transmisor.o_next_memory_addr : latch_ifid.o_instruccion),
+        .i_instruccion(start_transmition ? transmisor.o_next_memory_addr : latch_ifid.o_instruccion),
         .i_pc(latch_ifid.o_pc_value),
         
-        .i_reg_write_mem_wb(etapa_if.o_end_pipeline ? 0 : wb.o_reg_write_enable),
+        .i_reg_write_mem_wb(start_transmition ? 0 : wb.o_reg_write_enable),
         .i_dato_de_escritura_en_reg(wb.o_res),
-        .i_direc_de_escritura_en_reg(etapa_if.o_end_pipeline ? transmisor.o_next_memory_addr : wb.o_wb_reg_write)
+        .i_direc_de_escritura_en_reg(start_transmition ? transmisor.o_next_memory_addr : wb.o_wb_reg_write)
     );
     
     latch_idex latch_idex(
-        step == 1 ? i_reset  : i_clk,
+        step == 1 ? step_button : i_clk,
         i_reset,
         etapa_id.o_pc,
         etapa_id.o_op,
@@ -85,7 +87,7 @@ module Top(
     );
     
     etapa_ex ex(
-        step == 1 ? i_reset  : i_clk,
+        step == 1 ? step_button : i_clk,
         i_reset,
         latch_idex.o_pc,
         latch_idex.o_op,
@@ -107,7 +109,7 @@ module Top(
      
     );
     latch_exmem exmem(
-        step == 1 ? i_reset : i_clk,// OJO, si no lee las instrucciones, ES POSIBLE QUE EL REA este deshabilitado segun la instruccion
+        step == 1 ? step_button : i_clk,// OJO, si no lee las instrucciones, ES POSIBLE QUE EL REA este deshabilitado segun la instruccion
         i_reset,
         ex.o_pc,
         ex.o_res,
@@ -117,7 +119,7 @@ module Top(
     );
     
     Etapa_MEM mem(
-        step == 1 ? i_reset : i_clk,
+        i_clk,
         i_reset,
         
         exmem.o_pc,
@@ -126,11 +128,15 @@ module Top(
         exmem.o_wb_reg_write,
         exmem.o_alu_ctrl,
         transmisor.o_next_memory_addr,
-        etapa_if.o_end_pipeline
-    
+        // etapa_if.o_end_pipeline
+        start_transmition
+        //si o_enviar_prev es 1, el 0 indica que deberia escribir en la memoria de datos
+        //porque el transmisor no esta enviando nada
+        //si o_enviar_prev es 0, quiero transmitir, entonces
+        //se le pasa 1, que es el equivalente a o_end pipeline en 1
     );
     latch_memwb memwb(
-        step == 1 ? i_reset : i_clk,
+        step == 1 ? step_button : i_clk,
         i_reset,
         
         mem.o_pc,
@@ -141,7 +147,7 @@ module Top(
     );
     
    etapa_wb wb(
-        step == 1 ? i_reset : i_clk,
+        step == 1 ? step_button : i_clk,
         i_reset,
         
         memwb.o_pc,
@@ -188,7 +194,7 @@ module Top(
     TX transmisor(
         .i_clk(i_clk),
         .i_tick(o_tick),
-        .i_reset(i_reset),
+        .i_reset(send_button),
         .i_gpregisters(etapa_id.o_rs),
         .i_data_memory(mem.o_data_memory),
         .i_pc(etapa_if.o_pc_value),
@@ -204,11 +210,6 @@ module Top(
         .rst(resultado)
     );
 
-    pulse_generator pulse_generator (
-        .clk(i_clk),
-        .reset(i_reset),
-        .data_ready(receptor.o_dato_recibido)
-    );
 
         wire            i_recibido;
         wire [7 : 0]    resultado;
@@ -231,6 +232,7 @@ module Top(
 
         assign salida = resultado;
         assign salida_operadores = i_reset;
+        assign start_transmition = transmisor.o_enviar_prev == 1 ? 0 : 1;
 
         always @(posedge i_clk)
         begin

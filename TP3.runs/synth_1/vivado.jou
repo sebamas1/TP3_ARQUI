@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Mon Jul 29 21:41:07 2024
-# Process ID: 126777
+# Start of session at: Mon Aug  5 21:21:53 2024
+# Process ID: 92634
 # Current directory: /home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1
 # Command line: vivado -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
 # Log file: /home/sebastian/Documentos/TP3_ARQUI/TP3.runs/synth_1/Top.vds
@@ -13,12 +13,12 @@
 # Platform          :Ubuntu
 # Operating System  :Ubuntu 24.04 LTS
 # Processor Detail  :Intel(R) Core(TM) i3-1005G1 CPU @ 1.20GHz
-# CPU Frequency     :3399.854 MHz
+# CPU Frequency     :2279.166 MHz
 # CPU Physical cores:2
 # CPU Logical cores :4
 # Host memory       :7976 MB
 # Swap memory       :4294 MB
 # Total Virtual     :12271 MB
-# Available Virtual :7307 MB
+# Available Virtual :7242 MB
 #-----------------------------------------------------------
 source Top.tcl -notrace

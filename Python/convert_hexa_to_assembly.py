@@ -152,5 +152,5 @@ def convert_hex_file_to_assembly(file_name):
                 outfile.write(assembly_code + '\n')
 
 # Example usage
-file_name = 'test2'
+file_name = 'test'
 convert_hex_file_to_assembly(file_name)

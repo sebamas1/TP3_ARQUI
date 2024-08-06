@@ -30,16 +30,16 @@ WARNING: [VRFC 10-8497] literal value 'b1111111111111111111111111111111111111111
 WARNING: [VRFC 10-3380] identifier 'enviar_prev' is used before its declaration [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/TX.v:36]
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Top
-WARNING: [VRFC 10-2938] 'i_recibido' is already implicitly declared on line 185 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:213]
-WARNING: [VRFC 10-2938] 'resultado' is already implicitly declared on line 204 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:214]
-WARNING: [VRFC 10-2938] 'instruccion_addr' is already implicitly declared on line 44 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:217]
-WARNING: [VRFC 10-2938] 'wea' is already implicitly declared on line 45 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:218]
-WARNING: [VRFC 10-2938] 'reception_end' is already implicitly declared on line 46 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:219]
-WARNING: [VRFC 10-2938] 'instruccion_para_guardar' is already implicitly declared on line 43 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:220]
-WARNING: [VRFC 10-2938] 'step' is already implicitly declared on line 38 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:223]
+WARNING: [VRFC 10-2938] 'i_recibido' is already implicitly declared on line 185 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:212]
+WARNING: [VRFC 10-2938] 'resultado' is already implicitly declared on line 204 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:213]
+WARNING: [VRFC 10-2938] 'instruccion_addr' is already implicitly declared on line 44 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:216]
+WARNING: [VRFC 10-2938] 'wea' is already implicitly declared on line 45 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:217]
+WARNING: [VRFC 10-2938] 'reception_end' is already implicitly declared on line 46 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:218]
+WARNING: [VRFC 10-2938] 'instruccion_para_guardar' is already implicitly declared on line 43 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:219]
+WARNING: [VRFC 10-2938] 'step' is already implicitly declared on line 38 [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:222]
 WARNING: [VRFC 10-3380] identifier 'step' is used before its declaration [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:34]
+WARNING: [VRFC 10-3380] identifier 'IDDLE_STATE' is used before its declaration [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:220]
 WARNING: [VRFC 10-3380] identifier 'IDDLE_STATE' is used before its declaration [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:221]
-WARNING: [VRFC 10-3380] identifier 'IDDLE_STATE' is used before its declaration [/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/Top.v:222]
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_ex.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module etapa_ex
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/sebastian/Documentos/TP3_ARQUI/TP3.srcs/sources_1/new/etapa_wb.v" into library xil_defaultlib

@@ -1,12 +1,15 @@
-+====================+===================+===============================+
-| Launch Setup Clock | Launch Hold Clock | Pin                           |
-+====================+===================+===============================+
-| sys_clk_pin        | sys_clk_pin       | etapa_if/o_end_pipeline_reg/D |
-| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[28]/D       |
-| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[15]/D       |
-| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[12]/D       |
-| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[2]/D        |
-| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[19]/D       |
-| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[22]/D       |
-| sys_clk_pin        | sys_clk_pin       | memwb/res_tmp_reg[5]/D        |
-+--------------------+-------------------+-------------------------------+
++====================+===================+======================================+
+| Launch Setup Clock | Launch Hold Clock | Pin                                  |
++====================+===================+======================================+
+| sys_clk_pin        | sys_clk_pin       | exmem/res_tmp_reg[7]/D               |
+| sys_clk_pin        | sys_clk_pin       | etapa_if/program_counter_reg[9]/D    |
+| sys_clk_pin        | sys_clk_pin       | etapa_if/mem_inst/BRAM_reg_1/ENARDEN |
+| sys_clk_pin        | sys_clk_pin       | etapa_if/mem_inst/BRAM_reg_0/ENARDEN |
+| sys_clk_pin        | sys_clk_pin       | etapa_if/program_counter_reg[5]/D    |
+| sys_clk_pin        | sys_clk_pin       | etapa_if/program_counter_reg[10]/D   |
+| sys_clk_pin        | sys_clk_pin       | etapa_if/program_counter_reg[8]/D    |
+| sys_clk_pin        | sys_clk_pin       | etapa_if/program_counter_reg[7]/D    |
+| sys_clk_pin        | sys_clk_pin       | etapa_if/program_counter_reg[4]/D    |
+| sys_clk_pin        | sys_clk_pin       | etapa_if/program_counter_reg[6]/D    |
+| sys_clk_pin        | sys_clk_pin       | etapa_if/program_counter_reg[3]/D    |
++--------------------+-------------------+--------------------------------------+

@@ -29,7 +29,8 @@
         input [10 : 0] i_pc,
         output o_dato_enviado,
         output o_tx,
-        output [31 : 0] o_next_memory_addr
+        output [31 : 0] o_next_memory_addr,
+        output o_enviar_prev
         );
 
         initial begin
@@ -245,6 +246,7 @@
         assign o_tx = salida;
         assign o_dato_enviado = terminado;
         assign o_next_memory_addr = actual_memory_adress;
+        assign o_enviar_prev = enviar_prev;
        
         
     endmodule
